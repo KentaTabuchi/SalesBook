@@ -8,8 +8,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * @author misskabu
+ * @param String fxmlFileName : file name without /fxml/ 
+ * @param Pane pane : new Pane for setting to new Stage. 
+ * @return pointer of new Stage.
+ */
 public class StageGenerator {
-	public Stage createBoderPaneStage(String fxmlFileName,Pane pane){
+	public Stage createStage(String fxmlFileName,Pane pane){
 		Stage stage = new Stage();
 	
 		try {

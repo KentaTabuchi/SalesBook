@@ -8,17 +8,18 @@ import javafx.stage.Stage;
 public class IndexController {
 	@FXML
 	protected void OnMenuButton1Click(){
-		System.out.println("index.fxml:menu_button_1 clicked");
-		Stage stage = new StageGenerator().createBoderPaneStage("sales_menu.fxml",new BorderPane());
+		Stage stage = new StageGenerator().createStage("sales_menu.fxml",new BorderPane());
 		stage.setTitle("売上メニュー");
 	}
 	@FXML
 	protected void OnMenuButton2Click(){
-		System.out.println("index.fxml:menu_button2_ clicked");
+		Stage stage = new StageGenerator().createStage("customer_menu.fxml",new BorderPane());	
+		stage.setTitle("顧客メニュー");
 	}
 	@FXML
 	protected void OnMenuButton3Click(){
-		System.out.println("index.fxml:menu_button_3 clicked");
+		Stage stage = new StageGenerator().createStage("config_menu.fxml",new BorderPane());
+		stage.setTitle("設定メニュー");
 	}
 	
 
