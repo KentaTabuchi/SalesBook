@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 public class ConfigStatusController {
 	@FXML
 	protected void OnMenuButton1Click(){
+		System.out.println("button1");
 		Stage stage = new StageGenerator().createStage("config_status-RUD.fxml",new BorderPane());
 		stage.setTitle("ステータス設定");
 	}
