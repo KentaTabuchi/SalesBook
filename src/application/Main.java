@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-
+import controller.*;
 
 public class Main extends Application {
 	@Override
@@ -17,6 +17,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("目次");
 			primaryStage.show();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -26,13 +27,3 @@ public class Main extends Application {
 		launch(args);
 	}
 }
-
-//FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/TradeLogTableStage.fxml"));
-//Scene scene = new Scene((BorderPane)fxmlLoader.load());
-//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-//primaryStage.setScene(scene);
-//primaryStage.show();
-//primaryStage.setWidth(1100);
-//primaryStage.setX(primaryStage.getX());
-//primaryStage.setTitle("TradeLogTableStage");
-//tradeLogTableStageController = fxmlLoader.getController();
