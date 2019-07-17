@@ -4,6 +4,7 @@
 package application;
 
 import java.sql.Connection;
+import java.util.List;
 
 /**
  * @author misskabu
@@ -12,4 +13,5 @@ import java.sql.Connection;
  */
 public interface ISQLExecutable {
 	void executeQuery(Connection con);
+
 }
