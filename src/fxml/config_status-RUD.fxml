@@ -6,13 +6,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane prefHeight="408.0" prefWidth="470.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<BorderPane prefHeight="408.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ConfigStatusController">
    <center>
       <TableView fx:id="config_status_table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="372.0" text="ステータス" />
+          <TableColumn fx:id="fx_column_id" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="fx_column_name" prefWidth="372.0" text="ステータス名" />
         </columns>
       </TableView>
    </center>
