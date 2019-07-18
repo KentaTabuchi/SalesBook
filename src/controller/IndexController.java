@@ -13,7 +13,7 @@ public class IndexController {
 	}
 	@FXML
 	protected void OnMenuButton2Click(){
-		Stage stage = new StageGenerator().createStage("customer_menu.fxml",new BorderPane());	
+		Stage stage = new StageGenerator().createStage("customers_menu.fxml",new BorderPane());	
 		stage.setTitle("顧客メニュー");
 	}
 	@FXML
