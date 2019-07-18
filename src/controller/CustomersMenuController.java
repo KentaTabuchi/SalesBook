@@ -10,12 +10,12 @@ public class CustomersMenuController {
 	protected void OnMenuButton1Click(){
 		System.out.println("CustomersMenuController:OnMenuButton1Click invoke");
 		Stage stage = new StageGenerator().createStage("customers_table-R.fxml",new BorderPane());
-		stage.setTitle("ステータス設定");
+		stage.setTitle("顧客一覧");
 	}
 	@FXML
 	protected void OnMenuButton2Click(){
-	//	Stage stage = new StageGenerator().createStage("config_genres-RUD.fxml",new BorderPane());	
-	//	stage.setTitle("ジャンル設定");
+		Stage stage = new StageGenerator().createStage("customers_table-C.fxml",new BorderPane());	
+		stage.setTitle("新規顧客登録");
 	}
 	@FXML
 	protected void OnMenuButton3Click(){

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane prefHeight="500.0" prefWidth="540.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.CustomersTableCController">
+   <center>
+      <VBox prefHeight="697.0" prefWidth="540.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="会社名" />
+            <Label text="フリガナ" />
+            <TextField />
+            <Label text="電話番号" />
+            <TextField />
+            <Label text="都道府県" />
+            <ComboBox prefWidth="150.0" />
+            <Label text="市区町村" />
+            <TextField />
+            <Label text="番地 建物名" />
+            <TextField />
+            <Label text="郵便番号" />
+            <TextField />
+            <Label text="メールアドレス" />
+            <TextField />
+            <Label text="担当者" />
+            <TextField />
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <Label text="新規顧客登録" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </top>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" text="登録" />
+            <Button mnemonicParsing="false" text="中止" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

@@ -9,12 +9,12 @@ public class ConfigMenuController {
 	@FXML
 	protected void OnMenuButton1Click(){
 		System.out.println("button1");
-		Stage stage = new StageGenerator().createStage("config_status-RUD.fxml",new BorderPane());
+		Stage stage = new StageGenerator().createStage("config_status-CRUD.fxml",new BorderPane());
 		stage.setTitle("ステータス設定");
 	}
 	@FXML
 	protected void OnMenuButton2Click(){
-		Stage stage = new StageGenerator().createStage("config_genres-RUD.fxml",new BorderPane());	
+		Stage stage = new StageGenerator().createStage("config_genres-CRUD.fxml",new BorderPane());	
 		stage.setTitle("ジャンル設定");
 	}
 	@FXML
