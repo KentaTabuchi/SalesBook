@@ -13,16 +13,16 @@ import application.ISQLExecutable;
  */
 public class Statuses_DeleteById implements ISQLExecutable {
 
-	private int id;
+	private Long id;
 	final String SQL = "delete from statuses where id = ?"; 
 	
-	public Statuses_DeleteById(int id){
+	public Statuses_DeleteById(long id){
 		this.id = id;
 	}
 	@Override
 	public void executeQuery(Connection con) {
 			try(PreparedStatement ps = con.prepareStatement(this.SQL)){
-			ps.setInt(1,this.id);
+			ps.setLong(1,this.id);
 
 			int result = ps.executeUpdate();
 				if(result!=0){

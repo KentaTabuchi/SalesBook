@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import model.Statuses;
+import sql_crud.Statuses_DeleteById;
 import sql_crud.Statuses_FindAllById;
 import sql_crud.Statuses_Insert;
 
@@ -41,14 +42,31 @@ public class ConfigStatusController implements Initializable {
 	private void setCellValueFactoryes(){
 		fx_column_id.setCellValueFactory(new PropertyValueFactory<Statuses,Long>("id"));
 		fx_column_name.setCellValueFactory(new PropertyValueFactory<Statuses,String>("name"));
-		Consumer<Statuses> consumer = statuses -> System.out.println("lamda:"+statuses.nameProperty().getValue());
-		addButtonToTable(consumer,"","編集");
-		addButtonToTable(consumer,"","削除");
+		//Consumer<Statuses> consumer = statuses -> System.out.println("lamda:"+statuses.nameProperty().getValue());
+		//addButtonToTable(delete(),"","編集");
+		addButtonToTable(delete(),"","削除");
+	}
+	
+	private Consumer<Statuses> delete(){
+		Consumer<Statuses> consumer = statuses -> {
+			Statuses_DeleteById sql = new Statuses_DeleteById(statuses.idProperty().get());
+			new SalesDao(sql);
+			
+	    	for ( int i = 0; i<fx_table.getItems().size(); i++) {
+	    	    fx_table.getItems().clear();
+	    	}
+	    	
+			Statuses_FindAllById sql2 = new Statuses_FindAllById();
+			new SalesDao(sql2);
+			for(Statuses record:sql2.recordList){
+				fx_table.getItems().add(record);
+			}
+		};
+		return consumer;
 	}
 	
 	@FXML
 	public void OnAddButtonClick(){
-		System.out.println("addbuttonClick");
 		Statuses_Insert sql = new Statuses_Insert(fx_text_name.getText());
 		new SalesDao(sql);
 		
@@ -60,7 +78,6 @@ public class ConfigStatusController implements Initializable {
 		new SalesDao(sql2);
 		for(Statuses record:sql2.recordList){
 			fx_table.getItems().add(record);
-		
 		}
 	}
 	
