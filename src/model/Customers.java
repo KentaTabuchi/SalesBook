@@ -19,9 +19,23 @@ public class Customers {
 	private StringProperty created_at;
 	private StringProperty update_at;
 
-	public Customers(Long id,String name){
+	public Customers
+	(Long id,String name,String name_kana,String tel,String address1,String address2,String address3,String zip,
+	 String email,String person_in_charge,String created_at,String update_at)
+	{
 		this.id = new SimpleLongProperty(id);
 		this.name = new SimpleStringProperty(name);
+		this.name_kana = new SimpleStringProperty(name_kana);
+		this.tel = new SimpleStringProperty(tel);
+		this.address1 = new SimpleStringProperty(address1);
+		this.address2 = new SimpleStringProperty(address2);
+		this.address3 = new SimpleStringProperty(address3);
+		this.zip = new SimpleStringProperty(zip);
+		this.email = new SimpleStringProperty(email);
+		this.person_in_charge = new SimpleStringProperty(person_in_charge);
+		this.created_at = new SimpleStringProperty(created_at);
+		this.update_at = new SimpleStringProperty(update_at);
+		
 	}
 	
 	public  LongProperty idProperty(){
