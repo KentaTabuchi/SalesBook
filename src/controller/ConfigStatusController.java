@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
@@ -13,7 +14,9 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 import model.Statuses;
 import sql_crud.Statuses_DeleteById;
@@ -33,6 +36,7 @@ public class ConfigStatusController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		setCellValueFactoryes();
+		//setTextFieldTableCell();
 		Statuses_FindAllById sql = new Statuses_FindAllById();
 		new SalesDao(sql);
 		for(Statuses record:sql.recordList){
@@ -43,9 +47,14 @@ public class ConfigStatusController implements Initializable {
 	private void setCellValueFactoryes(){
 		fx_column_id.setCellValueFactory(new PropertyValueFactory<Statuses,Long>("id"));
 		fx_column_name.setCellValueFactory(new PropertyValueFactory<Statuses,String>("name"));
-		addButtonToTable(edit("編集テスト"),"","編集");
+		addButtonToTable(edit(),"","編集");
 		addButtonToTable(delete(),"","削除");
 	}
+//	private void setTextFieldTableCell(){
+//		fx_table.setEditable(true);
+//		fx_column_name.setEditable(true);
+//		fx_column_name.setCellFactory(TextFieldTableCell.forTableColumn());
+//	}
 	
 	private Consumer<Statuses> delete(){
 		Consumer<Statuses> consumer = statuses -> {
@@ -65,10 +74,19 @@ public class ConfigStatusController implements Initializable {
 		return consumer;
 	}
 	
-	private Consumer<Statuses> edit(String newText){
+	private Consumer<Statuses> edit(){
+
+		
 		Consumer<Statuses> consumer = statuses -> {
-			Statuses_UpdateById sql = new Statuses_UpdateById(statuses.idProperty().get(),newText);
-			new SalesDao(sql);
+			TextInputDialog dialog = new TextInputDialog();
+			dialog.setTitle("編集内容入力");
+			dialog.setHeaderText(null);
+			dialog.setContentText("変更後の名前を入力してください。");
+			Optional<String> result = dialog.showAndWait();
+			result.ifPresent(value ->{
+				Statuses_UpdateById sql = new Statuses_UpdateById(statuses.idProperty().get(),value);
+				new SalesDao(sql);	
+			});
 			
 	    	for ( int i = 0; i<fx_table.getItems().size(); i++) {
 	    	    fx_table.getItems().clear();
