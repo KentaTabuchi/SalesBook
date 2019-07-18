@@ -14,8 +14,8 @@ public class ConfigMenuController {
 	}
 	@FXML
 	protected void OnMenuButton2Click(){
-		//Stage stage = new StageGenerator().createStage("customer_menu.fxml",new BorderPane());	
-		//stage.setTitle("");
+		Stage stage = new StageGenerator().createStage("config_genres-RUD.fxml",new BorderPane());	
+		stage.setTitle("ジャンル設定");
 	}
 	@FXML
 	protected void OnMenuButton3Click(){
