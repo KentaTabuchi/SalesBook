@@ -18,12 +18,12 @@
    <bottom>
       <HBox prefHeight="68.0" prefWidth="470.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField prefHeight="27.0" prefWidth="393.0">
+            <TextField fx:id="fx_text_name" prefHeight="27.0" prefWidth="393.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" text="新規登録" />
+            <Button mnemonicParsing="false" onAction="#OnAddButtonClick" text="新規登録" />
          </children>
       </HBox>
    </bottom>
