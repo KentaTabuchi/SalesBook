@@ -2,15 +2,19 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 import application.SalesDao;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import model.Statuses;
 import sql_crud.Statuses_FindAllById;
 import sql_crud.Statuses_Insert;
@@ -37,7 +41,9 @@ public class ConfigStatusController implements Initializable {
 	private void setCellValueFactoryes(){
 		fx_column_id.setCellValueFactory(new PropertyValueFactory<Statuses,Long>("id"));
 		fx_column_name.setCellValueFactory(new PropertyValueFactory<Statuses,String>("name"));
-		
+		Consumer<Statuses> consumer = statuses -> System.out.println("lamda:"+statuses.nameProperty().getValue());
+		addButtonToTable(consumer,"","編集");
+		addButtonToTable(consumer,"","削除");
 	}
 	
 	@FXML
@@ -55,8 +61,48 @@ public class ConfigStatusController implements Initializable {
 		for(Statuses record:sql2.recordList){
 			fx_table.getItems().add(record);
 		
+		}
+	}
+	
+/**
+ * 
+ * @param consumer    : ActionEvent on Button Clicked. Written by lamda. 
+ * @param columnTitle : Table Column head caption.
+ * @param btnCaption  : Caption of generated button.
+ */
+	private void addButtonToTable(Consumer<Statuses> consumer,String columnTitle,String btnCaption) {
+		TableColumn<Statuses, Void> colBtn = new TableColumn<>(columnTitle);
+
+		Callback<TableColumn<Statuses, Void>, TableCell<Statuses, Void>> cellFactory = new Callback<TableColumn<Statuses, Void>, TableCell<Statuses, Void>>() {
+			@Override
+			public TableCell<Statuses, Void> call(final TableColumn<Statuses, Void> param) {
+				final TableCell<Statuses, Void> cell = new TableCell<Statuses, Void>() {
+
+					private final Button btn = new Button(btnCaption);
+
+					{
+						btn.setOnAction((ActionEvent event) -> {
+							Statuses statuses = getTableView().getItems().get(getIndex());
+							consumer.accept(statuses);
+						});
+					}
+
+					@Override
+					public void updateItem(Void item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty) {
+							setGraphic(null);
+						} else {
+							setGraphic(btn);
+						}
+					}
+				};
+				return cell;
+			}
+		};
+		colBtn.setCellFactory(cellFactory);
+		fx_table.getColumns().add(colBtn);
 	}
 
-
-	}
+	
 }
