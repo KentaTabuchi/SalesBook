@@ -19,6 +19,7 @@ import model.Statuses;
 import sql_crud.Statuses_DeleteById;
 import sql_crud.Statuses_FindAllById;
 import sql_crud.Statuses_Insert;
+import sql_crud.Statuses_UpdateById;
 
 
 public class ConfigStatusController implements Initializable {
@@ -42,14 +43,31 @@ public class ConfigStatusController implements Initializable {
 	private void setCellValueFactoryes(){
 		fx_column_id.setCellValueFactory(new PropertyValueFactory<Statuses,Long>("id"));
 		fx_column_name.setCellValueFactory(new PropertyValueFactory<Statuses,String>("name"));
-		//Consumer<Statuses> consumer = statuses -> System.out.println("lamda:"+statuses.nameProperty().getValue());
-		//addButtonToTable(delete(),"","編集");
+		addButtonToTable(edit("編集テスト"),"","編集");
 		addButtonToTable(delete(),"","削除");
 	}
 	
 	private Consumer<Statuses> delete(){
 		Consumer<Statuses> consumer = statuses -> {
 			Statuses_DeleteById sql = new Statuses_DeleteById(statuses.idProperty().get());
+			new SalesDao(sql);
+			
+	    	for ( int i = 0; i<fx_table.getItems().size(); i++) {
+	    	    fx_table.getItems().clear();
+	    	}
+	    	
+			Statuses_FindAllById sql2 = new Statuses_FindAllById();
+			new SalesDao(sql2);
+			for(Statuses record:sql2.recordList){
+				fx_table.getItems().add(record);
+			}
+		};
+		return consumer;
+	}
+	
+	private Consumer<Statuses> edit(String newText){
+		Consumer<Statuses> consumer = statuses -> {
+			Statuses_UpdateById sql = new Statuses_UpdateById(statuses.idProperty().get(),newText);
 			new SalesDao(sql);
 			
 	    	for ( int i = 0; i<fx_table.getItems().size(); i++) {
