@@ -2,17 +2,24 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
+
 import application.SalesDao;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import model.Customers;
 import sql_crud.Customers_FindAllById;
+import sql_crud.Customers_DeleteById;
 
 
-public class CustomersTableRController implements Initializable {
+public class CustomersTableRDController implements Initializable {
 	
 	@FXML private TableView<Customers> fx_table = new TableView<>();
 	@FXML private TableColumn<Customers,Long>   fx_column_id;
@@ -52,5 +59,57 @@ public class CustomersTableRController implements Initializable {
 		fx_column_person_in_charge.setCellValueFactory(new PropertyValueFactory<Customers,String>("person_in_charge"));
 		fx_column_created_at.setCellValueFactory(new PropertyValueFactory<Customers,String>("created_at"));
 		fx_column_update_at.setCellValueFactory(new PropertyValueFactory<Customers,String>("update_at"));
-	}	
+		addButtonToTable(delete(),"","削除");
+	}
+	private Consumer<Customers> delete(){
+		Consumer<Customers> consumer = customers -> {
+			Customers_DeleteById sql = new Customers_DeleteById(customers.idProperty().get());
+			new SalesDao(sql);
+			
+	    	for ( int i = 0; i<fx_table.getItems().size(); i++) {
+	    	    fx_table.getItems().clear();
+	    	}
+	    	
+			Customers_FindAllById sql2 = new Customers_FindAllById();
+			new SalesDao(sql2);
+			for(Customers record:sql2.recordList){
+				fx_table.getItems().add(record);
+			}
+		};
+		return consumer;
+	}
+	
+	private void addButtonToTable(Consumer<Customers> consumer,String columnTitle,String btnCaption) {
+		TableColumn<Customers, Void> colBtn = new TableColumn<>(columnTitle);
+
+		Callback<TableColumn<Customers, Void>, TableCell<Customers, Void>> cellFactory = new Callback<TableColumn<Customers, Void>, TableCell<Customers, Void>>() {
+			@Override
+			public TableCell<Customers, Void> call(final TableColumn<Customers, Void> param) {
+				final TableCell<Customers, Void> cell = new TableCell<Customers, Void>() {
+
+					private final Button btn = new Button(btnCaption);
+
+					{
+						btn.setOnAction((ActionEvent event) -> {
+							Customers customers = getTableView().getItems().get(getIndex());
+							consumer.accept(customers);
+						});
+					}
+
+					@Override
+					public void updateItem(Void item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty) {
+							setGraphic(null);
+						} else {
+							setGraphic(btn);
+						}
+					}
+				};
+				return cell;
+			}
+		};
+		colBtn.setCellFactory(cellFactory);
+		fx_table.getColumns().add(colBtn);
+	}
 }

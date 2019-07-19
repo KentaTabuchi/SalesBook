@@ -9,7 +9,7 @@ public class CustomersMenuController {
 	@FXML
 	protected void OnMenuButton1Click(){
 		System.out.println("CustomersMenuController:OnMenuButton1Click invoke");
-		Stage stage = new StageGenerator().createStage("customers_table-R.fxml",new BorderPane());
+		Stage stage = new StageGenerator().createStage("customers_table-RD.fxml",new BorderPane());
 		stage.setTitle("顧客一覧");
 	}
 	@FXML
