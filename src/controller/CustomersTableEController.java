@@ -27,10 +27,19 @@ public class CustomersTableEController implements Initializable{
 	@FXML
 	public void OnAddButtonClick(){
 		System.out.println("CustomersTableCController: OnAddButtonClick invoke");
-		Customers_UpdateById sql = new Customers_UpdateById
-		(fx_text_name.getText(),fx_text_kana_name.getText(),fx_text_tel.getText(),fx_text_address1.getText(),
-		 fx_text_address2.getText(),fx_text_address3.getText(),fx_text_zip.getText(),
-		 fx_text_email.getText(),fx_text_person_in_charge.getText());
+//		Customers_UpdateById sql = new Customers_UpdateById
+//		(fx_text_name.getText(),fx_text_kana_name.getText(),fx_text_tel.getText(),fx_text_address1.getText(),
+//		 fx_text_address2.getText(),fx_text_address3.getText(),fx_text_zip.getText(),
+//		 fx_text_email.getText(),fx_text_person_in_charge.getText());
+		Customers customers2 = 
+		new Customers(customers.idProperty().getValue(),fx_text_name.getText(),fx_text_kana_name.getText(),fx_text_tel.getText(),fx_text_address1.getText(),
+				fx_text_address2.getText(),fx_text_address3.getText(),fx_text_zip.getText(),
+				fx_text_email.getText(),fx_text_person_in_charge.getText(),
+				customers.created_atProperty().getValue(),customers.update_atProperty().getValue());
+		
+		
+		
+		Customers_UpdateById sql = new Customers_UpdateById(customers2);
 		new SalesDao(sql);
 		    	
 	}
@@ -39,7 +48,7 @@ public class CustomersTableEController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		fx_text_name.setText(customers.nameProperty().getValue());
 		fx_text_kana_name.setText(customers.name_kanaProperty().getValue());
-		fx_text_tel.setText(customers.tesProperty().getValue());
+		fx_text_tel.setText(customers.telProperty().getValue());
 		fx_text_address1.setText(customers.address1Property().getValue());
 		fx_text_address2.setText(customers.address2Property().getValue());
 		fx_text_address3.setText(customers.address3Property().getValue());

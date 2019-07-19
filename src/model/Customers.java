@@ -47,7 +47,7 @@ public class Customers {
 	public StringProperty name_kanaProperty(){
 		return name_kana;
 	}
-	public StringProperty tesProperty(){
+	public StringProperty telProperty(){
 		return tel;
 	}
 	public StringProperty address1Property(){
