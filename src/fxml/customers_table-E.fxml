@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="500.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomersTableEController">
+   <center>
+      <VBox prefHeight="697.0" prefWidth="540.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="会社名" />
+            <TextField fx:id="fx_text_name">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </TextField>
+            <Label text="フリガナ" />
+            <TextField fx:id="fx_text_kana_name">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></TextField>
+            <Label text="電話番号" />
+            <TextField fx:id="fx_text_tel">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></TextField>
+            <Label text="都道府県" />
+            <TextField fx:id="fx_text_address1">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </TextField>
+            <Label text="市区町村" />
+            <TextField fx:id="fx_text_address2">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></TextField>
+            <Label text="番地 建物名" />
+            <TextField fx:id="fx_text_address3">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></TextField>
+            <Label text="郵便番号" />
+            <TextField fx:id="fx_text_zip">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></TextField>
+            <Label text="メールアドレス" />
+            <TextField fx:id="fx_text_email">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></TextField>
+            <Label text="担当者" />
+            <TextField fx:id="fx_text_person_in_charge">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></TextField>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <Label text="既存顧客編集" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </top>
+   <bottom>
+      <HBox prefHeight="69.0" prefWidth="540.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#OnAddButtonClick" text="登録" />
+            <Button mnemonicParsing="false" text="中止" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

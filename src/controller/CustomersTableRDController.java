@@ -1,10 +1,12 @@
 package controller;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
 import application.SalesDao;
+import command.StageGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,10 +14,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Customers;
 import sql_crud.Customers_FindAllById;
+import sql_crud.Customers_UpdateById;
 import sql_crud.Customers_DeleteById;
 
 
@@ -59,22 +65,30 @@ public class CustomersTableRDController implements Initializable {
 		fx_column_person_in_charge.setCellValueFactory(new PropertyValueFactory<Customers,String>("person_in_charge"));
 		fx_column_created_at.setCellValueFactory(new PropertyValueFactory<Customers,String>("created_at"));
 		fx_column_update_at.setCellValueFactory(new PropertyValueFactory<Customers,String>("update_at"));
+		addButtonToTable(edit(),"","編集");
 		addButtonToTable(delete(),"","削除");
 	}
 	private Consumer<Customers> delete(){
 		Consumer<Customers> consumer = customers -> {
 			Customers_DeleteById sql = new Customers_DeleteById(customers.idProperty().get());
 			new SalesDao(sql);
-			
 	    	for ( int i = 0; i<fx_table.getItems().size(); i++) {
 	    	    fx_table.getItems().clear();
 	    	}
-	    	
 			Customers_FindAllById sql2 = new Customers_FindAllById();
 			new SalesDao(sql2);
 			for(Customers record:sql2.recordList){
 				fx_table.getItems().add(record);
 			}
+		};
+		return consumer;
+	}
+	private Consumer<Customers> edit(){
+		Consumer<Customers> consumer = customers -> {
+			System.out.println("editbuttonclick");
+			CustomersTableEController.customers = customers;
+			Stage stage = new StageGenerator().createStage("customers_table-E.fxml",new BorderPane());
+			stage.setTitle("既存顧客編集 ID:"+ customers.idProperty().get());
 		};
 		return consumer;
 	}
