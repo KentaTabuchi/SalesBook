@@ -1,8 +1,8 @@
 package enums;
 
 public enum Settle {
-	settle("確定"),
-	unsettled("未確定");
+	SETTLE("確定"),
+	UNSETTLED("未確定");
 	
 	private String name;
 
