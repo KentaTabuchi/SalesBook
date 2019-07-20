@@ -20,7 +20,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Customers;
-import sql_crud.Customers_FindAllById;
+import sql_crud.Customers_FindAll;
 import sql_crud.Customers_UpdateById;
 import sql_crud.Customers_DeleteById;
 
@@ -45,7 +45,7 @@ public class CustomersTableRDController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		setCellValueFactoryes();
-		Customers_FindAllById sql = new Customers_FindAllById();
+		Customers_FindAll sql = new Customers_FindAll();
 		new SalesDao(sql);
 		for(Customers record:sql.recordList){
 			fx_table.getItems().add(record);
@@ -75,7 +75,7 @@ public class CustomersTableRDController implements Initializable {
 	    	for ( int i = 0; i<fx_table.getItems().size(); i++) {
 	    	    fx_table.getItems().clear();
 	    	}
-			Customers_FindAllById sql2 = new Customers_FindAllById();
+			Customers_FindAll sql2 = new Customers_FindAll();
 			new SalesDao(sql2);
 			for(Customers record:sql2.recordList){
 				fx_table.getItems().add(record);
