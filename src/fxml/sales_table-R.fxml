@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesTableCController">
+   <center>
+      <TableView fx:id="fx_table" prefHeight="306.0" prefWidth="990.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="fx_column_id" prefWidth="50.0" text="ID" />
+          <TableColumn fx:id="fx_column_status_id" prefWidth="70.0" text="確定状況" />
+            <TableColumn fx:id="fx_column_name_kana" prefWidth="75.0" text="ステータス" />
+            <TableColumn fx:id="fx_column_tel" prefWidth="151.0" text="請求先顧客名（正式名称）" />
+            <TableColumn fx:id="fx_column_address1" prefWidth="52.0" text="売上ジャンル" />
+            <TableColumn fx:id="fx_column_address2" prefWidth="49.0" text="売上金額" />
+            <TableColumn fx:id="fx_column_address3" prefWidth="73.0" text="仕入金額" />
+            <TableColumn fx:id="fx_column_zip" prefWidth="82.0" text="売上（請求）金額" />
+            <TableColumn fx:id="fx_column_email" prefWidth="133.0" text="覚え書き" />
+            <TableColumn fx:id="fx_column_person_in_charge" prefWidth="126.0" text="入金予定日" />
+            <TableColumn fx:id="fx_column_created_at" prefWidth="90.0" text="外注支払日" />
+            <TableColumn fx:id="fx_column_update_at" text="営業" />
+            <TableColumn prefWidth="83.0" text="デザイン" />
+            <TableColumn prefWidth="88.0" text="コーディング" />
+            <TableColumn text="システム" />
+        </columns>
+         <BorderPane.margin>
+            <Insets left="5.0" right="5.0" />
+         </BorderPane.margin>
+      </TableView>
+   </center>
+   <bottom>
+      <HBox prefHeight="68.0" prefWidth="848.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <Label text="売上一覧" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+   </top>
+</BorderPane>
