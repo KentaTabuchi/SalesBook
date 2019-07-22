@@ -13,9 +13,9 @@
         <columns>
           <TableColumn fx:id="fx_column_id" prefWidth="56.0" text="id" />
           <TableColumn fx:id="fx_column_detail" prefWidth="338.0" text="内容" />
-            <TableColumn fx:id="fx_column_established_price" prefWidth="99.0" text="定価" />
+            <TableColumn fx:id="fx_column_price" prefWidth="99.0" text="定価" />
             <TableColumn fx:id="fx_column_discount" prefWidth="90.0" text="値引率" />
-            <TableColumn fx:id="fx_column_price" prefWidth="75.0" text="単価" />
+            <TableColumn fx:id="fx_column_final_price" prefWidth="95.0" text="値引き後単価" />
         </columns>
          <padding>
             <Insets left="5.0" right="5.0" />

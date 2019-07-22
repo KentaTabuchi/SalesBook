@@ -19,36 +19,37 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import model.SalesDetail;
+import model.SalesDetails;
+import sql_crud.SalesDetails_FindAll;
 
 
 public class SalesDetailCRUDController implements Initializable {
 	
-	@FXML private TableView<SalesDetail> fx_table = new TableView<>();
-	@FXML private TableColumn<SalesDetail,Long>   fx_column_id;
-	@FXML private TableColumn<SalesDetail,String> fx_column_detail;
-	@FXML private TableColumn<SalesDetail,String> fx_column_established_price;
-	@FXML private TableColumn<SalesDetail,String> fx_column_discount;
-	@FXML private TableColumn<SalesDetail,String> fx_column_price;
+	@FXML private TableView<SalesDetails> fx_table = new TableView<>();
+	@FXML private TableColumn<SalesDetails,Long>   fx_column_id;
+	@FXML private TableColumn<SalesDetails,String> fx_column_detail;
+	@FXML private TableColumn<SalesDetails,String> fx_column_discount;
+	@FXML private TableColumn<SalesDetails,String> fx_column_price;
+	@FXML private TableColumn<SalesDetails,String> fx_column_final_price;
 
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		setCellValueFactoryes();
-//		SalesDetail_FindAll sql = new SalesDetail_FindAll();
-//		new SalesDao(sql);
-//		for(SalesDetail record:sql.recordList){
-//			fx_table.getItems().add(record);
-//		}
+		SalesDetails_FindAll sql = new SalesDetails_FindAll();
+		new SalesDao(sql);
+		for(SalesDetails record:sql.recordList){
+			fx_table.getItems().add(record);
+		}
 	}
 	
 	private void setCellValueFactoryes(){
-		fx_column_id.setCellValueFactory(new PropertyValueFactory<SalesDetail,Long>("id"));
-		fx_column_detail.setCellValueFactory(new PropertyValueFactory<SalesDetail,String>("detail"));
-		fx_column_established_price.setCellValueFactory(new PropertyValueFactory<SalesDetail,String>("established_price"));
-		fx_column_discount.setCellValueFactory(new PropertyValueFactory<SalesDetail,String>("discount"));
-		fx_column_price.setCellValueFactory(new PropertyValueFactory<SalesDetail,String>("price"));
+		fx_column_id.setCellValueFactory(new PropertyValueFactory<SalesDetails,Long>("id"));
+		fx_column_detail.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("detail"));
+		//fx_column_established_price.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("established_price"));
+		fx_column_discount.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("discount"));
+		fx_column_price.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("price"));
 		//addButtonToTable(edit(),"","編集");
 		//addButtonToTable(delete(),"","削除");
 	}
@@ -77,19 +78,19 @@ public class SalesDetailCRUDController implements Initializable {
 //		return consumer;
 //	}
 	
-	private void addButtonToTable(Consumer<SalesDetail> consumer,String columnTitle,String btnCaption) {
-		TableColumn<SalesDetail, Void> colBtn = new TableColumn<>(columnTitle);
+	private void addButtonToTable(Consumer<SalesDetails> consumer,String columnTitle,String btnCaption) {
+		TableColumn<SalesDetails, Void> colBtn = new TableColumn<>(columnTitle);
 
-		Callback<TableColumn<SalesDetail, Void>, TableCell<SalesDetail, Void>> cellFactory = new Callback<TableColumn<SalesDetail, Void>, TableCell<SalesDetail, Void>>() {
+		Callback<TableColumn<SalesDetails, Void>, TableCell<SalesDetails, Void>> cellFactory = new Callback<TableColumn<SalesDetails, Void>, TableCell<SalesDetails, Void>>() {
 			@Override
-			public TableCell<SalesDetail, Void> call(final TableColumn<SalesDetail, Void> param) {
-				final TableCell<SalesDetail, Void> cell = new TableCell<SalesDetail, Void>() {
+			public TableCell<SalesDetails, Void> call(final TableColumn<SalesDetails, Void> param) {
+				final TableCell<SalesDetails, Void> cell = new TableCell<SalesDetails, Void>() {
 
 					private final Button btn = new Button(btnCaption);
 
 					{
 						btn.setOnAction((ActionEvent event) -> {
-							SalesDetail item = getTableView().getItems().get(getIndex());
+							SalesDetails item = getTableView().getItems().get(getIndex());
 							consumer.accept(item);
 						});
 					}
