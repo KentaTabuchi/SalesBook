@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <center>
+      <TableView prefHeight="318.0" prefWidth="727.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="56.0" text="id" />
+          <TableColumn prefWidth="338.0" text="内容" />
+            <TableColumn prefWidth="99.0" text="定価" />
+            <TableColumn prefWidth="90.0" text="値引率" />
+            <TableColumn prefWidth="75.0" text="単価" />
+        </columns>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </TableView>
+   </center>
+   <top>
+      <HBox prefHeight="66.0" prefWidth="727.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="合計：">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label text="0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <VBox prefHeight="171.0" prefWidth="727.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="48.0" prefWidth="727.0">
+               <children>
+                  <Label text="   内容" />
+                  <TextField prefHeight="27.0" prefWidth="374.0">
+                     <HBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="39.0" prefWidth="727.0">
+               <children>
+                  <Label text="   単価" />
+                  <TextField>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="46.0" prefWidth="727.0">
+               <children>
+                  <Label text="値引率" />
+                  <TextField>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="53.0" prefWidth="727.0">
+               <children>
+                  <Button mnemonicParsing="false" text="追加">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" text="終了">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>

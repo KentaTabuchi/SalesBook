@@ -1,5 +1,3 @@
 /controller/
-/model/
-/sql_crud/
 /fxml/
-/enums/
+/sales_detail.fxml

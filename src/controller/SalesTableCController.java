@@ -6,11 +6,18 @@ import java.util.ResourceBundle;
 import application.SalesDao;
 import enums.InvoiceStatuses;
 import enums.Settle;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableObjectValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.util.converter.NumberStringConverter;
 import model.Customers;
 import model.Genres;
 import model.Statuses;
@@ -46,7 +53,7 @@ public class SalesTableCController  implements Initializable
 		for(Customers item:sql2.recordList){
 			fx_combo_customers_id.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
 		}
-		
+
 	}
 	@FXML
 	protected void OnAddButtonClick(){
