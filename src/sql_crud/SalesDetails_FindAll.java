@@ -47,15 +47,12 @@ public class SalesDetails_FindAll implements ISQLExecutable {
 					Float discount = rs.getFloat("discount");
 
 					SalesDetails record = new SalesDetails(id,sales_id,description,price,discount);
+					System.out.println(record.getDescription());
 					recordList.add(record);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-//	private Long id;
-//	private Long sales_id;
-//	private String description;
-//	private Float price;
-//	private Float discount;
+
 }

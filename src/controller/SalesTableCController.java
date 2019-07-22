@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import application.SalesDao;
 import command.StageGenerator;
+import command.StringDoubleBinding;
 import enums.InvoiceStatuses;
 import enums.Settle;
 import javafx.beans.binding.Bindings;
@@ -56,12 +57,13 @@ public class SalesTableCController  implements Initializable
 		for(Customers item:sql2.recordList){
 			fx_combo_customers_id.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
 		}
+		fx_text_profit.textProperty().bind(Bindings.subtract(
+				new StringDoubleBinding(fx_text_total_sale.textProperty()),
+				new StringDoubleBinding(fx_text_total_expense.textProperty())).asString());
 
 	}
 	@FXML
 	protected void OnShowDetailButtonClick(){
-		//詳細画面へ遷移
-		
 		Stage stage = new StageGenerator().createStage("sales_detail.fxml",new BorderPane());	
 		stage.setTitle("売上詳細登録");
 	}

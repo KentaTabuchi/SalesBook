@@ -47,7 +47,7 @@
             <Label text="売上金額" />
             <HBox prefHeight="31.0" prefWidth="540.0">
                <children>
-                  <TextField fx:id="fx_text_total_sale" editable="false" prefHeight="27.0" prefWidth="460.0">
+                  <TextField fx:id="fx_text_total_sale" prefHeight="27.0" prefWidth="460.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
