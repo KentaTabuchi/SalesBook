@@ -14,13 +14,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import model.Customers;
 import model.SalesDetails;
+import sql_crud.Customers_FindAll;
 import sql_crud.SalesDetails_FindAll;
+import sql_crud.SalesDetails_Insert;
 
 
 public class SalesDetailCRUDController implements Initializable {
@@ -31,7 +35,9 @@ public class SalesDetailCRUDController implements Initializable {
 	@FXML private TableColumn<SalesDetails,String> fx_column_discount;
 	@FXML private TableColumn<SalesDetails,String> fx_column_price;
 	@FXML private TableColumn<SalesDetails,String> fx_column_final_price;
-
+	@FXML private TextField fx_text_detail;
+	@FXML private TextField fx_text_price;
+	@FXML private TextField fx_text_discount;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -52,6 +58,30 @@ public class SalesDetailCRUDController implements Initializable {
 		fx_column_price.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("price"));
 		//addButtonToTable(edit(),"","編集");
 		//addButtonToTable(delete(),"","削除");
+	}
+	@FXML
+	private void OnColumnFinalPriceCommit(){
+		//テーブルの売上合計をラベルに表示
+		System.out.println("invoke");
+	}
+	
+	@FXML
+	private void OnAddButtonClick(){
+		System.out.println("addbuttonclick");
+		SalesDetails_Insert sql = new SalesDetails_Insert(
+				10L, //ここに画面遷移前から引っ張ってきた売上IDを移す。
+				fx_text_detail.textProperty().getValue(),
+				Float.valueOf(fx_text_price.textProperty().getValue()),
+				Float.valueOf(fx_text_discount.textProperty().getValue()));
+		new SalesDao(sql);
+    	for ( int i = 0; i<fx_table.getItems().size(); i++) {
+    	    fx_table.getItems().clear();
+    	}
+		SalesDetails_FindAll sql2 = new SalesDetails_FindAll();
+		new SalesDao(sql2);
+		for(SalesDetails record:sql2.recordList){
+			fx_table.getItems().add(record);
+		}
 	}
 //	private Consumer<SalesDetail> delete(){
 //		Consumer<SalesDetail> consumer = customers -> {

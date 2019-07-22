@@ -15,7 +15,7 @@
           <TableColumn fx:id="fx_column_detail" prefWidth="338.0" text="内容" />
             <TableColumn fx:id="fx_column_price" prefWidth="99.0" text="定価" />
             <TableColumn fx:id="fx_column_discount" prefWidth="90.0" text="値引率" />
-            <TableColumn fx:id="fx_column_final_price" prefWidth="95.0" text="値引き後単価" />
+            <TableColumn fx:id="fx_column_final_price" onEditCommit="#OnColumnFinalPriceCommit" prefWidth="95.0" text="値引き後単価" />
         </columns>
          <padding>
             <Insets left="5.0" right="5.0" />
@@ -44,7 +44,7 @@
             <HBox prefHeight="48.0" prefWidth="727.0">
                <children>
                   <Label text="   内容" />
-                  <TextField prefHeight="27.0" prefWidth="378.0">
+                  <TextField fx:id="fx_text_detail" prefHeight="27.0" prefWidth="378.0">
                      <HBox.margin>
                         <Insets left="5.0" top="5.0" />
                      </HBox.margin>
@@ -53,8 +53,8 @@
             </HBox>
             <HBox prefHeight="39.0" prefWidth="727.0">
                <children>
-                  <Label text="   単価" />
-                  <TextField>
+                  <Label text="   定価" />
+                  <TextField fx:id="fx_text_price">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -67,7 +67,7 @@
             <HBox prefHeight="46.0" prefWidth="727.0">
                <children>
                   <Label text="値引率" />
-                  <TextField>
+                  <TextField fx:id="fx_text_discount">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -76,7 +76,7 @@
             </HBox>
             <HBox prefHeight="53.0" prefWidth="727.0">
                <children>
-                  <Button mnemonicParsing="false" text="追加">
+                  <Button mnemonicParsing="false" onAction="#OnAddButtonClick" text="追加">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
