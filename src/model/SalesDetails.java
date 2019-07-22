@@ -6,12 +6,14 @@ public class SalesDetails {
 	private String description;
 	private Float price;
 	private Float discount;
-	public SalesDetails(Long id, Long sales_id, String description, Float price, Float discount) {
+	private Float final_price;
+	public SalesDetails(Long id, Long sales_id, String description, Float price, Float discount,Float final_price) {
 		this.id = id;
 		this.sales_id = sales_id;
 		this.description = description;
 		this.price = price;
 		this.discount = discount;
+		this.final_price = final_price;
 	}
 	public Long getId() {
 		return id;
@@ -42,5 +44,8 @@ public class SalesDetails {
 	}
 	public void setDiscount(Float discount) {
 		this.discount = discount;
+	}
+	public Float getFinal_price(){
+		return this.final_price;
 	}
 }

@@ -21,7 +21,7 @@ import model.SalesDetails;
 public class SalesDetails_FindAll implements ISQLExecutable {
 
 	public List<SalesDetails> recordList;
-	final String SQL = "select * from sales_detail";
+	final String SQL = "select *,price * discount as final_price from sales_detail";
 	@Override
 	public void executeQuery(Connection con) {
 		this.recordList = new ArrayList<SalesDetails>();
@@ -45,8 +45,9 @@ public class SalesDetails_FindAll implements ISQLExecutable {
 					String description = rs.getString("description");
 					Float price = rs.getFloat("price");
 					Float discount = rs.getFloat("discount");
+					Float final_price = rs.getFloat("final_price");
 
-					SalesDetails record = new SalesDetails(id,sales_id,description,price,discount);
+					SalesDetails record = new SalesDetails(id,sales_id,description,price,discount,final_price);
 					System.out.println(record.getDescription());
 					recordList.add(record);
 				}

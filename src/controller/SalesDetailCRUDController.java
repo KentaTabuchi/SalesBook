@@ -47,7 +47,7 @@ public class SalesDetailCRUDController implements Initializable {
 	private void setCellValueFactoryes(){
 		fx_column_id.setCellValueFactory(new PropertyValueFactory<SalesDetails,Long>("id"));
 		fx_column_detail.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("description"));
-		//fx_column_established_price.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("established_price"));
+		fx_column_final_price.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("final_price"));
 		fx_column_discount.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("discount"));
 		fx_column_price.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("price"));
 		//addButtonToTable(edit(),"","編集");
