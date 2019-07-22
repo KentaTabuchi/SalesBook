@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.SalesDao;
+import command.StageGenerator;
 import enums.InvoiceStatuses;
 import enums.Settle;
 import javafx.beans.binding.Bindings;
@@ -17,6 +18,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
 import model.Customers;
 import model.Genres;
@@ -56,7 +59,16 @@ public class SalesTableCController  implements Initializable
 
 	}
 	@FXML
-	protected void OnAddButtonClick(){
+	protected void OnShowDetailButtonClick(){
+		//詳細画面へ遷移
 		
+		Stage stage = new StageGenerator().createStage("sales_detail.fxml",new BorderPane());	
+		stage.setTitle("売上詳細登録");
 	}
+	@FXML
+	protected void OnAddButtonClick(){
+		//売上登録
+
+	}
+	
 }

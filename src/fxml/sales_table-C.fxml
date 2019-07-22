@@ -52,7 +52,7 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" text="追加" />
+                  <Button mnemonicParsing="false" onAction="#OnShowDetailButtonClick" text="追加" />
                </children>
             </HBox>
             <Label text="仕入れ金額" />

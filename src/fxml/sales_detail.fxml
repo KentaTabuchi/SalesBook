@@ -7,16 +7,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesDetailCRUDController">
    <center>
-      <TableView prefHeight="318.0" prefWidth="727.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="fx_table" prefHeight="318.0" prefWidth="727.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="56.0" text="id" />
-          <TableColumn prefWidth="338.0" text="内容" />
-            <TableColumn prefWidth="99.0" text="定価" />
-            <TableColumn prefWidth="90.0" text="値引率" />
-            <TableColumn prefWidth="75.0" text="単価" />
+          <TableColumn fx:id="fx_column_id" prefWidth="56.0" text="id" />
+          <TableColumn fx:id="fx_column_detail" prefWidth="338.0" text="内容" />
+            <TableColumn fx:id="fx_column_established_price" prefWidth="99.0" text="定価" />
+            <TableColumn fx:id="fx_column_discount" prefWidth="90.0" text="値引率" />
+            <TableColumn fx:id="fx_column_price" prefWidth="75.0" text="単価" />
         </columns>
          <padding>
             <Insets left="5.0" right="5.0" />
@@ -45,7 +44,7 @@
             <HBox prefHeight="48.0" prefWidth="727.0">
                <children>
                   <Label text="   内容" />
-                  <TextField prefHeight="27.0" prefWidth="374.0">
+                  <TextField prefHeight="27.0" prefWidth="378.0">
                      <HBox.margin>
                         <Insets left="5.0" top="5.0" />
                      </HBox.margin>
