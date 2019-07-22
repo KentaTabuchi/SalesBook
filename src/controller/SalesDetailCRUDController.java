@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -32,12 +33,11 @@ public class SalesDetailCRUDController implements Initializable {
 	@FXML private TableView<SalesDetails> fx_table = new TableView<>();
 	@FXML private TableColumn<SalesDetails,Long>   fx_column_id;
 	@FXML private TableColumn<SalesDetails,String> fx_column_detail;
-	@FXML private TableColumn<SalesDetails,String> fx_column_discount;
 	@FXML private TableColumn<SalesDetails,String> fx_column_price;
-	@FXML private TableColumn<SalesDetails,String> fx_column_final_price;
 	@FXML private TextField fx_text_detail;
 	@FXML private TextField fx_text_price;
 	@FXML private TextField fx_text_discount;
+	@FXML private ComboBox<String> fx_combo_customers_id;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -48,13 +48,16 @@ public class SalesDetailCRUDController implements Initializable {
 		for(SalesDetails record:sql.recordList){
 			fx_table.getItems().add(record);
 		}
+		Customers_FindAll sql2 = new Customers_FindAll();
+		new SalesDao(sql2);
+		for(Customers item:sql2.recordList){
+			fx_combo_customers_id.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
+		}
 	}
 	
 	private void setCellValueFactoryes(){
 		fx_column_id.setCellValueFactory(new PropertyValueFactory<SalesDetails,Long>("id"));
 		fx_column_detail.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("description"));
-		fx_column_final_price.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("final_price"));
-		fx_column_discount.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("discount"));
 		fx_column_price.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("price"));
 		//addButtonToTable(edit(),"","編集");
 		//addButtonToTable(delete(),"","削除");

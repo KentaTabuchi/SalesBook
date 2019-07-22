@@ -12,10 +12,9 @@
       <TableView fx:id="fx_table" prefHeight="318.0" prefWidth="727.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="fx_column_id" prefWidth="56.0" text="id" />
-          <TableColumn fx:id="fx_column_detail" prefWidth="338.0" text="内容" />
+          <TableColumn fx:id="fx_column_detail" prefWidth="286.0" text="内容" />
+            <TableColumn prefWidth="127.0" text="仕入先" />
             <TableColumn fx:id="fx_column_price" prefWidth="99.0" text="定価" />
-            <TableColumn fx:id="fx_column_discount" prefWidth="90.0" text="値引率" />
-            <TableColumn fx:id="fx_column_final_price" onEditCommit="#OnColumnFinalPriceCommit" prefWidth="95.0" text="値引き後単価" />
         </columns>
          <padding>
             <Insets left="5.0" right="5.0" />
@@ -64,14 +63,15 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox prefHeight="46.0" prefWidth="727.0">
+            <HBox prefHeight="46.0" prefWidth="727.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="値引率" />
-                  <TextField fx:id="fx_text_discount">
+                  <Label text="仕入先" />
+                  <ComboBox fx:id="fx_combo_customers_id" prefHeight="27.0" prefWidth="269.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
-                  </TextField>
+                  </ComboBox>
                </children>
             </HBox>
             <HBox prefHeight="53.0" prefWidth="727.0">
