@@ -21,7 +21,7 @@ import model.SalesDetails;
 public class SalesDetails_FindAll implements ISQLExecutable {
 
 	public List<SalesDetails> recordList;
-	final String SQL = "select *,price * discount as final_price from sales_detail";
+	final String SQL = "select * from sales_detail inner join customers on sales_detail.vendor_id = customers.id";
 	@Override
 	public void executeQuery(Connection con) {
 		this.recordList = new ArrayList<SalesDetails>();
@@ -42,12 +42,12 @@ public class SalesDetails_FindAll implements ISQLExecutable {
 				while(rs.next()){
 					Long id =     rs.getLong("id");
 					Long sales_id = rs.getLong("sales_id");
+					Long vendor_id = rs.getLong("vendor_id");
 					String description = rs.getString("description");
 					Float price = rs.getFloat("price");
-					Float discount = rs.getFloat("discount");
-					Float final_price = rs.getFloat("final_price");
-
-					SalesDetails record = new SalesDetails(id,sales_id,description,price,discount,final_price);
+					String customer_name = rs.getString("name");
+					
+					SalesDetails record = new SalesDetails(id,sales_id,vendor_id,description,price,customer_name);
 					recordList.add(record);
 				}
 			} catch (SQLException e) {

@@ -36,8 +36,10 @@ public class SalesDetailCRUDController implements Initializable {
 	@FXML private TableColumn<SalesDetails,String> fx_column_price;
 	@FXML private TextField fx_text_detail;
 	@FXML private TextField fx_text_price;
-	@FXML private TextField fx_text_discount;
+	//@FXML private TextField fx_text_discount;
+	@FXML private TableColumn<SalesDetails,String> fx_column_vendor_id;
 	@FXML private ComboBox<String> fx_combo_customers_id;
+	@FXML private TableColumn<SalesDetails,String> fx_column_vendor_name;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -51,7 +53,7 @@ public class SalesDetailCRUDController implements Initializable {
 		Customers_FindAll sql2 = new Customers_FindAll();
 		new SalesDao(sql2);
 		for(Customers item:sql2.recordList){
-			fx_combo_customers_id.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
+			fx_combo_customers_id.getItems().add(item.idProperty().get()+":"+item.nameProperty().get());
 		}
 	}
 	
@@ -59,6 +61,8 @@ public class SalesDetailCRUDController implements Initializable {
 		fx_column_id.setCellValueFactory(new PropertyValueFactory<SalesDetails,Long>("id"));
 		fx_column_detail.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("description"));
 		fx_column_price.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("price"));
+		fx_column_vendor_id.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("vendor_id"));
+		fx_column_vendor_name.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("customer_name"));
 		//addButtonToTable(edit(),"","編集");
 		//addButtonToTable(delete(),"","削除");
 	}
@@ -71,11 +75,13 @@ public class SalesDetailCRUDController implements Initializable {
 	@FXML
 	private void OnAddButtonClick(){
 		System.out.println("addbuttonclick");
+		System.out.println(Long.valueOf(fx_combo_customers_id.getValue().substring(0,fx_combo_customers_id.getValue().indexOf(":"))));
 		SalesDetails_Insert sql = new SalesDetails_Insert(
 				10L, //ここに画面遷移前から引っ張ってきた売上IDを移す。
-				fx_text_detail.textProperty().getValue(),
-				Float.valueOf(fx_text_price.textProperty().getValue()),
-				Float.valueOf(fx_text_discount.textProperty().getValue()));
+				Long.valueOf(fx_combo_customers_id.getValue().substring(0,fx_combo_customers_id.getValue().indexOf(":"))),    //ここにコンボボックスのテキストを整形して仕入れ先IDを取り出す。
+				fx_text_detail.getText(),
+				Float.valueOf(fx_text_price.getText())
+				);
 		new SalesDao(sql);
     	for ( int i = 0; i<fx_table.getItems().size(); i++) {
     	    fx_table.getItems().clear();
@@ -86,6 +92,8 @@ public class SalesDetailCRUDController implements Initializable {
 			fx_table.getItems().add(record);
 		}
 	}
+	//public SalesDetails_Insert(Long sales_id,Long vendor_id,String description,Float price){
+	
 //	private Consumer<SalesDetail> delete(){
 //		Consumer<SalesDetail> consumer = customers -> {
 //			SalesDetail_DeleteById sql = new SalesDetail_DeleteById(customers.idProperty().get());

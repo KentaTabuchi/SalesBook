@@ -12,9 +12,11 @@
       <TableView fx:id="fx_table" prefHeight="318.0" prefWidth="727.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="fx_column_id" prefWidth="56.0" text="id" />
-          <TableColumn fx:id="fx_column_detail" prefWidth="286.0" text="内容" />
-            <TableColumn prefWidth="127.0" text="仕入先" />
-            <TableColumn fx:id="fx_column_price" prefWidth="99.0" text="定価" />
+            <TableColumn fx:id="fx_column_price" prefWidth="99.0" text="売上" />
+            <TableColumn fx:id="fx_column_vendor_id" prefWidth="64.0" text="仕入先id" />
+            <TableColumn fx:id="fx_column_vendor_name" prefWidth="138.0" text="仕入先" />
+            <TableColumn prefWidth="75.0" text="仕入金額" />
+          <TableColumn fx:id="fx_column_detail" prefWidth="286.0" text="仕入れ内容" />
         </columns>
          <padding>
             <Insets left="5.0" right="5.0" />
@@ -24,7 +26,7 @@
    <top>
       <HBox prefHeight="66.0" prefWidth="727.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="合計：">
+            <Label text="売上合計：">
                <font>
                   <Font size="36.0" />
                </font>
@@ -32,6 +34,12 @@
             <Label text="0">
                <font>
                   <Font size="36.0" />
+               </font>
+            </Label>
+            <Label text="この辺に仕入れ合計" />
+            <Label text="ここへ選択中の顧客名を表示">
+               <font>
+                  <Font size="24.0" />
                </font>
             </Label>
          </children>

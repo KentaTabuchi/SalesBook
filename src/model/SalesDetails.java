@@ -1,51 +1,47 @@
 package model;
 
+import javafx.beans.property.FloatProperty;
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class SalesDetails {
-	private Long id;
-	private Long sales_id;
-	private String description;
-	private Float price;
-	private Float discount;
-	private Float final_price;
-	public SalesDetails(Long id, Long sales_id, String description, Float price, Float discount,Float final_price) {
-		this.id = id;
-		this.sales_id = sales_id;
-		this.description = description;
-		this.price = price;
-		this.discount = discount;
-		this.final_price = final_price;
+	private LongProperty id;
+	private LongProperty sales_id;
+	private LongProperty vendor_id;
+	private StringProperty description;
+	private FloatProperty price;
+	private StringProperty customer_name;
+	public SalesDetails(Long id, Long sales_id, Long vendor_id,String description, Float price,String customer_name) {
+		this.id = new SimpleLongProperty(id);
+		this.sales_id = new SimpleLongProperty(sales_id);
+		this.vendor_id = new SimpleLongProperty(vendor_id);
+		this.description = new SimpleStringProperty(description);
+		this.price = new SimpleFloatProperty(price);
+		this.customer_name = new SimpleStringProperty(customer_name);
 	}
-	public Long getId() {
+	public LongProperty idProperty() {
 		return id;
 	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public Long getSales_id() {
+
+	public LongProperty sales_idProperty() {
 		return sales_id;
 	}
-	public void setSales_id(Long sales_id) {
-		this.sales_id = sales_id;
-	}
-	public String getDescription() {
+
+	public StringProperty descriptionProperty() {
 		return description;
 	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public Float getPrice() {
+
+	public FloatProperty priceProperty() {
 		return price;
 	}
-	public void setPrice(Float price) {
-		this.price = price;
+
+	public LongProperty vendor_idProperty() {
+		return vendor_id;
 	}
-	public Float getDiscount() {
-		return discount;
-	}
-	public void setDiscount(Float discount) {
-		this.discount = discount;
-	}
-	public Float getFinal_price(){
-		return this.final_price;
+	public StringProperty customer_nameProperty(){
+		return customer_name;
 	}
 }
