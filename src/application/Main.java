@@ -18,6 +18,7 @@ public class Main extends Application {
 			primaryStage.setTitle("目次");
 			primaryStage.show();
 			
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

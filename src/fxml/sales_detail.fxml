@@ -32,7 +32,7 @@
                      <Font size="24.0" />
                   </font>
                </Label>
-                  <Label text="0">
+                  <Label fx:id="fx_label_vendor_id" text="0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -45,6 +45,25 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
+                  <Label fx:id="fx_label_customer_name" text="Label">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="32.0" prefWidth="727.0">
+               <children>
+                  <Label text="売上ID:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fx_label_sales_id" text="0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
                </children>
             </HBox>
          <HBox prefHeight="66.0" prefWidth="727.0" BorderPane.alignment="CENTER">
@@ -54,7 +73,7 @@
                      <Font size="36.0" />
                   </font>
                </Label>
-               <Label text="0">
+               <Label fx:id="fx_label_sum" text="0">
                   <font>
                      <Font size="36.0" />
                   </font>

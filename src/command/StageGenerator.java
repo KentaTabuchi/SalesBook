@@ -15,6 +15,7 @@ import javafx.stage.Stage;
  * @return pointer of new Stage.
  */
 public class StageGenerator {
+	public FXMLLoader fxmlLoader;
 	public Stage createStage(String fxmlFileName,Pane pane){
 		Stage stage = new Stage();
 	
@@ -24,6 +25,7 @@ public class StageGenerator {
 			Scene scene = new Scene(pane);
 			stage.setScene(scene);
 			stage.show();
+			this.fxmlLoader = loader;
 			return stage;
 
 		} catch (IOException e) {

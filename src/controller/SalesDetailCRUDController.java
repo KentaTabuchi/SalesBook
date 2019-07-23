@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -41,6 +42,13 @@ public class SalesDetailCRUDController implements Initializable {
 	@FXML private TableColumn<SalesDetails,String> fx_column_vendor_id;
 	@FXML private ComboBox<String> fx_combo_customers_id;
 	@FXML private TableColumn<SalesDetails,String> fx_column_vendor_name;
+	@FXML private Label fx_label_vendor_id;
+	@FXML private Label fx_label_customer_name;
+	@FXML private Label fx_label_sales_id;
+	@FXML private Label fx_label_sum;
+	static String vendor_id;
+	static String vendor_name;
+	static Long sales_id;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -57,7 +65,11 @@ public class SalesDetailCRUDController implements Initializable {
 			fx_combo_customers_id.getItems().add(item.idProperty().get()+":"+item.nameProperty().get());
 		}
 	}
-	
+	public void setLabels(){
+		fx_label_vendor_id.setText(vendor_id);
+		fx_label_customer_name.setText(vendor_name);
+		fx_label_sales_id.setText(sales_id.toString());
+	}
 	private void setCellValueFactoryes(){
 		fx_column_id.setCellValueFactory(new PropertyValueFactory<SalesDetails,Long>("id"));
 		fx_column_detail.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("description"));

@@ -9,11 +9,6 @@ import command.StringDoubleBinding;
 import enums.InvoiceStatuses;
 import enums.Settle;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableObjectValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -21,10 +16,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.util.converter.NumberStringConverter;
 import model.Customers;
 import model.Genres;
-import model.Statuses;
+import sql_calc.Sales_Max_Id;
 import sql_crud.Customers_FindAll;
 import sql_crud.Genres_FindAllById;
 
@@ -64,8 +58,18 @@ public class SalesTableCController  implements Initializable
 	}
 	@FXML
 	protected void OnShowDetailButtonClick(){
-		Stage stage = new StageGenerator().createStage("sales_detail.fxml",new BorderPane());	
+		StageGenerator generator =  new StageGenerator();
+		Stage stage = generator.createStage("sales_detail.fxml",new BorderPane());
 		stage.setTitle("売上詳細登録");
+		int index = fx_combo_customers_id.getValue().indexOf(':');
+		SalesDetailCRUDController.vendor_id = fx_combo_customers_id.getValue().substring(0,index);
+		SalesDetailCRUDController.vendor_name = fx_combo_customers_id.getValue().substring(index+1);
+		
+		Sales_Max_Id sql = new Sales_Max_Id();
+		new SalesDao(sql);
+		SalesDetailCRUDController.sales_id = sql.result+1;
+		SalesDetailCRUDController controller = generator.fxmlLoader.getController();
+		controller.setLabels();
 	}
 	@FXML
 	protected void OnAddButtonClick(){
