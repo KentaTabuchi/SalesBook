@@ -8,7 +8,8 @@ import javafx.stage.Stage;
 public class SalesMenuController {
 	@FXML
 	protected void OnMenuButton1Click(){
-
+		Stage stage = new StageGenerator().createStage("main_view-RD.fxml",new BorderPane());	
+		stage.setTitle("売上一覧");
 	}
 	@FXML
 	protected void OnMenuButton2Click(){

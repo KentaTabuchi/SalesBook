@@ -1,84 +1,93 @@
 package model;
 
-import java.time.LocalDateTime;
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Sales {
-	private Long id;
-	private Integer status_id;
-	private Integer type_id;
-	private Integer customer_id;
-	private Integer invoice_status_id;
-	private LocalDateTime billing_date;
-	private Float total_sale;
-	private Float total_expense;
-	private Float total_profit;
-	private LocalDateTime created_at;
-	private LocalDateTime update_at;
-	public Long getId() {
-		return id;
+	private LongProperty id;
+	private StringProperty name;
+	private LongProperty status_id;
+	private LongProperty customer_id;
+	private LongProperty genres_id;
+	private LongProperty bills;
+	private StringProperty memo;
+	private StringProperty income_date;
+	private StringProperty billing_date;
+	private StringProperty distribute_sale;
+	private StringProperty distribute_design;
+	private StringProperty distribute_coding;
+	private StringProperty distribute_system;
+	private StringProperty created_at;
+	private StringProperty update_at;
+
+	public Sales(Long id,String name,Long status_id,Long customer_id,Long genres_id,Long bills,
+			String memo,String income_date,String billing_date,String distribute_sale,
+			String distribute_design,String distribute_coding,String distribute_system,
+			String created_at,String update_at){
+		
+		this.id = new SimpleLongProperty(id);
+		this.name = new SimpleStringProperty(name);
+		this.status_id = new SimpleLongProperty(status_id);
+		this.customer_id = new SimpleLongProperty(customer_id);
+		this.genres_id = new SimpleLongProperty(genres_id);
+		this.bills = new SimpleLongProperty(bills);
+		this.memo = new SimpleStringProperty(memo);
+		this.income_date = new SimpleStringProperty(income_date);
+		this.billing_date = new SimpleStringProperty(billing_date);
+		this.distribute_sale = new SimpleStringProperty(distribute_sale);
+		this.distribute_design = new SimpleStringProperty(distribute_design);
+		this.distribute_coding = new SimpleStringProperty(distribute_coding);
+		this.distribute_system = new SimpleStringProperty(distribute_system);
+		this.created_at = new SimpleStringProperty(created_at);
+		this.update_at = new SimpleStringProperty(update_at);
 	}
-	public void setId(Long id) {
-		this.id = id;
+	
+	public LongProperty idProperty(){
+		return this.id;
 	}
-	public Integer getStatus_id() {
-		return status_id;
+	public StringProperty nameProperty(){
+		return this.name;
 	}
-	public void setStatus_id(Integer status_id) {
-		this.status_id = status_id;
+	public LongProperty status_idProperty(){
+		return this.status_id;
 	}
-	public Integer getType_id() {
-		return type_id;
+	public LongProperty customer_idProperty(){
+		return this.customer_id;
 	}
-	public void setType_id(Integer type_id) {
-		this.type_id = type_id;
+	public LongProperty genres_idProperty(){
+		return this.genres_id;
 	}
-	public Integer getCustomer_id() {
-		return customer_id;
+	public LongProperty billsProperty(){
+		return this.bills;
 	}
-	public void setCustomer_id(Integer customer_id) {
-		this.customer_id = customer_id;
+	public StringProperty memoProperty(){
+		return this.memo;
 	}
-	public Integer getInvoice_status_id() {
-		return invoice_status_id;
+	public StringProperty income_dateProperty(){
+		return this.income_date;
 	}
-	public void setInvoice_status_id(Integer invoice_status_id) {
-		this.invoice_status_id = invoice_status_id;
+	public StringProperty billing_dateProperty(){
+		return this.billing_date;
 	}
-	public LocalDateTime getBilling_date() {
-		return billing_date;
+	public StringProperty distribute_saleProperty(){
+		return this.distribute_sale;
 	}
-	public void setBilling_date(LocalDateTime billing_date) {
-		this.billing_date = billing_date;
+	public StringProperty distribute_designProperty(){
+		return this.distribute_design;
 	}
-	public Float getTotal_sale() {
-		return total_sale;
+	public StringProperty distribute_codingProperty(){
+		return this.distribute_coding;
 	}
-	public void setTotal_sale(Float total_sale) {
-		this.total_sale = total_sale;
+	public StringProperty distribute_systemProperty(){
+		return this.distribute_system;
 	}
-	public Float getTotal_expense() {
-		return total_expense;
+	public StringProperty created_atProperty(){
+		return this.created_at;
 	}
-	public void setTotal_expense(Float total_expense) {
-		this.total_expense = total_expense;
-	}
-	public Float getTotal_profit() {
-		return total_profit;
-	}
-	public void setTotal_profit(Float total_profit) {
-		this.total_profit = total_profit;
-	}
-	public LocalDateTime getCreated_at() {
-		return created_at;
-	}
-	public void setCreated_at(LocalDateTime created_at) {
-		this.created_at = created_at;
-	}
-	public LocalDateTime getUpdate_at() {
-		return update_at;
-	}
-	public void setUpdate_at(LocalDateTime update_at) {
-		this.update_at = update_at;
+	public StringProperty update_atProperty(){
+		return this.update_at;
 	}
 	
 }
