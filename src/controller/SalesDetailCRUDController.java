@@ -7,6 +7,8 @@ import java.util.function.Consumer;
 
 import application.SalesDao;
 import command.StageGenerator;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,6 +26,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Customers;
 import model.SalesDetails;
+import sql_calc.SalesDetail_Sum_Price;
 import sql_crud.Customers_FindAll;
 import sql_crud.SalesDetails_DeleteById;
 import sql_crud.SalesDetails_FindAll;
@@ -49,6 +52,7 @@ public class SalesDetailCRUDController implements Initializable {
 	static String vendor_id;
 	static String vendor_name;
 	static Long sales_id;
+	protected StringProperty total_pay;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -64,11 +68,27 @@ public class SalesDetailCRUDController implements Initializable {
 		for(Customers item:sql2.recordList){
 			fx_combo_customers_id.getItems().add(item.idProperty().get()+":"+item.nameProperty().get());
 		}
+		
+		
 	}
 	public void setLabels(){
 		fx_label_vendor_id.setText(vendor_id);
 		fx_label_customer_name.setText(vendor_name);
 		fx_label_sales_id.setText(sales_id.toString());
+	}
+	public void refreshSumLabel(){
+		SalesDetail_Sum_Price sql3= new SalesDetail_Sum_Price();
+		sql3.setSales_id(sales_id);
+		new SalesDao(sql3);
+		fx_label_sum.textProperty().set(sql3.result.toString());
+		if(total_pay == null){
+			total_pay = new SimpleStringProperty(sql3.result.toString());
+		}
+		else{
+			total_pay.setValue(sql3.result.toString());
+		}
+		
+		
 	}
 	private void setCellValueFactoryes(){
 		fx_column_id.setCellValueFactory(new PropertyValueFactory<SalesDetails,Long>("id"));
@@ -90,7 +110,7 @@ public class SalesDetailCRUDController implements Initializable {
 		System.out.println("addbuttonclick");
 		System.out.println(Long.valueOf(fx_combo_customers_id.getValue().substring(0,fx_combo_customers_id.getValue().indexOf(":"))));
 		SalesDetails_Insert sql = new SalesDetails_Insert(
-				10L, //ここに画面遷移前から引っ張ってきた売上IDを移す。
+				sales_id, //ここに画面遷移前から引っ張ってきた売上IDを移す。
 				Long.valueOf(fx_combo_customers_id.getValue().substring(0,fx_combo_customers_id.getValue().indexOf(":"))),    //ここにコンボボックスのテキストを整形して仕入れ先IDを取り出す。
 				fx_text_detail.getText(),
 				Float.valueOf(fx_text_price.getText())
@@ -104,6 +124,7 @@ public class SalesDetailCRUDController implements Initializable {
 		for(SalesDetails record:sql2.recordList){
 			fx_table.getItems().add(record);
 		}
+		refreshSumLabel();
 	}
 	
 	private Consumer<SalesDetails> delete(){
@@ -118,6 +139,7 @@ public class SalesDetailCRUDController implements Initializable {
 			for(SalesDetails record:sql2.recordList){
 				fx_table.getItems().add(record);
 			}
+			refreshSumLabel();
 		};
 		return consumer;
 	}

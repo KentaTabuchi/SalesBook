@@ -70,6 +70,8 @@ public class SalesTableCController  implements Initializable
 		SalesDetailCRUDController.sales_id = sql.result+1;
 		SalesDetailCRUDController controller = generator.fxmlLoader.getController();
 		controller.setLabels();
+		controller.refreshSumLabel();
+		fx_text_total_expense.textProperty().bind(controller.total_pay);
 	}
 	@FXML
 	protected void OnAddButtonClick(){
