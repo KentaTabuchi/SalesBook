@@ -24,6 +24,7 @@ import javafx.util.Callback;
 import model.Customers;
 import model.SalesDetails;
 import sql_crud.Customers_FindAll;
+import sql_crud.SalesDetails_DeleteById;
 import sql_crud.SalesDetails_FindAll;
 import sql_crud.SalesDetails_Insert;
 
@@ -64,7 +65,7 @@ public class SalesDetailCRUDController implements Initializable {
 		fx_column_vendor_id.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("vendor_id"));
 		fx_column_vendor_name.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("customer_name"));
 		//addButtonToTable(edit(),"","編集");
-		//addButtonToTable(delete(),"","削除");
+		addButtonToTable(delete(),"","削除");
 	}
 	@FXML
 	private void OnColumnFinalPriceCommit(){
@@ -92,25 +93,24 @@ public class SalesDetailCRUDController implements Initializable {
 			fx_table.getItems().add(record);
 		}
 	}
-	//public SalesDetails_Insert(Long sales_id,Long vendor_id,String description,Float price){
 	
-//	private Consumer<SalesDetail> delete(){
-//		Consumer<SalesDetail> consumer = customers -> {
-//			SalesDetail_DeleteById sql = new SalesDetail_DeleteById(customers.idProperty().get());
-//			new SalesDao(sql);
-//	    	for ( int i = 0; i<fx_table.getItems().size(); i++) {
-//	    	    fx_table.getItems().clear();
-//	    	}
-//			SalesDetail_FindAll sql2 = new SalesDetail_FindAll();
-//			new SalesDao(sql2);
-//			for(SalesDetail record:sql2.recordList){
-//				fx_table.getItems().add(record);
-//			}
-//		};
-//		return consumer;
-//	}
-//	private Consumer<SalesDetail> edit(){
-//		Consumer<SalesDetail> consumer = customers -> {
+	private Consumer<SalesDetails> delete(){
+		Consumer<SalesDetails> consumer = model -> {
+			SalesDetails_DeleteById sql = new SalesDetails_DeleteById(model.idProperty().get());
+			new SalesDao(sql);
+	    	for ( int i = 0; i<fx_table.getItems().size(); i++) {
+	    	    fx_table.getItems().clear();
+	    	}
+			SalesDetails_FindAll sql2 = new SalesDetails_FindAll();
+			new SalesDao(sql2);
+			for(SalesDetails record:sql2.recordList){
+				fx_table.getItems().add(record);
+			}
+		};
+		return consumer;
+	}
+//	private Consumer<SalesDetails> edit(){
+//		Consumer<SalesDetails> consumer = customers -> {
 //			System.out.println("editbuttonclick");
 //			SalesDetailTableEController.customers = customers;
 //			Stage stage = new StageGenerator().createStage("customers_table-E.fxml",new BorderPane());
