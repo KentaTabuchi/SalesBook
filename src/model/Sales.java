@@ -11,7 +11,7 @@ public class Sales {
 	private LongProperty status_id;
 	private LongProperty customer_id;
 	private LongProperty genres_id;
-	private LongProperty bills;
+	private StringProperty invoice_status;
 	private StringProperty memo;
 	private StringProperty income_date;
 	private StringProperty billing_date;
@@ -19,20 +19,25 @@ public class Sales {
 	private StringProperty distribute_design;
 	private StringProperty distribute_coding;
 	private StringProperty distribute_system;
+	private LongProperty distribute_sale_price;
+	private LongProperty distribute_design_price;
+	private LongProperty distribute_coding_price;
+	private LongProperty distribute_system_price;
 	private StringProperty created_at;
 	private StringProperty update_at;
 
-	public Sales(Long id,String name,Long status_id,Long customer_id,Long genres_id,Long bills,
+	public Sales(Long id,String name,Long status_id,Long customer_id,Long genres_id,String invoice_status,
 			String memo,String income_date,String billing_date,String distribute_sale,
 			String distribute_design,String distribute_coding,String distribute_system,
-			String created_at,String update_at){
+			Long distribute_sale_price,Long distribute_design_price,Long distribute_coding_price,
+			Long distribute_system_price,String created_at,String update_at){
 		
 		this.id = new SimpleLongProperty(id);
 		this.name = new SimpleStringProperty(name);
 		this.status_id = new SimpleLongProperty(status_id);
 		this.customer_id = new SimpleLongProperty(customer_id);
 		this.genres_id = new SimpleLongProperty(genres_id);
-		this.bills = new SimpleLongProperty(bills);
+		this.invoice_status = new SimpleStringProperty(invoice_status);
 		this.memo = new SimpleStringProperty(memo);
 		this.income_date = new SimpleStringProperty(income_date);
 		this.billing_date = new SimpleStringProperty(billing_date);
@@ -40,6 +45,10 @@ public class Sales {
 		this.distribute_design = new SimpleStringProperty(distribute_design);
 		this.distribute_coding = new SimpleStringProperty(distribute_coding);
 		this.distribute_system = new SimpleStringProperty(distribute_system);
+		this.distribute_sale_price = new SimpleLongProperty(distribute_sale_price);
+		this.distribute_design_price = new SimpleLongProperty(distribute_design_price);
+		this.distribute_coding_price = new SimpleLongProperty(distribute_coding_price);
+		this.distribute_system_price = new SimpleLongProperty(distribute_system_price);
 		this.created_at = new SimpleStringProperty(created_at);
 		this.update_at = new SimpleStringProperty(update_at);
 	}
@@ -59,8 +68,8 @@ public class Sales {
 	public LongProperty genres_idProperty(){
 		return this.genres_id;
 	}
-	public LongProperty billsProperty(){
-		return this.bills;
+	public StringProperty invoice_statusProperty(){
+		return this.invoice_status;
 	}
 	public StringProperty memoProperty(){
 		return this.memo;
@@ -82,6 +91,18 @@ public class Sales {
 	}
 	public StringProperty distribute_systemProperty(){
 		return this.distribute_system;
+	}
+	public LongProperty distribute_sale_priceProperty(){
+		return this.distribute_sale_price;
+	}
+	public LongProperty distribute_design_priceProperty(){
+		return this.distribute_design_price;
+	}
+	public LongProperty distribute_coding_priceProperty(){
+		return this.distribute_coding_price;
+	}
+	public LongProperty distribute_system_priceProperty(){
+		return this.distribute_system_price;
 	}
 	public StringProperty created_atProperty(){
 		return this.created_at;

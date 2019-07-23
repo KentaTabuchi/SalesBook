@@ -20,7 +20,9 @@ import model.Customers;
 import model.Genres;
 import sql_calc.Sales_Max_Id;
 import sql_crud.Customers_FindAll;
+import sql_crud.Customers_Insert;
 import sql_crud.Genres_FindAllById;
+import sql_crud.Sales_Insert;
 
 public class SalesTableCController  implements Initializable
 {
@@ -75,8 +77,47 @@ public class SalesTableCController  implements Initializable
 	}
 	@FXML
 	protected void OnAddButtonClick(){
-		//売上登録
+		//TODO add insert function
+		System.out.println("新規売上登録:button click.");
+		Sales_Insert sql = new Sales_Insert
+		(
+				"name", //name
+				5L, //status_id
+				3L, //customer_id
+				6L, //genres_id
+				"確定", //invoice_status 請求状況
+				"memo", //memo 覚書
+				"income_date", // income_date
+				"billing_date", // billing_date
+				"distribute_sale", //distribute_sale
+				"distribute_config", //distribute_coding
+				"distribute_design", //distribute_design
+				"distribute_system", //distribute_system
+				1000L, //distribute_sale_price
+				500L,  //distribute_coding_price
+				600L,  //distribute_design
+				700L   //distribute_system
+				);
+//		ps.setString(1,this.name);
+//		ps.setLong(2,this.status_id);
+//		ps.setLong(3,this.customer_id);
+//		ps.setLong(4,this.genres_id);
+//		ps.setString(5,this.invoice_status);
+//		ps.setString(6,this.memo);
+//		ps.setString(7,this.income_date);
+//		ps.setString(8,this.billing_date);
+//		ps.setString(9,this.distribute_sale);
+//		ps.setString(10, this.distribute_coding);
+//		ps.setString(11, this.distribute_system);
+//		ps.setString(12, this.distribute_design);
+//		ps.setLong(13,this.distribute_sale_price);
+//		ps.setLong(14, this.distribute_coding_price);
+//		ps.setLong(15, this.distribute_system_price);
+//		ps.setLong(16, this.distribute_design_price);	
 
+
+		new SalesDao(sql);
+		
 	}
 	
 }
