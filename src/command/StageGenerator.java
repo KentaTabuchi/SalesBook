@@ -25,6 +25,8 @@ public class StageGenerator {
 			Scene scene = new Scene(pane);
 			stage.setScene(scene);
 			stage.show();
+			//scene.getStylesheets().add(getClass().getResource("../css/styles.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("../application/application.css").toExternalForm());
 			this.fxmlLoader = loader;
 			return stage;
 

@@ -1,10 +1,15 @@
 package application;
 	
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+
+import java.nio.file.Paths;
+
+import command.PathGenerator;
 import controller.*;
 
 public class Main extends Application {
@@ -17,8 +22,8 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("目次");
 			primaryStage.show();
-			
-			
+
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
