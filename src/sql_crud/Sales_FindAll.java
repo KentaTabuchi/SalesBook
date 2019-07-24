@@ -20,7 +20,7 @@ import model.Sales;
 public class Sales_FindAll implements ISQLExecutable {
 
 	public List<Sales> recordList;
-	final String SQL = "select * from sales";
+	final String SQL = "select *,customers.name as customers_name from sales left outer join customers on sales.customer_id = customers.id";
 	@Override
 	public void executeQuery(Connection con) {
 		this.recordList = new ArrayList<Sales>();
@@ -52,19 +52,23 @@ public class Sales_FindAll implements ISQLExecutable {
 					String distribute_design = rs.getString("distribute_design");
 					String distribute_coding = rs.getString("distribute_coding");
 					String distribute_system = rs.getString("distribute_system");
-					Long distribute_sale_price = rs.getLong("distribute_sale");
-					Long distribute_design_price = rs.getLong("distribute_design");
-					Long distribute_coding_price = rs.getLong("distribute_coding");
-					Long distribute_system_price = rs.getLong("distribute_system");
+					Long distribute_sale_price = rs.getLong("distribute_sale_price");
+					Long distribute_design_price = rs.getLong("distribute_design_price");
+					Long distribute_coding_price = rs.getLong("distribute_coding_price");
+					Long distribute_system_price = rs.getLong("distribute_system_price");
 					String created_at = rs.getString("created_at");
 					String update_at = rs.getString("update_at");
+					String customers_name = rs.getString("customers_name");
 		
 					Sales record = new Sales
 					(id,name,status_id,customer_id,genres_id,invoice_status,memo,income_date,billing_date,
 					distribute_sale,distribute_design,distribute_coding,distribute_system,
 					distribute_sale_price,distribute_design_price,distribute_coding_price,distribute_system_price,
 					created_at,update_at);
+					System.out.println(customers_name);//ここまできてる
+					record.setCostmers_name(customers_name);
 					recordList.add(record);
+					
 				}
 				
 				

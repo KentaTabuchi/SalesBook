@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import application.SalesDao;
 import command.StageGenerator;
 import command.StringDoubleBinding;
+import command.StringSeparator;
 import enums.InvoiceStatuses;
 import enums.Settle;
 import javafx.beans.binding.Bindings;
@@ -20,7 +21,6 @@ import model.Customers;
 import model.Genres;
 import sql_calc.Sales_Max_Id;
 import sql_crud.Customers_FindAll;
-import sql_crud.Customers_Insert;
 import sql_crud.Genres_FindAllById;
 import sql_crud.Sales_Insert;
 
@@ -29,11 +29,17 @@ public class SalesTableCController  implements Initializable
 	@FXML private ComboBox<String> fx_combo_settle;
 	@FXML private ComboBox<String> fx_combo_genres_id;
 	@FXML private ComboBox<String> fx_combo_customers_id;
-	@FXML private ComboBox<String> fx_invoice_statuses_id;
+	@FXML private ComboBox<String> fx_invoice_statuses;
 	@FXML private DatePicker fx_picker_billing_date;
 	@FXML private TextField fx_text_total_sale;
 	@FXML private TextField fx_text_total_expense;
 	@FXML private TextField fx_text_profit;
+	@FXML private TextField fx_text_name;
+	@FXML private TextField fx_text_memo;
+	@FXML private TextField fx_text_sale_price;
+	@FXML private TextField fx_text_design_price;
+	@FXML private TextField fx_text_coding_price;
+	@FXML private TextField fx_text_system_price;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -41,7 +47,7 @@ public class SalesTableCController  implements Initializable
 			fx_combo_settle.getItems().add(item.getValue());
 		}
 		for(InvoiceStatuses item:InvoiceStatuses.values()){
-			fx_invoice_statuses_id.getItems().add(item.getValue());
+			fx_invoice_statuses.getItems().add(item.getValue());
 		}
 		Genres_FindAllById sql1 = new Genres_FindAllById();
 		new SalesDao(sql1);
@@ -79,42 +85,26 @@ public class SalesTableCController  implements Initializable
 	protected void OnAddButtonClick(){
 		//TODO add insert function
 		System.out.println("新規売上登録:button click.");
+		System.out.println(Long.valueOf(fx_text_sale_price.getText()));
 		Sales_Insert sql = new Sales_Insert
 		(
-				"name", //name
-				5L, //status_id
-				3L, //customer_id
-				6L, //genres_id
-				"確定", //invoice_status 請求状況
-				"memo", //memo 覚書
-				"income_date", // income_date
+				fx_text_name.getText(), //name
+				100L, //status_id enumのSettleにDBから差し替え
+				Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(),':')), //customer_id　書き込み○
+				Long.valueOf(new StringSeparator().getFoward(fx_combo_genres_id.getValue(),':')), //genres_id 書き込み○
+				fx_invoice_statuses.getValue(), //invoice_status 請求列 OK
+				fx_text_memo.getText(), //memo 覚書 OK
+				fx_picker_billing_date.getValue().toString(), // income_date OK
 				"billing_date", // billing_date
-				"distribute_sale", //distribute_sale
-				"distribute_config", //distribute_coding
-				"distribute_design", //distribute_design
-				"distribute_system", //distribute_system
-				1000L, //distribute_sale_price
-				500L,  //distribute_coding_price
-				600L,  //distribute_design
-				700L   //distribute_system
+				"sale", //distribute_sale
+				"design", //distribute_coding
+				"coding", //distribute_design
+				"system", //distribute_system
+				Long.valueOf(fx_text_sale_price.getText()), //distribute_sale_price OK
+				Long.valueOf(fx_text_design_price.getText()),  //distribute_coding_price OK
+				Long.valueOf(fx_text_coding_price.getText()),  //distribute_design OK
+				Long.valueOf(fx_text_system_price.getText())   //distribute_system OK
 				);
-//		ps.setString(1,this.name);
-//		ps.setLong(2,this.status_id);
-//		ps.setLong(3,this.customer_id);
-//		ps.setLong(4,this.genres_id);
-//		ps.setString(5,this.invoice_status);
-//		ps.setString(6,this.memo);
-//		ps.setString(7,this.income_date);
-//		ps.setString(8,this.billing_date);
-//		ps.setString(9,this.distribute_sale);
-//		ps.setString(10, this.distribute_coding);
-//		ps.setString(11, this.distribute_system);
-//		ps.setString(12, this.distribute_design);
-//		ps.setLong(13,this.distribute_sale_price);
-//		ps.setLong(14, this.distribute_coding_price);
-//		ps.setLong(15, this.distribute_system_price);
-//		ps.setLong(16, this.distribute_design_price);	
-
 
 		new SalesDao(sql);
 		

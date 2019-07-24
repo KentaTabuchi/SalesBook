@@ -25,9 +25,9 @@ public class MainViewRDController implements Initializable {
 	@FXML private TableColumn<Sales,Long>   fx_column_id;
 	@FXML private TableColumn<Sales,String> fx_column_name;
 	@FXML private TableColumn<Sales,Long> fx_column_status_id;
-	@FXML private TableColumn<Sales,Long> fx_column_customer_id;
+	@FXML private TableColumn<Sales,String> fx_column_customers_name;
 	@FXML private TableColumn<Sales,Long> fx_column_genres_id;
-	@FXML private TableColumn<Sales,Long> fx_column_bills;
+	@FXML private TableColumn<Sales,String> fx_column_invoice_status;
 	@FXML private TableColumn<Sales,String> fx_column_memo;
 	@FXML private TableColumn<Sales,String> fx_column_income_date;
 	@FXML private TableColumn<Sales,String> fx_column_billing_date;
@@ -35,6 +35,11 @@ public class MainViewRDController implements Initializable {
 	@FXML private TableColumn<Sales,String> fx_column_distribute_design;
 	@FXML private TableColumn<Sales,String> fx_column_distribute_coding;
 	@FXML private TableColumn<Sales,String> fx_column_distribute_system;
+	@FXML private TableColumn<Sales,Long> fx_column_sale_price;
+	@FXML private TableColumn<Sales,Long> fx_column_design_price;
+	@FXML private TableColumn<Sales,Long> fx_column_coding_price;
+	@FXML private TableColumn<Sales,Long> fx_column_system_price;
+	
 	@FXML private TableColumn<Sales,String> fx_column_created_at;
 	@FXML private TableColumn<Sales,String> fx_column_update_at;
 	
@@ -53,9 +58,9 @@ public class MainViewRDController implements Initializable {
 		fx_column_id.setCellValueFactory(new PropertyValueFactory<Sales,Long>("id"));
 		fx_column_name.setCellValueFactory(new PropertyValueFactory<Sales,String>("name"));
 		fx_column_status_id.setCellValueFactory(new PropertyValueFactory<Sales,Long>("status_id"));
-		fx_column_customer_id.setCellValueFactory(new PropertyValueFactory<Sales,Long>("customer_id"));
+		fx_column_customers_name.setCellValueFactory(new PropertyValueFactory<Sales,String>("customers_name"));
 		fx_column_genres_id.setCellValueFactory(new PropertyValueFactory<Sales,Long>("genres_id"));
-		fx_column_bills.setCellValueFactory(new PropertyValueFactory<Sales,Long>("bills"));
+		fx_column_invoice_status.setCellValueFactory(new PropertyValueFactory<Sales,String>("invoice_status"));
 		fx_column_memo.setCellValueFactory(new PropertyValueFactory<Sales,String>("memo"));
 		fx_column_income_date.setCellValueFactory(new PropertyValueFactory<Sales,String>("income_date"));
 		fx_column_billing_date.setCellValueFactory(new PropertyValueFactory<Sales,String>("billing_date"));
@@ -63,6 +68,10 @@ public class MainViewRDController implements Initializable {
 		fx_column_distribute_design.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_design"));
 		fx_column_distribute_coding.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_coding"));
 		fx_column_distribute_system.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_system"));
+		fx_column_sale_price.setCellValueFactory(new PropertyValueFactory<Sales,Long>("distribute_sale_price"));
+		fx_column_design_price.setCellValueFactory(new PropertyValueFactory<Sales,Long>("distribute_design_price"));
+		fx_column_coding_price.setCellValueFactory(new PropertyValueFactory<Sales,Long>("distribute_coding_price"));
+		fx_column_system_price.setCellValueFactory(new PropertyValueFactory<Sales,Long>("distribute_system_price"));
 		
 		fx_column_created_at.setCellValueFactory(new PropertyValueFactory<Sales,String>("created_at"));
 		fx_column_update_at.setCellValueFactory(new PropertyValueFactory<Sales,String>("update_at"));

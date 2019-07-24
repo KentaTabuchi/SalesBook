@@ -1,3 +1,6 @@
 /command/
 /application/
 /fxml/
+/controller/
+/sql_crud/
+/model/

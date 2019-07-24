@@ -6,6 +6,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Sales {
+	//--------------------------------------------
+	//  sales table has these columns itself.
+	//--------------------------------------------
 	private LongProperty id;
 	private StringProperty name;
 	private LongProperty status_id;
@@ -25,7 +28,13 @@ public class Sales {
 	private LongProperty distribute_system_price;
 	private StringProperty created_at;
 	private StringProperty update_at;
-
+	//--------------------------------------------
+	//  Join from other table.
+	//--------------------------------------------
+	private StringProperty customers_name;
+	
+	
+	
 	public Sales(Long id,String name,Long status_id,Long customer_id,Long genres_id,String invoice_status,
 			String memo,String income_date,String billing_date,String distribute_sale,
 			String distribute_design,String distribute_coding,String distribute_system,
@@ -110,5 +119,13 @@ public class Sales {
 	public StringProperty update_atProperty(){
 		return this.update_at;
 	}
+	//----------------------------------------------------
+	public StringProperty customers_nameProperty(){
+		return this.customers_name;
+	}
+	public void setCostmers_name(String customers_name){
+		this.customers_name = new SimpleStringProperty(customers_name);
+	}
+	
 	
 }

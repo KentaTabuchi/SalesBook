@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="650.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesTableCController">
+<BorderPane maxHeight="1.7976931348623157E308" prefHeight="700.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesTableCController">
    <bottom>
-      <HBox prefHeight="40.0" prefWidth="687.0" BorderPane.alignment="CENTER">
+      <HBox fillHeight="false" prefHeight="60.0" prefWidth="687.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#OnAddButtonClick" prefHeight="27.0" prefWidth="76.0" text="登録">
                <HBox.margin>
@@ -26,7 +26,7 @@
          </BorderPane.margin>
       </HBox>
    </bottom>
-   <left>
+   <center>
       <VBox prefHeight="467.0" prefWidth="687.0" BorderPane.alignment="CENTER">
          <children>
             <Label styleClass="h2" text="新規入力" />
@@ -69,17 +69,7 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField prefHeight="27.0" prefWidth="87.0">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Label text="対応者">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ComboBox fx:id="fx_invoice_statuses_id" prefHeight="27.0" prefWidth="90.0">
+                  <ComboBox prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -88,6 +78,30 @@
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="請求">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="fx_invoice_statuses" prefHeight="27.0" prefWidth="90.0">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Label text="ジャンル">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="fx_combo_genres_id" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
             </HBox>
             <HBox prefHeight="80.0" prefWidth="200.0" styleClass="h3-back">
                <children>
@@ -161,7 +175,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField prefHeight="27.0" prefWidth="312.0">
+                  <TextField fx:id="fx_text_name" prefHeight="27.0" prefWidth="312.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -173,16 +187,6 @@
             </HBox>
             <HBox prefHeight="51.0" prefWidth="687.0">
                <children>
-                  <Label text="ジャンル">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ComboBox fx:id="fx_combo_genres_id" prefWidth="150.0">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </ComboBox>
                   <Label text="売上金額">
                      <HBox.margin>
                         <Insets left="5.0" />
@@ -215,7 +219,7 @@
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Label>
-                  <TextField />
+                  <TextField fx:id="fx_text_sale_price" />
                </children>
                <VBox.margin>
                   <Insets top="5.0" />
@@ -232,7 +236,7 @@
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Label>
-                  <TextField />
+                  <TextField fx:id="fx_text_design_price" />
                </children>
                <VBox.margin>
                   <Insets top="5.0" />
@@ -250,7 +254,7 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField />
+                  <TextField fx:id="fx_text_coding_price" />
                </children>
                <VBox.margin>
                   <Insets top="5.0" />
@@ -268,7 +272,7 @@
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Label>
-                  <TextField />
+                  <TextField fx:id="fx_text_system_price" />
                </children>
                <VBox.margin>
                   <Insets bottom="10.0" top="5.0" />
@@ -311,12 +315,12 @@
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin></Label>
-            <TextField prefHeight="27.0" prefWidth="629.0">
+            <TextField fx:id="fx_text_memo" prefHeight="27.0" prefWidth="629.0">
                <VBox.margin>
                   <Insets left="5.0" right="5.0" />
                </VBox.margin>
             </TextField>
          </children>
       </VBox>
-   </left>
+   </center>
 </BorderPane>
