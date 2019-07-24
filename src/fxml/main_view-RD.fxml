@@ -12,13 +12,13 @@
    <center>
    <ScrollPane prefHeight="800.0" prefWidth="1700.0">
       <content>
-         <TableView fx:id="fx_table" prefHeight="306.0" prefWidth="1680.0" BorderPane.alignment="CENTER">
+         <TableView fx:id="fx_table" prefHeight="672.0" prefWidth="1680.0" BorderPane.alignment="CENTER">
            <columns>
              <TableColumn fx:id="fx_column_id" prefWidth="75.0" text="ID" />
              <TableColumn fx:id="fx_column_name" prefWidth="67.0" text="確定状況" />
                <TableColumn fx:id="fx_column_status_id" prefWidth="83.0" text="ステータス" />
                <TableColumn fx:id="fx_column_customers_name" prefWidth="217.0" text="請求先顧客名（正式名称)" />
-               <TableColumn fx:id="fx_column_genres_id" prefWidth="67.0" text="ジャンル" />
+               <TableColumn fx:id="fx_column_genres_name" prefWidth="67.0" text="ジャンル" />
                <TableColumn fx:id="fx_column_invoice_status" prefWidth="69.0" text="請求" />
                <TableColumn fx:id="fx_column_name" prefWidth="150.0" text="売上名（請求項目)" />
                <TableColumn fx:id="fx_column_memo" minWidth="1.0" prefWidth="133.0" text="覚書" />

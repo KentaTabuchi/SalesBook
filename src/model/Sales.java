@@ -32,7 +32,7 @@ public class Sales {
 	//  Join from other table.
 	//--------------------------------------------
 	private StringProperty customers_name;
-	
+	private StringProperty genres_name;
 	
 	
 	public Sales(Long id,String name,Long status_id,Long customer_id,Long genres_id,String invoice_status,
@@ -126,6 +126,11 @@ public class Sales {
 	public void setCostmers_name(String customers_name){
 		this.customers_name = new SimpleStringProperty(customers_name);
 	}
-	
+	public StringProperty genres_nameProperty(){
+		return this.genres_name;
+	}
+	public void setGenres_name(String genres_name){
+		this.genres_name = new SimpleStringProperty(genres_name);
+	}
 	
 }

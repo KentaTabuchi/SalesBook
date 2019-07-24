@@ -20,7 +20,9 @@ import model.Sales;
 public class Sales_FindAll implements ISQLExecutable {
 
 	public List<Sales> recordList;
-	final String SQL = "select *,customers.name as customers_name from sales left outer join customers on sales.customer_id = customers.id";
+	final String SQL =
+	"select *,customers.name as customers_name,genres.name as genres_name from sales left outer join customers on sales.customer_id = customers.id left outer join genres on sales.genres_id = genres.id";
+		
 	@Override
 	public void executeQuery(Connection con) {
 		this.recordList = new ArrayList<Sales>();
@@ -59,6 +61,7 @@ public class Sales_FindAll implements ISQLExecutable {
 					String created_at = rs.getString("created_at");
 					String update_at = rs.getString("update_at");
 					String customers_name = rs.getString("customers_name");
+					String genres_name = rs.getString("genres_name");
 		
 					Sales record = new Sales
 					(id,name,status_id,customer_id,genres_id,invoice_status,memo,income_date,billing_date,
@@ -67,6 +70,7 @@ public class Sales_FindAll implements ISQLExecutable {
 					created_at,update_at);
 					System.out.println(customers_name);//ここまできてる
 					record.setCostmers_name(customers_name);
+					record.setGenres_name(genres_name);
 					recordList.add(record);
 					
 				}

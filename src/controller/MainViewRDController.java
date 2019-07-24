@@ -26,7 +26,7 @@ public class MainViewRDController implements Initializable {
 	@FXML private TableColumn<Sales,String> fx_column_name;
 	@FXML private TableColumn<Sales,Long> fx_column_status_id;
 	@FXML private TableColumn<Sales,String> fx_column_customers_name;
-	@FXML private TableColumn<Sales,Long> fx_column_genres_id;
+	@FXML private TableColumn<Sales,String> fx_column_genres_name;
 	@FXML private TableColumn<Sales,String> fx_column_invoice_status;
 	@FXML private TableColumn<Sales,String> fx_column_memo;
 	@FXML private TableColumn<Sales,String> fx_column_income_date;
@@ -59,7 +59,7 @@ public class MainViewRDController implements Initializable {
 		fx_column_name.setCellValueFactory(new PropertyValueFactory<Sales,String>("name"));
 		fx_column_status_id.setCellValueFactory(new PropertyValueFactory<Sales,Long>("status_id"));
 		fx_column_customers_name.setCellValueFactory(new PropertyValueFactory<Sales,String>("customers_name"));
-		fx_column_genres_id.setCellValueFactory(new PropertyValueFactory<Sales,Long>("genres_id"));
+		fx_column_genres_name.setCellValueFactory(new PropertyValueFactory<Sales,String>("genres_name"));
 		fx_column_invoice_status.setCellValueFactory(new PropertyValueFactory<Sales,String>("invoice_status"));
 		fx_column_memo.setCellValueFactory(new PropertyValueFactory<Sales,String>("memo"));
 		fx_column_income_date.setCellValueFactory(new PropertyValueFactory<Sales,String>("income_date"));

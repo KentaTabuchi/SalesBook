@@ -90,7 +90,7 @@ public class SalesTableCController  implements Initializable
 		(
 				fx_text_name.getText(), //name
 				100L, //status_id enumのSettleにDBから差し替え
-				Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(),':')), //customer_id　書き込み○
+				Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(),':')), //customer_id OK
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_genres_id.getValue(),':')), //genres_id 書き込み○
 				fx_invoice_statuses.getValue(), //invoice_status 請求列 OK
 				fx_text_memo.getText(), //memo 覚書 OK
