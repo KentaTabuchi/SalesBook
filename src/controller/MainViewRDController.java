@@ -24,6 +24,7 @@ public class MainViewRDController implements Initializable {
 	@FXML private TableView<Sales> fx_table = new TableView<>();
 	@FXML private TableColumn<Sales,Long>   fx_column_id;
 	@FXML private TableColumn<Sales,String> fx_column_name;
+	@FXML private TableColumn<Sales,String> fx_column_settle;
 	@FXML private TableColumn<Sales,Long> fx_column_status_id;
 	@FXML private TableColumn<Sales,String> fx_column_customers_name;
 	@FXML private TableColumn<Sales,String> fx_column_genres_name;
@@ -57,6 +58,7 @@ public class MainViewRDController implements Initializable {
 	private void setCellValueFactoryes(){
 		fx_column_id.setCellValueFactory(new PropertyValueFactory<Sales,Long>("id"));
 		fx_column_name.setCellValueFactory(new PropertyValueFactory<Sales,String>("name"));
+		fx_column_settle.setCellValueFactory(new PropertyValueFactory<Sales,String>("settle"));
 		fx_column_status_id.setCellValueFactory(new PropertyValueFactory<Sales,Long>("status_id"));
 		fx_column_customers_name.setCellValueFactory(new PropertyValueFactory<Sales,String>("customers_name"));
 		fx_column_genres_name.setCellValueFactory(new PropertyValueFactory<Sales,String>("genres_name"));

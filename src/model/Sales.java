@@ -11,6 +11,7 @@ public class Sales {
 	//--------------------------------------------
 	private LongProperty id;
 	private StringProperty name;
+	private StringProperty settle;
 	private LongProperty status_id;
 	private LongProperty customer_id;
 	private LongProperty genres_id;
@@ -35,7 +36,7 @@ public class Sales {
 	private StringProperty genres_name;
 	
 	
-	public Sales(Long id,String name,Long status_id,Long customer_id,Long genres_id,String invoice_status,
+	public Sales(Long id,String name,String settle,Long status_id,Long customer_id,Long genres_id,String invoice_status,
 			String memo,String income_date,String billing_date,String distribute_sale,
 			String distribute_design,String distribute_coding,String distribute_system,
 			Long distribute_sale_price,Long distribute_design_price,Long distribute_coding_price,
@@ -43,6 +44,7 @@ public class Sales {
 		
 		this.id = new SimpleLongProperty(id);
 		this.name = new SimpleStringProperty(name);
+		this.settle = new SimpleStringProperty(settle);
 		this.status_id = new SimpleLongProperty(status_id);
 		this.customer_id = new SimpleLongProperty(customer_id);
 		this.genres_id = new SimpleLongProperty(genres_id);
@@ -67,6 +69,9 @@ public class Sales {
 	}
 	public StringProperty nameProperty(){
 		return this.name;
+	}
+	public StringProperty settleProperty(){
+		return this.settle;
 	}
 	public LongProperty status_idProperty(){
 		return this.status_id;

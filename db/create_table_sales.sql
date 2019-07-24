@@ -1,6 +1,7 @@
 create table sales(
   id integer primary key autoincrement,
   name text,
+  settle text,
   memo text,
   status_id,integer,
   genres_id integer,

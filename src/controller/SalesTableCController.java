@@ -89,7 +89,8 @@ public class SalesTableCController  implements Initializable
 		Sales_Insert sql = new Sales_Insert
 		(
 				fx_text_name.getText(), //name
-				100L, //status_id enumのSettleにDBから差し替え
+				fx_combo_settle.getValue(), // enumのSettleにDBから差し替え
+				10L,//status_id
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(),':')), //customer_id OK
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_genres_id.getValue(),':')), //genres_id 書き込み○
 				fx_invoice_statuses.getValue(), //invoice_status 請求列 OK
@@ -105,6 +106,12 @@ public class SalesTableCController  implements Initializable
 				Long.valueOf(fx_text_coding_price.getText()),  //distribute_design OK
 				Long.valueOf(fx_text_system_price.getText())   //distribute_system OK
 				);
+		
+//		public Sales_Insert(String name,String settle,Long status_id,Long customer_id,Long genres_id,String invoice_status,
+//				String memo,String income_date,String billing_date,String distribute_sale,String distribute_design,String distribute_coding,
+//				String distribute_system,Long distribute_sale_price,Long distribute_design_price,
+//				Long distribute_coding_price,Long distribute_system_price
+//				){	
 
 		new SalesDao(sql);
 		
