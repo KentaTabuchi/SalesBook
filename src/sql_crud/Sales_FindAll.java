@@ -20,18 +20,47 @@ import model.Sales;
 public class Sales_FindAll implements ISQLExecutable {
 
 	public List<Sales> recordList;
-	final String SQL =
-	"select *,customers.name as customers_name,"
-	+ "genres.name as genres_name,"
-	+ "(select statuses.name  from sales left outer join statuses on sales.staff_director_id = statuses.id)as staff_director_name,"
-	+ "(select statuses.name  from sales left outer join statuses on sales.staff_sale_id = statuses.id)as staff_sale_name,"
-	+ "(select statuses.name from sales left outer join statuses on sales.staff_design_id = statuses.id)as staff_design_name,"
-	+ "(select statuses.name  from sales left outer join statuses on sales.staff_coding_id = statuses.id)as staff_coding_name,"
-	+ "(select statuses.name from sales left outer join statuses on sales.staff_system_id = statuses.id)as staff_system_name  "
-	+ "from sales "
-	+ "left outer join customers on sales.customer_id = customers.id "
-	+ "left outer join genres on sales.genres_id = genres.id ";
-		
+	final String SQL = 
+			"select *,"
+			+ "sales.id,"
+			+ "customers.name as customers_name,"
+			+ "genres.name as genres_name,"
+			+ "director.name as staff_director_name,"
+			+ "sale.name as staff_sale_name,"
+			+ "design.name as staff_design_name,"
+			+ "coding.name as staff_coding_name,"
+			+ "system.name as staff_system_name "
+			+ "from "
+			+ "sales "
+			+ "left outer join "
+			+ "statuses as director "
+			+ "on "
+			+ "sales.staff_director_id = director.id "
+			+ "left outer join "
+			+ "statuses as sale "
+			+ "on "
+			+ "sales.staff_sale_id = sale.id "
+			+ "left outer join "
+			+ "statuses as design "
+			+ "on "
+			+ "sales.staff_design_id = design.id "
+			+ "left outer join "
+			+ "statuses as coding "
+			+ "on "
+			+ "sales.staff_coding_id = coding.id "
+			+ "left outer join "
+			+ "statuses as system "
+			+ "on "
+			+ "sales.staff_system_id = system.id "
+			+ "left outer join "
+			+ "customers "
+			+ "on "
+			+ "sales.customer_id = customers.id "
+			+ "left outer join "
+			+ "genres "
+			+ "on "
+			+ "sales.genres_id = genres.id";
+
 	@Override
 	public void executeQuery(Connection con) {
 		this.recordList = new ArrayList<Sales>();
@@ -83,13 +112,22 @@ public class Sales_FindAll implements ISQLExecutable {
 					String staff_coding_name = rs.getString("staff_coding_name");
 					String staff_system_name = rs.getString("staff_system_name");
 					
-		
+					System.out.println("name:"+staff_director_name);
+					System.out.println("name:"+staff_sale_name);
+					System.out.println("name:"+staff_design_name);
+					System.out.println("name:"+staff_coding_name);
+					System.out.println("name:"+staff_system_name);
+					System.out.println("director_id:"+staff_director_id);
+					System.out.println("sale_id:"+staff_sale_id);
+					System.out.println("design_id:"+staff_design_id);
+					System.out.println("coding_id:"+staff_coding_id);
+					System.out.println("system_id:"+staff_system_id);
+					
 					Sales record = new Sales
 					(id,name,total_profit,total_expense,total_sale,settle,status_id,customer_id,genres_id,invoice_status,memo,income_date,billing_date,
 					staff_director_id,staff_sale_id,staff_design_id,staff_coding_id,staff_system_id,
 					distribute_director_price,distribute_sale_price,distribute_design_price,distribute_coding_price,distribute_system_price,
 					created_at,update_at);
-					System.out.println(customers_name);
 					record.setCostmers_name(customers_name);
 					record.setGenres_name(genres_name);
 					record.setStaff_director_name(staff_director_name);
