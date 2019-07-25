@@ -101,11 +101,11 @@ public class SalesTableCController  implements Initializable
 				fx_text_memo.getText(), //memo 覚書 OK
 				fx_picker_billing_date.getValue().toString(), // income_date OK
 				"billing_date", // billing_date
-				"director", //distribute_director
-				"sale", //distribute_sale
-				"design", //distribute_coding
-				"coding", //distribute_design
-				"system", //distribute_system
+				"director", //staff_director_id
+				"sale", //staff_sale_id
+				"design", //staff_coding_id
+				"coding", //staff_design_id
+				"system", //staff_system_id
 				Long.valueOf(fx_text_director_price.getText()),   //distribute_system OK
 				Long.valueOf(fx_text_sale_price.getText()), //distribute_sale_price OK
 				Long.valueOf(fx_text_design_price.getText()),  //distribute_coding_price OK
