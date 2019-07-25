@@ -3,7 +3,7 @@ package model;
 public class Distribution {
 	private Long sales_id;
 	private String name;
-	private Float percentage;
+	private Long percentage;
 	public Long getSales_id() {
 		return sales_id;
 	}
@@ -16,10 +16,10 @@ public class Distribution {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Float getPercentage() {
+	public Long getPercentage() {
 		return percentage;
 	}
-	public void setPercentage(Float percentage) {
+	public void setPercentage(Long percentage) {
 		this.percentage = percentage;
 	}
 }

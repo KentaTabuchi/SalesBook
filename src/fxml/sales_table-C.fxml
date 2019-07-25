@@ -309,7 +309,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="fx_text_profit" editable="false" prefHeight="27.0" prefWidth="194.0">
+                  <TextField fx:id="fx_text_total_profit" editable="false" prefHeight="27.0" prefWidth="194.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>

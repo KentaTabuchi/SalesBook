@@ -11,6 +11,9 @@ public class Sales {
 	//--------------------------------------------
 	private LongProperty id;
 	private StringProperty name;
+	private LongProperty total_profit;
+	private LongProperty total_expense;
+	private LongProperty total_sale;
 	private StringProperty settle;
 	private LongProperty status_id;
 	private LongProperty customer_id;
@@ -38,7 +41,7 @@ public class Sales {
 	private StringProperty genres_name;
 	
 	
-	public Sales(Long id,String name,String settle,Long status_id,Long customer_id,Long genres_id,String invoice_status,
+	public Sales(Long id,String name,Long total_profit,Long total_expense,Long total_sale,String settle,Long status_id,Long customer_id,Long genres_id,String invoice_status,
 			String memo,String income_date,String billing_date,String distribute_director,String distribute_sale,
 			String distribute_design,String distribute_coding,String distribute_system,
 			Long distribute_director_price,Long distribute_sale_price,Long distribute_design_price,Long distribute_coding_price,
@@ -46,6 +49,9 @@ public class Sales {
 		
 		this.id = new SimpleLongProperty(id);
 		this.name = new SimpleStringProperty(name);
+		this.total_profit = new SimpleLongProperty(total_profit);
+		this.total_expense = new SimpleLongProperty(total_expense);
+		this.total_sale = new SimpleLongProperty(total_sale);
 		this.settle = new SimpleStringProperty(settle);
 		this.status_id = new SimpleLongProperty(status_id);
 		this.customer_id = new SimpleLongProperty(customer_id);
@@ -73,6 +79,15 @@ public class Sales {
 	}
 	public StringProperty nameProperty(){
 		return this.name;
+	}
+	public LongProperty total_profitProperty(){
+		return this.total_profit;
+	}
+	public LongProperty total_expenseProperty(){
+		return this.total_expense;
+	}
+	public LongProperty total_saleProperty(){
+		return this.total_sale;
 	}
 	public StringProperty settleProperty(){
 		return this.settle;

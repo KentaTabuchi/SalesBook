@@ -1,8 +1,6 @@
 package model;
 
-import javafx.beans.property.FloatProperty;
 import javafx.beans.property.LongProperty;
-import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -12,14 +10,14 @@ public class SalesDetails {
 	private LongProperty sales_id;
 	private LongProperty vendor_id;
 	private StringProperty description;
-	private FloatProperty price;
+	private LongProperty price;
 	private StringProperty customer_name;
-	public SalesDetails(Long id, Long sales_id, Long vendor_id,String description, Float price,String customer_name) {
+	public SalesDetails(Long id, Long sales_id, Long vendor_id,String description, Long price,String customer_name) {
 		this.id = new SimpleLongProperty(id);
 		this.sales_id = new SimpleLongProperty(sales_id);
 		this.vendor_id = new SimpleLongProperty(vendor_id);
 		this.description = new SimpleStringProperty(description);
-		this.price = new SimpleFloatProperty(price);
+		this.price = new SimpleLongProperty(price);
 		this.customer_name = new SimpleStringProperty(customer_name);
 	}
 	public LongProperty idProperty() {
@@ -34,7 +32,7 @@ public class SalesDetails {
 		return description;
 	}
 
-	public FloatProperty priceProperty() {
+	public LongProperty priceProperty() {
 		return price;
 	}
 

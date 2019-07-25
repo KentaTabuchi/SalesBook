@@ -17,12 +17,12 @@ public class SalesDetails_Insert implements ISQLExecutable {
 	private Long sales_id;
 	private Long vendor_id;
 	private String description;
-	private Float price;
+	private Long price;
 	
 	public boolean isError = false;
 	final String SQL = "insert into sales_detail (sales_id,vendor_id,description,price) VALUES(?,?,?,?)";
 	
-	public SalesDetails_Insert(Long sales_id,Long vendor_id,String description,Float price){		
+	public SalesDetails_Insert(Long sales_id,Long vendor_id,String description,Long price){		
 		this.sales_id = sales_id;
 		this.vendor_id = vendor_id;
 		this.description = description;

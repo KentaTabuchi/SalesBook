@@ -33,7 +33,7 @@ public class SalesTableCController  implements Initializable
 	@FXML private DatePicker fx_picker_billing_date;
 	@FXML private TextField fx_text_total_sale;
 	@FXML private TextField fx_text_total_expense;
-	@FXML private TextField fx_text_profit;
+	@FXML private TextField fx_text_total_profit;
 	@FXML private TextField fx_text_name;
 	@FXML private TextField fx_text_memo;
 	@FXML private TextField fx_text_director_price;
@@ -60,7 +60,7 @@ public class SalesTableCController  implements Initializable
 		for(Customers item:sql2.recordList){
 			fx_combo_customers_id.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
 		}
-		fx_text_profit.textProperty().bind(Bindings.subtract(
+		fx_text_total_profit.textProperty().bind(Bindings.subtract(
 				new StringDoubleBinding(fx_text_total_sale.textProperty()),
 				new StringDoubleBinding(fx_text_total_expense.textProperty())).asString());
 
@@ -90,6 +90,9 @@ public class SalesTableCController  implements Initializable
 		Sales_Insert sql = new Sales_Insert
 		(
 				fx_text_name.getText(), //name
+				Long.valueOf(new StringSeparator().getFoward(fx_text_total_profit.getText(),'.')),
+				Long.valueOf(fx_text_total_expense.getText()),
+				Long.valueOf(fx_text_total_sale.getText()),
 				fx_combo_settle.getValue(), // enumのSettleにDBから差し替え
 				10L,//status_id
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(),':')), //customer_id OK

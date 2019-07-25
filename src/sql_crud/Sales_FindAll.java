@@ -43,6 +43,9 @@ public class Sales_FindAll implements ISQLExecutable {
 				while(rs.next()){
 					Long id =     rs.getLong("id"); 
 					String name = rs.getString("name"); 
+					Long total_profit = rs.getLong("total_profit");
+					Long total_expense = rs.getLong("total_expense");
+					Long total_sale = rs.getLong("total_sale");
 					String settle = rs.getString("settle");
 					Long status_id = rs.getLong("status_id");
 					Long customer_id = rs.getLong("customer_id");
@@ -67,7 +70,7 @@ public class Sales_FindAll implements ISQLExecutable {
 					String genres_name = rs.getString("genres_name");
 		
 					Sales record = new Sales
-					(id,name,settle,status_id,customer_id,genres_id,invoice_status,memo,income_date,billing_date,
+					(id,name,total_profit,total_expense,total_sale,settle,status_id,customer_id,genres_id,invoice_status,memo,income_date,billing_date,
 					distribute_director,distribute_sale,distribute_design,distribute_coding,distribute_system,
 					distribute_director_price,distribute_sale_price,distribute_design_price,distribute_coding_price,distribute_system_price,
 					created_at,update_at);

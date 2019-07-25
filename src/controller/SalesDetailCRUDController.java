@@ -113,7 +113,7 @@ public class SalesDetailCRUDController implements Initializable {
 				sales_id, //ここに画面遷移前から引っ張ってきた売上IDを移す。
 				Long.valueOf(fx_combo_customers_id.getValue().substring(0,fx_combo_customers_id.getValue().indexOf(":"))),    //ここにコンボボックスのテキストを整形して仕入れ先IDを取り出す。
 				fx_text_detail.getText(),
-				Float.valueOf(fx_text_price.getText())
+				Long.valueOf(fx_text_price.getText())
 				);
 		new SalesDao(sql);
     	for ( int i = 0; i<fx_table.getItems().size(); i++) {

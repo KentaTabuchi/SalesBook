@@ -6,10 +6,10 @@ public class SalesProspects {
 	private Long id;
 	private Long year;
 	private Long month;
-	private Float total_sales;
-	private Float total_expense;
-	private Float total_profit;
-	private Float profit_goal;
+	private Long total_sales;
+	private Long total_expense;
+	private Long total_profit;
+	private Long profit_goal;
 	private LocalDateTime created_at;
 	private LocalDateTime update_at;
 	public Long getId() {
@@ -30,28 +30,28 @@ public class SalesProspects {
 	public void setMonth(Long month) {
 		this.month = month;
 	}
-	public Float getTotal_sales() {
+	public Long getTotal_sales() {
 		return total_sales;
 	}
-	public void setTotal_sales(Float total_sales) {
+	public void setTotal_sales(Long total_sales) {
 		this.total_sales = total_sales;
 	}
-	public Float getTotal_expense() {
+	public Long getTotal_expense() {
 		return total_expense;
 	}
-	public void setTotal_expense(Float total_expense) {
+	public void setTotal_expense(Long total_expense) {
 		this.total_expense = total_expense;
 	}
-	public Float getTotal_profit() {
+	public Long getTotal_profit() {
 		return total_profit;
 	}
-	public void setTotal_profit(Float total_profit) {
+	public void setTotal_profit(Long total_profit) {
 		this.total_profit = total_profit;
 	}
-	public Float getProfit_goal() {
+	public Long getProfit_goal() {
 		return profit_goal;
 	}
-	public void setProfit_goal(Float profit_goal) {
+	public void setProfit_goal(Long profit_goal) {
 		this.profit_goal = profit_goal;
 	}
 	public LocalDateTime getCreated_at() {
