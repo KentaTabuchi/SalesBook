@@ -207,6 +207,23 @@
                   <Insets bottom="10.0" top="5.0" />
                </VBox.margin>
             </HBox>
+                    <HBox prefHeight="50.0" prefWidth="687.0">
+               <children>
+                  <Label text="ディレクター">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox prefWidth="150.0" />
+                  <Label text="金額">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></Label>
+                  <TextField fx:id="fx_text_director_price" />
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></HBox>
                         <HBox prefHeight="50.0" prefWidth="687.0">
                <children>
                   <Label text="営       業       ">

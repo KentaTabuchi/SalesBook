@@ -36,6 +36,7 @@ public class SalesTableCController  implements Initializable
 	@FXML private TextField fx_text_profit;
 	@FXML private TextField fx_text_name;
 	@FXML private TextField fx_text_memo;
+	@FXML private TextField fx_text_director_price;
 	@FXML private TextField fx_text_sale_price;
 	@FXML private TextField fx_text_design_price;
 	@FXML private TextField fx_text_coding_price;
@@ -97,10 +98,12 @@ public class SalesTableCController  implements Initializable
 				fx_text_memo.getText(), //memo 覚書 OK
 				fx_picker_billing_date.getValue().toString(), // income_date OK
 				"billing_date", // billing_date
+				"director", //distribute_director
 				"sale", //distribute_sale
 				"design", //distribute_coding
 				"coding", //distribute_design
 				"system", //distribute_system
+				Long.valueOf(fx_text_director_price.getText()),   //distribute_system OK
 				Long.valueOf(fx_text_sale_price.getText()), //distribute_sale_price OK
 				Long.valueOf(fx_text_design_price.getText()),  //distribute_coding_price OK
 				Long.valueOf(fx_text_coding_price.getText()),  //distribute_design OK

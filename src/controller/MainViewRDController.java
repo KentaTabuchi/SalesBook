@@ -32,10 +32,12 @@ public class MainViewRDController implements Initializable {
 	@FXML private TableColumn<Sales,String> fx_column_memo;
 	@FXML private TableColumn<Sales,String> fx_column_income_date;
 	@FXML private TableColumn<Sales,String> fx_column_billing_date;
+	@FXML private TableColumn<Sales,String> fx_column_distribute_director;
 	@FXML private TableColumn<Sales,String> fx_column_distribute_sale;
 	@FXML private TableColumn<Sales,String> fx_column_distribute_design;
 	@FXML private TableColumn<Sales,String> fx_column_distribute_coding;
 	@FXML private TableColumn<Sales,String> fx_column_distribute_system;
+	@FXML private TableColumn<Sales,Long> fx_column_director_price;
 	@FXML private TableColumn<Sales,Long> fx_column_sale_price;
 	@FXML private TableColumn<Sales,Long> fx_column_design_price;
 	@FXML private TableColumn<Sales,Long> fx_column_coding_price;
@@ -66,10 +68,13 @@ public class MainViewRDController implements Initializable {
 		fx_column_memo.setCellValueFactory(new PropertyValueFactory<Sales,String>("memo"));
 		fx_column_income_date.setCellValueFactory(new PropertyValueFactory<Sales,String>("income_date"));
 		fx_column_billing_date.setCellValueFactory(new PropertyValueFactory<Sales,String>("billing_date"));
+		fx_column_distribute_director.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_director"));
 		fx_column_distribute_sale.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_sale"));
 		fx_column_distribute_design.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_design"));
 		fx_column_distribute_coding.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_coding"));
 		fx_column_distribute_system.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_system"));
+		fx_column_distribute_director.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_director"));
+		fx_column_director_price.setCellValueFactory(new PropertyValueFactory<Sales,Long>("distribute_director_price"));
 		fx_column_sale_price.setCellValueFactory(new PropertyValueFactory<Sales,Long>("distribute_sale_price"));
 		fx_column_design_price.setCellValueFactory(new PropertyValueFactory<Sales,Long>("distribute_design_price"));
 		fx_column_coding_price.setCellValueFactory(new PropertyValueFactory<Sales,Long>("distribute_coding_price"));

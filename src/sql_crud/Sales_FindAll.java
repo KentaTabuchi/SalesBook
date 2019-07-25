@@ -51,10 +51,12 @@ public class Sales_FindAll implements ISQLExecutable {
 					String memo = rs.getString("memo");
 					String income_date = rs.getString("income_date");
 					String billing_date = rs.getString("billing_date");
+					String distribute_director = rs.getString("distribute_director");
 					String distribute_sale = rs.getString("distribute_sale");
 					String distribute_design = rs.getString("distribute_design");
 					String distribute_coding = rs.getString("distribute_coding");
 					String distribute_system = rs.getString("distribute_system");
+					Long distribute_director_price = rs.getLong("distribute_director_price");
 					Long distribute_sale_price = rs.getLong("distribute_sale_price");
 					Long distribute_design_price = rs.getLong("distribute_design_price");
 					Long distribute_coding_price = rs.getLong("distribute_coding_price");
@@ -66,8 +68,8 @@ public class Sales_FindAll implements ISQLExecutable {
 		
 					Sales record = new Sales
 					(id,name,settle,status_id,customer_id,genres_id,invoice_status,memo,income_date,billing_date,
-					distribute_sale,distribute_design,distribute_coding,distribute_system,
-					distribute_sale_price,distribute_design_price,distribute_coding_price,distribute_system_price,
+					distribute_director,distribute_sale,distribute_design,distribute_coding,distribute_system,
+					distribute_director_price,distribute_sale_price,distribute_design_price,distribute_coding_price,distribute_system_price,
 					created_at,update_at);
 					System.out.println(customers_name);//ここまできてる
 					record.setCostmers_name(customers_name);

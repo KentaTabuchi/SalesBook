@@ -19,10 +19,12 @@ public class Sales {
 	private StringProperty memo;
 	private StringProperty income_date;
 	private StringProperty billing_date;
+	private StringProperty distribute_director;
 	private StringProperty distribute_sale;
 	private StringProperty distribute_design;
 	private StringProperty distribute_coding;
 	private StringProperty distribute_system;
+	private LongProperty distribute_director_price;
 	private LongProperty distribute_sale_price;
 	private LongProperty distribute_design_price;
 	private LongProperty distribute_coding_price;
@@ -37,9 +39,9 @@ public class Sales {
 	
 	
 	public Sales(Long id,String name,String settle,Long status_id,Long customer_id,Long genres_id,String invoice_status,
-			String memo,String income_date,String billing_date,String distribute_sale,
+			String memo,String income_date,String billing_date,String distribute_director,String distribute_sale,
 			String distribute_design,String distribute_coding,String distribute_system,
-			Long distribute_sale_price,Long distribute_design_price,Long distribute_coding_price,
+			Long distribute_director_price,Long distribute_sale_price,Long distribute_design_price,Long distribute_coding_price,
 			Long distribute_system_price,String created_at,String update_at){
 		
 		this.id = new SimpleLongProperty(id);
@@ -52,10 +54,12 @@ public class Sales {
 		this.memo = new SimpleStringProperty(memo);
 		this.income_date = new SimpleStringProperty(income_date);
 		this.billing_date = new SimpleStringProperty(billing_date);
+		this.distribute_sale = new SimpleStringProperty(distribute_director);
 		this.distribute_sale = new SimpleStringProperty(distribute_sale);
 		this.distribute_design = new SimpleStringProperty(distribute_design);
 		this.distribute_coding = new SimpleStringProperty(distribute_coding);
 		this.distribute_system = new SimpleStringProperty(distribute_system);
+		this.distribute_director_price = new SimpleLongProperty(distribute_director_price);
 		this.distribute_sale_price = new SimpleLongProperty(distribute_sale_price);
 		this.distribute_design_price = new SimpleLongProperty(distribute_design_price);
 		this.distribute_coding_price = new SimpleLongProperty(distribute_coding_price);
@@ -94,6 +98,9 @@ public class Sales {
 	public StringProperty billing_dateProperty(){
 		return this.billing_date;
 	}
+	public StringProperty distribute_directorProperty(){
+		return this.distribute_director;
+	}
 	public StringProperty distribute_saleProperty(){
 		return this.distribute_sale;
 	}
@@ -106,6 +113,9 @@ public class Sales {
 	public StringProperty distribute_systemProperty(){
 		return this.distribute_system;
 	}
+	public LongProperty distribute_director_priceProperty(){
+		return this.distribute_director_price;
+	}	
 	public LongProperty distribute_sale_priceProperty(){
 		return this.distribute_sale_price;
 	}
