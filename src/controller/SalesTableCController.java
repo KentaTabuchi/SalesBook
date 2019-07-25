@@ -19,10 +19,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Customers;
 import model.Genres;
+import model.Statuses;
 import sql_calc.Sales_Max_Id;
 import sql_crud.Customers_FindAll;
 import sql_crud.Genres_FindAllById;
 import sql_crud.Sales_Insert;
+import sql_crud.Statuses_FindAll;
 
 public class SalesTableCController  implements Initializable
 {
@@ -30,6 +32,15 @@ public class SalesTableCController  implements Initializable
 	@FXML private ComboBox<String> fx_combo_genres_id;
 	@FXML private ComboBox<String> fx_combo_customers_id;
 	@FXML private ComboBox<String> fx_invoice_statuses;
+	
+	@FXML private ComboBox<String> fx_combo_staff_director;
+	@FXML private ComboBox<String> fx_combo_staff_sale;
+	@FXML private ComboBox<String> fx_combo_staff_design;
+	@FXML private ComboBox<String> fx_combo_staff_coding;
+	@FXML private ComboBox<String> fx_combo_staff_system;
+	
+	@FXML private ComboBox<String> fx_combo_charge_person;
+	
 	@FXML private DatePicker fx_picker_billing_date;
 	@FXML private TextField fx_text_total_sale;
 	@FXML private TextField fx_text_total_expense;
@@ -59,6 +70,36 @@ public class SalesTableCController  implements Initializable
 		new SalesDao(sql2);
 		for(Customers item:sql2.recordList){
 			fx_combo_customers_id.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
+		}
+		Statuses_FindAll sql3 = new Statuses_FindAll();
+		new SalesDao(sql3);
+		for(Statuses item:sql3.recordList){
+			fx_combo_staff_director.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
+		}
+		Statuses_FindAll sql4 = new Statuses_FindAll();
+		new SalesDao(sql4);
+		for(Statuses item:sql4.recordList){
+			fx_combo_staff_sale.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
+		}
+		Statuses_FindAll sql5 = new Statuses_FindAll();
+		new SalesDao(sql5);
+		for(Statuses item:sql5.recordList){
+			fx_combo_staff_design.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
+		}
+		Statuses_FindAll sql6 = new Statuses_FindAll();
+		new SalesDao(sql6);
+		for(Statuses item:sql6.recordList){
+			fx_combo_staff_coding.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
+		}
+		Statuses_FindAll sql7 = new Statuses_FindAll();
+		new SalesDao(sql7);
+		for(Statuses item:sql7.recordList){
+			fx_combo_staff_system.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
+		}
+		Statuses_FindAll sql8 = new Statuses_FindAll();
+		new SalesDao(sql8);
+		for(Statuses item:sql8.recordList){
+			fx_combo_charge_person.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
 		}
 		fx_text_total_profit.textProperty().bind(Bindings.subtract(
 				new StringDoubleBinding(fx_text_total_sale.textProperty()),

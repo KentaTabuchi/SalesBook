@@ -19,7 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import model.Statuses;
 import sql_crud.Statuses_DeleteById;
-import sql_crud.Statuses_FindAllById;
+import sql_crud.Statuses_FindAll;
 import sql_crud.Statuses_Insert;
 import sql_crud.Statuses_UpdateById;
 
@@ -35,7 +35,7 @@ public class ConfigStatusController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		setCellValueFactoryes();
-		Statuses_FindAllById sql = new Statuses_FindAllById();
+		Statuses_FindAll sql = new Statuses_FindAll();
 		new SalesDao(sql);
 		for(Statuses record:sql.recordList){
 			fx_table.getItems().add(record);
@@ -58,7 +58,7 @@ public class ConfigStatusController implements Initializable {
 	    	    fx_table.getItems().clear();
 	    	}
 	    	
-			Statuses_FindAllById sql2 = new Statuses_FindAllById();
+			Statuses_FindAll sql2 = new Statuses_FindAll();
 			new SalesDao(sql2);
 			for(Statuses record:sql2.recordList){
 				fx_table.getItems().add(record);
@@ -85,7 +85,7 @@ public class ConfigStatusController implements Initializable {
 	    	    fx_table.getItems().clear();
 	    	}
 	    	
-			Statuses_FindAllById sql2 = new Statuses_FindAllById();
+			Statuses_FindAll sql2 = new Statuses_FindAll();
 			new SalesDao(sql2);
 			for(Statuses record:sql2.recordList){
 				fx_table.getItems().add(record);
@@ -103,7 +103,7 @@ public class ConfigStatusController implements Initializable {
     	    fx_table.getItems().clear();
     	}
     	
-		Statuses_FindAllById sql2 = new Statuses_FindAllById();
+		Statuses_FindAll sql2 = new Statuses_FindAll();
 		new SalesDao(sql2);
 		for(Statuses record:sql2.recordList){
 			fx_table.getItems().add(record);

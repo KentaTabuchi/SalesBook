@@ -69,7 +69,7 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox prefWidth="150.0">
+                  <ComboBox fx:id="fx_combo_charge_person" prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -214,7 +214,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox prefWidth="150.0" />
+                  <ComboBox fx:id="fx_combo_staff_director" prefWidth="150.0" />
                   <Label text="金額">
                      <HBox.margin>
                         <Insets left="5.0" />
@@ -231,7 +231,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox prefWidth="150.0" />
+                  <ComboBox fx:id="fx_combo_staff_sale" prefWidth="150.0" />
                   <Label text="金額">
                      <HBox.margin>
                         <Insets left="5.0" />
@@ -248,7 +248,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox prefWidth="150.0" />
+                  <ComboBox fx:id="fx_combo_staff_design" prefWidth="150.0" />
                   <Label text="金額">
                      <HBox.margin>
                         <Insets left="5.0" />
@@ -265,7 +265,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox prefWidth="150.0" />
+                  <ComboBox fx:id="fx_combo_staff_coding" prefWidth="150.0" />
                   <Label text="金額">
                      <HBox.margin>
                         <Insets left="5.0" />
@@ -284,7 +284,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox prefWidth="150.0" />
+                  <ComboBox fx:id="fx_combo_staff_system" prefWidth="150.0" />
                   <Label text="金額">
                      <HBox.margin>
                         <Insets left="5.0" />

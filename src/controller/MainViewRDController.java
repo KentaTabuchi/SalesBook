@@ -74,12 +74,11 @@ public class MainViewRDController implements Initializable {
 		fx_column_memo.setCellValueFactory(new PropertyValueFactory<Sales,String>("memo"));
 		fx_column_income_date.setCellValueFactory(new PropertyValueFactory<Sales,String>("income_date"));
 		fx_column_billing_date.setCellValueFactory(new PropertyValueFactory<Sales,String>("billing_date"));
-		fx_column_distribute_director.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_director"));
-		fx_column_distribute_sale.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_sale"));
-		fx_column_distribute_design.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_design"));
-		fx_column_distribute_coding.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_coding"));
-		fx_column_distribute_system.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_system"));
-		fx_column_distribute_director.setCellValueFactory(new PropertyValueFactory<Sales,String>("distribute_director"));
+		fx_column_distribute_director.setCellValueFactory(new PropertyValueFactory<Sales,String>("staff_director_name"));
+		fx_column_distribute_sale.setCellValueFactory(new PropertyValueFactory<Sales,String>("staff_sale_name"));
+		fx_column_distribute_design.setCellValueFactory(new PropertyValueFactory<Sales,String>("staff_design_name"));
+		fx_column_distribute_coding.setCellValueFactory(new PropertyValueFactory<Sales,String>("staff_coding_name"));
+		fx_column_distribute_system.setCellValueFactory(new PropertyValueFactory<Sales,String>("staff_system_name"));
 		fx_column_director_price.setCellValueFactory(new PropertyValueFactory<Sales,Long>("distribute_director_price"));
 		fx_column_sale_price.setCellValueFactory(new PropertyValueFactory<Sales,Long>("distribute_sale_price"));
 		fx_column_design_price.setCellValueFactory(new PropertyValueFactory<Sales,Long>("distribute_design_price"));
