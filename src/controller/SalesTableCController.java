@@ -42,6 +42,8 @@ public class SalesTableCController  implements Initializable
 	@FXML private ComboBox<String> fx_combo_charge_person;
 	
 	@FXML private DatePicker fx_picker_billing_date;
+	@FXML private DatePicker fx_picker_pay_date;
+	
 	@FXML private TextField fx_text_total_sale;
 	@FXML private TextField fx_text_total_expense;
 	@FXML private TextField fx_text_total_profit;
@@ -125,7 +127,7 @@ public class SalesTableCController  implements Initializable
 	}
 	@FXML
 	protected void OnAddButtonClick(){
-		//TODO add insert function
+		
 		System.out.println("新規売上登録:button click.");
 		System.out.println(Long.valueOf(fx_text_sale_price.getText()));
 		Sales_Insert sql = new Sales_Insert
@@ -134,14 +136,14 @@ public class SalesTableCController  implements Initializable
 				Long.valueOf(new StringSeparator().getFoward(fx_text_total_profit.getText(),'.')), 
 				Long.valueOf(fx_text_total_expense.getText()), //OK
 				Long.valueOf(fx_text_total_sale.getText()), //OK
-				fx_combo_settle.getValue(), // enumのSettleにDBから差し替え OK
+				fx_combo_settle.getValue(), //  OK
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_charge_person.getValue(),':')),//status_id担当者 OK
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(),':')), //customer_id OK
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_genres_id.getValue(),':')), //genres_id OK
 				fx_invoice_statuses.getValue(), //invoice_status 請求列 OK
 				fx_text_memo.getText(), //memo 覚書 OK
 				fx_picker_billing_date.getValue().toString(), // income_date OK
-				"billing_date", // billing_date
+				fx_picker_pay_date.getValue().toString(), // billing_date
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_director.getValue(),':')), //staff_director_id OK
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_sale.getValue(),':')), //staff_sale_id OK
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_coding.getValue(),':')), //staff_coding_id OK

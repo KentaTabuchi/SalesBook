@@ -155,6 +155,16 @@
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Button>
+                  <Label text="支払期日">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <DatePicker fx:id="fx_picker_pay_date">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </DatePicker>
                </children>
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
