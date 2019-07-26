@@ -28,7 +28,7 @@ public class MainViewRDController implements Initializable {
 	@FXML private TableColumn<Sales,Long> fx_column_total_sale;
 	
 	@FXML private TableColumn<Sales,String> fx_column_settle;
-	@FXML private TableColumn<Sales,Long> fx_column_status_id;
+	@FXML private TableColumn<Sales,String> fx_column_charge_person;
 	@FXML private TableColumn<Sales,String> fx_column_customers_name;
 	@FXML private TableColumn<Sales,String> fx_column_genres_name;
 	@FXML private TableColumn<Sales,String> fx_column_invoice_status;
@@ -67,7 +67,7 @@ public class MainViewRDController implements Initializable {
 		fx_column_total_expense.setCellValueFactory(new PropertyValueFactory<Sales,Long>("total_expense"));
 		fx_column_total_sale.setCellValueFactory(new PropertyValueFactory<Sales,Long>("total_sale"));
 		fx_column_settle.setCellValueFactory(new PropertyValueFactory<Sales,String>("settle"));
-		fx_column_status_id.setCellValueFactory(new PropertyValueFactory<Sales,Long>("status_id"));
+		fx_column_charge_person.setCellValueFactory(new PropertyValueFactory<Sales,String>("charge_person"));
 		fx_column_customers_name.setCellValueFactory(new PropertyValueFactory<Sales,String>("customers_name"));
 		fx_column_genres_name.setCellValueFactory(new PropertyValueFactory<Sales,String>("genres_name"));
 		fx_column_invoice_status.setCellValueFactory(new PropertyValueFactory<Sales,String>("invoice_status"));

@@ -44,6 +44,7 @@ public class Sales {
 	private StringProperty staff_design_name;
 	private StringProperty staff_coding_name;
 	private StringProperty staff_system_name;
+	private StringProperty charge_person;//担当者
 	
 	
 	public Sales(Long id,String name,Long total_profit,Long total_expense,Long total_sale,String settle,Long status_id,Long customer_id,Long genres_id,String invoice_status,
@@ -197,6 +198,11 @@ public class Sales {
 	public void setStaff_system_name(String staff_system_name){
 		this.staff_system_name = new SimpleStringProperty(staff_system_name);
 	}
-
+	public StringProperty charge_personProperty(){
+		return this.charge_person;
+	}
+	public void setCharge_person(String charge_person){
+		this.charge_person = new SimpleStringProperty(charge_person);
+	}
 	
 }

@@ -29,7 +29,8 @@ public class Sales_FindAll implements ISQLExecutable {
 			+ "sale.name as staff_sale_name,"
 			+ "design.name as staff_design_name,"
 			+ "coding.name as staff_coding_name,"
-			+ "system.name as staff_system_name "
+			+ "system.name as staff_system_name,"
+			+ "charge.name as charge_person "
 			+ "from "
 			+ "sales "
 			+ "left outer join "
@@ -59,7 +60,11 @@ public class Sales_FindAll implements ISQLExecutable {
 			+ "left outer join "
 			+ "genres "
 			+ "on "
-			+ "sales.genres_id = genres.id";
+			+ "sales.genres_id = genres.id "
+			+ "left outer join "
+			+ "statuses as charge "
+			+ "on "
+			+ "sales.status_id = charge.id";
 
 	@Override
 	public void executeQuery(Connection con) {
@@ -111,6 +116,7 @@ public class Sales_FindAll implements ISQLExecutable {
 					String staff_design_name = rs.getString("staff_design_name");
 					String staff_coding_name = rs.getString("staff_coding_name");
 					String staff_system_name = rs.getString("staff_system_name");
+					String charge_person = rs.getString("charge_person");
 					
 					System.out.println("name:"+staff_director_name);
 					System.out.println("name:"+staff_sale_name);
@@ -135,6 +141,7 @@ public class Sales_FindAll implements ISQLExecutable {
 					record.setStaff_design_name(staff_design_name);
 					record.setStaff_coding_name(staff_coding_name);
 					record.setStaff_system_name(staff_system_name);
+					record.setCharge_person(charge_person);
 					recordList.add(record);
 					
 				}
