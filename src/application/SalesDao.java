@@ -19,7 +19,7 @@ public class SalesDao {
 			e1.printStackTrace();
 		}
 
-		String PASS_DB_FILE = "jdbc:sqlite:"+path+"/db/sales_note.sqlite";
+		String PASS_DB_FILE = "jdbc:sqlite:"+path+"/src/db/sales_note.sqlite";
 		System.out.println("path=" + path);
 	try{
 			Class.forName(SQLITE_DRIVER);

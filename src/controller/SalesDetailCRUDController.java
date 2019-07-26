@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
 import application.SalesDao;
+import command.Message;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -22,6 +23,7 @@ import javafx.util.Callback;
 import model.Customers;
 import model.SalesDetails;
 import sql_calc.SalesDetail_Sum_Price;
+import sql_calc.Sales_Max_Id;
 import sql_crud.Customers_FindAll;
 import sql_crud.SalesDetails_DeleteById;
 import sql_crud.SalesDetails_FindAll;
@@ -48,26 +50,40 @@ public class SalesDetailCRUDController implements Initializable {
 	@FXML private Label fx_label_sum;
 	
 	@FXML private Button fx_button_close;
-	static String vendor_id;
-	static String vendor_name;
-	static Long sales_id;
+	private Long vendor_id;
+	private String vendor_name;
 	protected StringProperty total_pay;
-	
+	private Long sales_id;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		setCellValueFactoryes();
+		setComboBox();
+		this.vendor_id = SalesTableCController.vendor_id;
+		this.vendor_name = SalesTableCController.vendor_name;
 
+		new Message().showAlert(vendor_id); //テスト用 OK
+		new Message().showAlert(vendor_name); //テスト用 OK
+	
+		Sales_Max_Id sql = new Sales_Max_Id();
+		new SalesDao(sql);
+		sales_id = sql.result+1;
+		new Message().showAlert(sales_id); //テスト用
+
+		setLabels();
+		refreshSumLabel();
+		SalesTableCController.total_expense.textProperty().bind(total_pay);
+		findAll();
+	}
+	private void setComboBox(){
 		Customers_FindAll sql2 = new Customers_FindAll();
 		new SalesDao(sql2);
 		for(Customers item:sql2.recordList){
 			fx_combo_customers_id.getItems().add(item.idProperty().get()+":"+item.nameProperty().get());
 		}
-		
-		
 	}
 	public void setLabels(){
-		fx_label_vendor_id.setText(vendor_id);
+		fx_label_vendor_id.setText(vendor_id.toString());
 		fx_label_customer_name.setText(vendor_name);
 		fx_label_sales_id.setText(sales_id.toString());
 	}
@@ -102,7 +118,7 @@ public class SalesDetailCRUDController implements Initializable {
 	
 	@FXML
 	private void OnAddButtonClick(){
-		System.out.println("sales_id="+sales_id);
+		
 		System.out.println("addbuttonclick");
 		System.out.println(Long.valueOf(fx_combo_customers_id.getValue().substring(0,fx_combo_customers_id.getValue().indexOf(":"))));
 		insert();

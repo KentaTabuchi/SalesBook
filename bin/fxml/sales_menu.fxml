@@ -28,11 +28,11 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#OnMenuButton4Click" prefHeight="100.0" prefWidth="380.0" text="4.売上削除" GridPane.columnIndex="1">
+            <Button mnemonicParsing="false" onAction="#OnMenuButton4Click" prefHeight="100.0" prefWidth="380.0" GridPane.columnIndex="1">
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button mnemonicParsing="false" onAction="#OnMenuButton5Click" prefHeight="100.0" prefWidth="380.0" text="5.売上目標登録" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#OnMenuButton5Click" prefHeight="100.0" prefWidth="380.0" text="5.売上目標登録(開発予定)" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="24.0" />
                </font></Button>
@@ -41,7 +41,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#OnMenuButton3Click" prefHeight="100.0" prefWidth="380.0" text="3.既存売上編集" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#OnMenuButton3Click" prefHeight="100.0" prefWidth="380.0" text="3.既存売上編集(開発予定)" GridPane.rowIndex="2">
                <font>
                   <Font size="24.0" />
                </font>

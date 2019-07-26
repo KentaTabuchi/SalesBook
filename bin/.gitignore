@@ -1,7 +1,6 @@
-/command/
 /application/
+/db/
+/model/
 /fxml/
 /controller/
-/sql_crud/
-/model/
-/StudentsManager.jar
+/command/

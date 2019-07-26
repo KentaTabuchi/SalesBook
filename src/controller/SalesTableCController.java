@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.SalesDao;
+import command.Message;
 import command.StageGenerator;
 import command.StringDoubleBinding;
 import command.StringSeparator;
@@ -12,6 +13,7 @@ import enums.Settle;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -29,6 +31,7 @@ import sql_crud.Statuses_FindAll;
 
 public class SalesTableCController  implements Initializable
 {
+	
 	@FXML private ComboBox<String> fx_combo_settle;
 	@FXML private ComboBox<String> fx_combo_genres_id;
 	@FXML private ComboBox<String> fx_combo_customers_id;
@@ -56,7 +59,12 @@ public class SalesTableCController  implements Initializable
 	@FXML private TextField fx_text_coding_price;
 	@FXML private TextField fx_text_system_price;
 	@FXML private Button fx_cancel_button;
-	
+	//----------------------------------------------------
+	//for carry over to SalesDetailCRUDController.java
+	//----------------------------------------------------
+	public static Long vendor_id;
+	public static String vendor_name;
+	public static TextField total_expense;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		for(Settle item:Settle.values()){
@@ -108,26 +116,17 @@ public class SalesTableCController  implements Initializable
 		fx_text_total_profit.textProperty().bind(Bindings.subtract(
 				new StringDoubleBinding(fx_text_total_sale.textProperty()),
 				new StringDoubleBinding(fx_text_total_expense.textProperty())).asString());
-
 	}
 	@FXML
 	protected void OnShowDetailButtonClick(){
+		new Message().showAlert("入力ボタンクリック"); //テスト用
+		total_expense = this.fx_text_total_expense;
+		vendor_id = Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(), ':'));
+		vendor_name = new StringSeparator().getBack(fx_combo_customers_id.getValue(), ':');
 		StageGenerator generator =  new StageGenerator();
 		Stage stage = generator.createStage("sales_detail.fxml",new BorderPane());
-		stage.setTitle("売上詳細登録");
-		int index = fx_combo_customers_id.getValue().indexOf(':');
-		SalesDetailCRUDController.vendor_id = fx_combo_customers_id.getValue().substring(0,index);
-		SalesDetailCRUDController.vendor_name = fx_combo_customers_id.getValue().substring(index+1);
-		
-		Sales_Max_Id sql = new Sales_Max_Id();
-		new SalesDao(sql);
-		Long sales_id =sql.result+1;
-		SalesDetailCRUDController.sales_id = sales_id;
-		SalesDetailCRUDController controller = generator.fxmlLoader.getController();
-		controller.setLabels();
-		controller.refreshSumLabel();
-		fx_text_total_expense.textProperty().bind(controller.total_pay);
-		controller.findAll();
+		//ここから下全て無視されている。------------------------------------------------
+
 
 	}
 	@FXML

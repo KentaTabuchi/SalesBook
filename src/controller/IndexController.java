@@ -1,6 +1,5 @@
 package controller;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,6 +17,7 @@ public class IndexController implements Initializable{
 	
 	@FXML
 	protected void OnMenuButton1Click(){
+		
 		Stage stage = new StageGenerator().createStage("sales_menu.fxml",new BorderPane());
 		stage.setTitle("売上メニュー");
 	}

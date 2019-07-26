@@ -15,7 +15,7 @@ public class StringSeparator {
 	}
 	public String getBack(String str,char separator){
 		int index = str.indexOf(separator);
-		return str.substring(0,index + 1);
+		return str.substring(index + 1);
 				
 	}
 	

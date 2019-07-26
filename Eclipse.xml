@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project SalesNote with Jar-in-Jar Loader">
-    <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
-    <!--ANT 1.7 is required-->
+<project default="create_run_jar" name="Create Runnable Jar for Project SalesNote with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
     <!--define folder properties-->
     <property name="dir.buildfile" value="."/>
     <property name="dir.workspace" value="${dir.buildfile}/.."/>
@@ -9,15 +9,14 @@
     <target name="create_run_jar">
         <jar destfile="${dir.jarfile}/salesnote.jar">
             <manifest>
-                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
-                <attribute name="Rsrc-Main-Class" value="application.Main"/>
-                <attribute name="Class-Path" value="."/>
-                <attribute name="Rsrc-Class-Path" value="./ org.eclipse.fx.ide.css.jfx8_1.0.0.201408150702.jar sqlite-jdbc-3.27.2.1.jar"/>
+                <attribute name="Main-Class" value="application.Main"/>
+                <attribute name="Class-Path" value=". salesnote_lib/org.eclipse.fx.ide.css.jfx8_1.0.0.201408150702.jar salesnote_lib/sqlite-jdbc-3.27.2.1.jar"/>
             </manifest>
-            <zipfileset src="jar-in-jar-loader.zip"/>
             <fileset dir="${dir.jarfile}/bin"/>
-            <zipfileset dir="/Applications/Eclipse.app/Contents/Eclipse/plugins" includes="org.eclipse.fx.ide.css.jfx8_1.0.0.201408150702.jar"/>
-            <zipfileset dir="${dir.jarfile}/db" includes="sqlite-jdbc-3.27.2.1.jar"/>
         </jar>
+        <delete dir="${dir.jarfile}/salesnote_lib"/>
+        <mkdir dir="${dir.jarfile}/salesnote_lib"/>
+        <copy file="/Applications/Eclipse.app/Contents/Eclipse/plugins/org.eclipse.fx.ide.css.jfx8_1.0.0.201408150702.jar" todir="${dir.jarfile}/salesnote_lib"/>
+        <copy file="${dir.jarfile}/src/db/sqlite-jdbc-3.27.2.1.jar" todir="${dir.jarfile}/salesnote_lib"/>
     </target>
 </project>

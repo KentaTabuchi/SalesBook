@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.ScrollPane?>
+
+<BorderPane prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewRDController">
+   <bottom>
+      <HBox prefHeight="68.0" prefWidth="848.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <Label text="売上一覧" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+   </top>
+   <center>
+   <TableView fx:id="fx_table" prefHeight="672.0" prefWidth="2000.0" BorderPane.alignment="CENTER">
+     <columns>
+       <TableColumn fx:id="fx_column_id" prefWidth="75.0" text="ID" />
+       <TableColumn fx:id="fx_column_settle" prefWidth="67.0" text="確定状況" />
+         <TableColumn fx:id="fx_column_charge_person" prefWidth="83.0" text="担当者" />
+         <TableColumn fx:id="fx_column_customers_name" prefWidth="217.0" text="請求先顧客名（正式名称)" />
+         <TableColumn fx:id="fx_column_genres_name" prefWidth="67.0" text="ジャンル" />
+         <TableColumn fx:id="fx_column_invoice_status" prefWidth="69.0" text="請求" />
+         <TableColumn fx:id="fx_column_name" prefWidth="150.0" text="売上名（請求項目)" />
+            <TableColumn fx:id="fx_column_total_profit" prefWidth="75.0" text="売上金額" />
+            <TableColumn fx:id="fx_column_total_expense" prefWidth="75.0" text="仕入金額" />
+            <TableColumn fx:id="fx_column_total_sale" prefWidth="75.0" text="売上請求金額" />
+         <TableColumn fx:id="fx_column_memo" minWidth="1.0" prefWidth="133.0" text="覚書" />
+         <TableColumn fx:id="fx_column_income_date" minWidth="0.0" prefWidth="97.0" text="入金予定日" />
+         <TableColumn fx:id="fx_column_billing_date" prefWidth="96.0" text="外注支払日" />
+            <TableColumn fx:id="fx_column_distribute_director" prefWidth="75.0" text="ディレクター" />
+            <TableColumn fx:id="fx_column_director_price" prefWidth="75.0" />
+         <TableColumn fx:id="fx_column_distribute_sale" prefWidth="75.0" text="営業" />
+         <TableColumn fx:id="fx_column_sale_price" prefWidth="75.0" />
+         <TableColumn fx:id="fx_column_distribute_design" prefWidth="75.0" text="デザイン" />
+         <TableColumn fx:id="fx_column_design_price" prefWidth="75.0" />
+         <TableColumn fx:id="fx_column_distribute_coding" prefWidth="75.0" text="コーディング" />
+         <TableColumn fx:id="fx_column_coding_price" prefWidth="75.0" />
+         <TableColumn fx:id="fx_column_distribute_system" prefWidth="75.0" text="システム" />
+         <TableColumn fx:id="fx_column_system_price" prefWidth="75.0" />
+         <TableColumn fx:id="fx_column_created_at" prefWidth="134.0" text="作成日" />
+         <TableColumn fx:id="fx_column_update_at" prefWidth="90.0" text="更新日" />
+     </columns>
+      <BorderPane.margin>
+         <Insets left="5.0" right="5.0" />
+      </BorderPane.margin>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+   </TableView>
+   </center>
+</BorderPane>
