@@ -135,18 +135,18 @@ public class SalesTableCController  implements Initializable
 				Long.valueOf(fx_text_total_expense.getText()),
 				Long.valueOf(fx_text_total_sale.getText()),
 				fx_combo_settle.getValue(), // enumのSettleにDBから差し替え
-				10L,//status_id担当者
+				Long.valueOf(new StringSeparator().getFoward(fx_combo_charge_person.getValue(),':')),//status_id担当者
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(),':')), //customer_id OK
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_genres_id.getValue(),':')), //genres_id 書き込み○
 				fx_invoice_statuses.getValue(), //invoice_status 請求列 OK
 				fx_text_memo.getText(), //memo 覚書 OK
 				fx_picker_billing_date.getValue().toString(), // income_date OK
 				"billing_date", // billing_date
-				1L, //staff_director_id
-				2L, //staff_sale_id
-				3L, //staff_coding_id
-				4L, //staff_design_id
-				5L, //staff_system_id
+				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_director.getValue(),':')), //staff_director_id OK
+				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_sale.getValue(),':')), //staff_sale_id OK
+				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_coding.getValue(),':')), //staff_coding_id OK
+				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_design.getValue(),':')), //staff_design_id OK
+				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_system.getValue(),':')), //staff_system_id OK
 				Long.valueOf(fx_text_director_price.getText()),   //distribute_system OK
 				Long.valueOf(fx_text_sale_price.getText()), //distribute_sale_price OK
 				Long.valueOf(fx_text_design_price.getText()),  //distribute_coding_price OK
