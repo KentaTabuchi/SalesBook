@@ -16,12 +16,15 @@ import model.SalesDetails;
 
 /**
  * @author misskabu
- * TRADE_LOG TABLE から　読み出したデータを表に表示するためのSQL
+ * 
  */
 public class SalesDetails_FindAll implements ISQLExecutable {
 
+	private Long sales_id;
 	public List<SalesDetails> recordList;
-	final String SQL = "select * from sales_detail inner join customers on sales_detail.vendor_id = customers.id";
+	//final String SQL = "select * from sales_detail inner join customers on sales_detail.vendor_id = customers.id";
+	final String SQL = "select * from sales_detail left outer join customers on sales_detail.vendor_id = customers.id "
+			+ "where sales_detail.sales_id = ?";
 	@Override
 	public void executeQuery(Connection con) {
 		this.recordList = new ArrayList<SalesDetails>();
@@ -34,6 +37,7 @@ public class SalesDetails_FindAll implements ISQLExecutable {
 		}
 		ResultSet rs = null;
 		try {
+			ps.setLong(1, sales_id);
 			rs = ps.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -54,5 +58,8 @@ public class SalesDetails_FindAll implements ISQLExecutable {
 				e.printStackTrace();
 			}
 		}
+	public void setSales_id(Long sales_id) {
+		this.sales_id = sales_id;
+	}
 
 }

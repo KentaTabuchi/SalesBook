@@ -1,12 +1,10 @@
 package controller;
 
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
 import application.SalesDao;
-import command.StageGenerator;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -19,10 +17,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Customers;
 import model.SalesDetails;
@@ -35,16 +30,18 @@ import sql_crud.SalesDetails_Insert;
 
 public class SalesDetailCRUDController implements Initializable {
 	
-	@FXML private TableView<SalesDetails> fx_table = new TableView<>();
+	@FXML protected TableView<SalesDetails> fx_table = new TableView<>();
 	@FXML private TableColumn<SalesDetails,Long>   fx_column_id;
 	@FXML private TableColumn<SalesDetails,String> fx_column_detail;
-	@FXML private TableColumn<SalesDetails,String> fx_column_price;
+	@FXML private TableColumn<SalesDetails,Long> fx_column_price;
+	@FXML private TableColumn<SalesDetails,Long> fx_column_vendor_id; //仕入先id
+	@FXML private TableColumn<SalesDetails,String> fx_column_vendor_name; //仕入先
+	
 	@FXML private TextField fx_text_detail;
 	@FXML private TextField fx_text_price;
-	//@FXML private TextField fx_text_discount;
-	@FXML private TableColumn<SalesDetails,String> fx_column_vendor_id;
+	
 	@FXML private ComboBox<String> fx_combo_customers_id;
-	@FXML private TableColumn<SalesDetails,String> fx_column_vendor_name;
+	
 	@FXML private Label fx_label_vendor_id;
 	@FXML private Label fx_label_customer_name;
 	@FXML private Label fx_label_sales_id;
@@ -58,11 +55,7 @@ public class SalesDetailCRUDController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		setCellValueFactoryes();
-		SalesDetails_FindAll sql = new SalesDetails_FindAll();
-		new SalesDao(sql);
-		for(SalesDetails record:sql.recordList){
-			fx_table.getItems().add(record);
-		}
+
 		Customers_FindAll sql2 = new Customers_FindAll();
 		new SalesDao(sql2);
 		for(Customers item:sql2.recordList){
@@ -93,8 +86,8 @@ public class SalesDetailCRUDController implements Initializable {
 	private void setCellValueFactoryes(){
 		fx_column_id.setCellValueFactory(new PropertyValueFactory<SalesDetails,Long>("id"));
 		fx_column_detail.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("description"));
-		fx_column_price.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("price"));
-		fx_column_vendor_id.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("vendor_id"));
+		fx_column_price.setCellValueFactory(new PropertyValueFactory<SalesDetails,Long>("price"));
+		fx_column_vendor_id.setCellValueFactory(new PropertyValueFactory<SalesDetails,Long>("vendor_id"));
 		fx_column_vendor_name.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("customer_name"));
 		//addButtonToTable(edit(),"","編集");
 		addButtonToTable(delete(),"","削除");
@@ -107,25 +100,34 @@ public class SalesDetailCRUDController implements Initializable {
 	
 	@FXML
 	private void OnAddButtonClick(){
+		System.out.println("sales_id="+sales_id);
 		System.out.println("addbuttonclick");
 		System.out.println(Long.valueOf(fx_combo_customers_id.getValue().substring(0,fx_combo_customers_id.getValue().indexOf(":"))));
+		insert();
+		findAll();
+		refreshSumLabel();
+	}
+	private void insert(){
 		SalesDetails_Insert sql = new SalesDetails_Insert(
 				sales_id, //ここに画面遷移前から引っ張ってきた売上IDを移す。
-				Long.valueOf(fx_combo_customers_id.getValue().substring(0,fx_combo_customers_id.getValue().indexOf(":"))),    //ここにコンボボックスのテキストを整形して仕入れ先IDを取り出す。
+				Long.valueOf(fx_combo_customers_id.getValue().substring(0,fx_combo_customers_id.getValue().indexOf(":"))),   
 				fx_text_detail.getText(),
 				Long.valueOf(fx_text_price.getText())
 				);
 		new SalesDao(sql);
+	}
+	protected void findAll(){
     	for ( int i = 0; i<fx_table.getItems().size(); i++) {
     	    fx_table.getItems().clear();
     	}
-		SalesDetails_FindAll sql2 = new SalesDetails_FindAll();
-		new SalesDao(sql2);
-		for(SalesDetails record:sql2.recordList){
+		SalesDetails_FindAll sql = new SalesDetails_FindAll();
+		sql.setSales_id(sales_id);
+		new SalesDao(sql);
+		for(SalesDetails record:sql.recordList){
 			fx_table.getItems().add(record);
 		}
-		refreshSumLabel();
 	}
+
 	
 	private Consumer<SalesDetails> delete(){
 		Consumer<SalesDetails> consumer = model -> {
@@ -134,11 +136,7 @@ public class SalesDetailCRUDController implements Initializable {
 	    	for ( int i = 0; i<fx_table.getItems().size(); i++) {
 	    	    fx_table.getItems().clear();
 	    	}
-			SalesDetails_FindAll sql2 = new SalesDetails_FindAll();
-			new SalesDao(sql2);
-			for(SalesDetails record:sql2.recordList){
-				fx_table.getItems().add(record);
-			}
+	    	findAll();
 			refreshSumLabel();
 		};
 		return consumer;

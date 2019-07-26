@@ -19,10 +19,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Customers;
 import model.Genres;
+import model.SalesDetails;
 import model.Statuses;
 import sql_calc.Sales_Max_Id;
 import sql_crud.Customers_FindAll;
 import sql_crud.Genres_FindAllById;
+import sql_crud.SalesDetails_FindAll;
 import sql_crud.Sales_Insert;
 import sql_crud.Statuses_FindAll;
 
@@ -119,11 +121,14 @@ public class SalesTableCController  implements Initializable
 		
 		Sales_Max_Id sql = new Sales_Max_Id();
 		new SalesDao(sql);
-		SalesDetailCRUDController.sales_id = sql.result+1;
+		Long sales_id =sql.result+1;
+		SalesDetailCRUDController.sales_id = sales_id;
 		SalesDetailCRUDController controller = generator.fxmlLoader.getController();
 		controller.setLabels();
 		controller.refreshSumLabel();
 		fx_text_total_expense.textProperty().bind(controller.total_pay);
+		controller.findAll();
+
 	}
 	@FXML
 	protected void OnAddButtonClick(){
