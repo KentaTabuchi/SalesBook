@@ -5,8 +5,6 @@ import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.List;
-
 import command.PathGenerator;
 
 public class SalesDao {
@@ -20,9 +18,10 @@ public class SalesDao {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+
 		String PASS_DB_FILE = "jdbc:sqlite:"+path+"/db/sales_note.sqlite";
 		System.out.println("path=" + path);
-		try{
+	try{
 			Class.forName(SQLITE_DRIVER);
 		}catch(ClassNotFoundException e){
 			System.out.println("JDBCドライバーが見つかりません。");

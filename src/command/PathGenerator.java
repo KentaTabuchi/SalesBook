@@ -3,6 +3,7 @@
  */
 package command;
 
+import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -35,6 +36,11 @@ public class PathGenerator {
 		Path path = Paths.get(uri);
 		path = path.getParent();
 		return path;
+	}
+	public static String getCurrentJarPath(){
+		String jarPath = System.getProperty("java.class.path");
+		String dirPath = jarPath.substring(0, jarPath.lastIndexOf(File.separator)+1);
+		return dirPath;
 	}
 
 }

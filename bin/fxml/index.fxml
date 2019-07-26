@@ -59,4 +59,7 @@
          </BorderPane.margin>
       </Label>
    </top>
+   <bottom>
+      <Label fx:id="fx_dirPath" text="url" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
