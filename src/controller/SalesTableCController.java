@@ -8,22 +8,20 @@ import command.Message;
 import command.StageGenerator;
 import command.StringDoubleBinding;
 import command.StringSeparator;
+import command.TextFieldValidator;
 import enums.InvoiceStatuses;
 import enums.Settle;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 import model.Customers;
 import model.Genres;
 import model.Statuses;
-import sql_calc.Sales_Max_Id;
 import sql_crud.Customers_FindAll;
 import sql_crud.Genres_FindAllById;
 import sql_crud.Sales_Insert;
@@ -54,7 +52,7 @@ public class SalesTableCController  implements Initializable
 	@FXML private TextField fx_text_name;
 	@FXML private TextField fx_text_memo;
 	@FXML private TextField fx_text_director_price;
-	@FXML private TextField fx_text_sale_price;
+	@FXML private TextField fx_text_sale_price;   //distribute
 	@FXML private TextField fx_text_design_price;
 	@FXML private TextField fx_text_coding_price;
 	@FXML private TextField fx_text_system_price;
@@ -116,18 +114,27 @@ public class SalesTableCController  implements Initializable
 		fx_text_total_profit.textProperty().bind(Bindings.subtract(
 				new StringDoubleBinding(fx_text_total_sale.textProperty()),
 				new StringDoubleBinding(fx_text_total_expense.textProperty())).asString());
+		validation();
+		
+		
+	}
+	private void validation(){
+		TextFieldValidator.addNumberValidator(fx_text_total_sale);
+		TextFieldValidator.addNumberValidator(fx_text_director_price);
+		TextFieldValidator.addNumberValidator(fx_text_sale_price);
+		TextFieldValidator.addNumberValidator(fx_text_design_price);
+		TextFieldValidator.addNumberValidator(fx_text_coding_price);
+		TextFieldValidator.addNumberValidator(fx_text_system_price);
 	}
 	@FXML
 	protected void OnShowDetailButtonClick(){
-		new Message().showAlert("入力ボタンクリック"); //テスト用
+		
 		total_expense = this.fx_text_total_expense;
 		vendor_id = Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(), ':'));
 		vendor_name = new StringSeparator().getBack(fx_combo_customers_id.getValue(), ':');
 		StageGenerator generator =  new StageGenerator();
-		Stage stage = generator.createStage("sales_detail.fxml",new BorderPane());
-		//ここから下全て無視されている。------------------------------------------------
-
-
+		generator.createStage("sales_detail.fxml",new BorderPane());
+	
 	}
 	@FXML
 	protected void OnAddButtonClick(){

@@ -62,13 +62,10 @@ public class SalesDetailCRUDController implements Initializable {
 		this.vendor_id = SalesTableCController.vendor_id;
 		this.vendor_name = SalesTableCController.vendor_name;
 
-		new Message().showAlert(vendor_id); //テスト用 OK
-		new Message().showAlert(vendor_name); //テスト用 OK
-	
 		Sales_Max_Id sql = new Sales_Max_Id();
 		new SalesDao(sql);
 		sales_id = sql.result+1;
-		new Message().showAlert(sales_id); //テスト用
+
 
 		setLabels();
 		refreshSumLabel();
