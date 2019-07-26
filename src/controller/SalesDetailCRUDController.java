@@ -46,6 +46,8 @@ public class SalesDetailCRUDController implements Initializable {
 	@FXML private Label fx_label_customer_name;
 	@FXML private Label fx_label_sales_id;
 	@FXML private Label fx_label_sum;
+	
+	@FXML private Button fx_button_close;
 	static String vendor_id;
 	static String vendor_name;
 	static Long sales_id;
@@ -106,6 +108,10 @@ public class SalesDetailCRUDController implements Initializable {
 		insert();
 		findAll();
 		refreshSumLabel();
+	}
+	@FXML
+	private void OnCloseButtonClick(){
+		fx_button_close.getScene().getWindow().hide();
 	}
 	private void insert(){
 		SalesDetails_Insert sql = new SalesDetails_Insert(

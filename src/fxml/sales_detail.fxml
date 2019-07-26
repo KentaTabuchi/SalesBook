@@ -109,8 +109,7 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox prefHeight="46.0" prefWidth="727.0" />
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="46.0" prefWidth="727.0">
                <children>
                   <Label text="仕入先" />
                   <ComboBox fx:id="fx_combo_customers_id" prefHeight="27.0" prefWidth="269.0">
@@ -118,18 +117,17 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </ComboBox>
-               </children>
-            </HBox>
-            <HBox prefHeight="53.0" prefWidth="727.0">
+               </children></HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="53.0" prefWidth="727.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#OnAddButtonClick" text="追加">
+                  <Button mnemonicParsing="false" onAction="#OnAddButtonClick" text="仕入れ追加">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="終了">
+                  <Button fx:id="fx_button_close" mnemonicParsing="false" onAction="#OnCloseButtonClick" text="閉じる">
                      <HBox.margin>
-                        <Insets top="5.0" />
+                        <Insets left="30.0" top="5.0" />
                      </HBox.margin>
                   </Button>
                </children>

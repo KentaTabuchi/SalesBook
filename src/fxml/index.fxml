@@ -19,7 +19,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#OnMenuButton1Click" prefHeight="100.0" prefWidth="760.0" text="1.売り上げ一覧">
+            <Button mnemonicParsing="false" onAction="#OnMenuButton1Click" prefHeight="100.0" prefWidth="760.0" text="1.売上">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>

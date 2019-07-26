@@ -12,6 +12,7 @@ import enums.Settle;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -19,12 +20,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Customers;
 import model.Genres;
-import model.SalesDetails;
 import model.Statuses;
 import sql_calc.Sales_Max_Id;
 import sql_crud.Customers_FindAll;
 import sql_crud.Genres_FindAllById;
-import sql_crud.SalesDetails_FindAll;
 import sql_crud.Sales_Insert;
 import sql_crud.Statuses_FindAll;
 
@@ -56,6 +55,7 @@ public class SalesTableCController  implements Initializable
 	@FXML private TextField fx_text_design_price;
 	@FXML private TextField fx_text_coding_price;
 	@FXML private TextField fx_text_system_price;
+	@FXML private Button fx_cancel_button;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -160,15 +160,13 @@ public class SalesTableCController  implements Initializable
 				Long.valueOf(fx_text_coding_price.getText()),  //distribute_design OK
 				Long.valueOf(fx_text_system_price.getText())   //distribute_system OK
 				);
-		
-//		public Sales_Insert(String name,String settle,Long status_id,Long customer_id,Long genres_id,String invoice_status,
-//				String memo,String income_date,String billing_date,String distribute_sale,String distribute_design,String distribute_coding,
-//				String distribute_system,Long distribute_sale_price,Long distribute_design_price,
-//				Long distribute_coding_price,Long distribute_system_price
-//				){	
 
 		new SalesDao(sql);
 		
 	}
 	
+	@FXML
+	private void OnCancelButtonClick(){
+		fx_cancel_button.getScene().getWindow().hide();
+	}
 }

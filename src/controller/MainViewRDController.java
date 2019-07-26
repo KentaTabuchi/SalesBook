@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import model.Sales;
+import sql_crud.Sales_DeleteById;
 import sql_crud.Sales_FindAll;
 
 
@@ -53,11 +54,7 @@ public class MainViewRDController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		setCellValueFactoryes();
-		Sales_FindAll sql = new Sales_FindAll();
-		new SalesDao(sql);
-		for(Sales record:sql.recordList){
-			fx_table.getItems().add(record);
-		}
+		findAll();
 	}
 	
 	private void setCellValueFactoryes(){
@@ -88,23 +85,26 @@ public class MainViewRDController implements Initializable {
 		fx_column_created_at.setCellValueFactory(new PropertyValueFactory<Sales,String>("created_at"));
 		fx_column_update_at.setCellValueFactory(new PropertyValueFactory<Sales,String>("update_at"));
 //		addButtonToTable(edit(),"","編集");
-//		addButtonToTable(delete(),"","削除");
+		addButtonToTable(delete(),"","削除");
 	}
-//	private Consumer<Sales> delete(){
-//		Consumer<Sales> consumer = customers -> {
-//			Sales_DeleteById sql = new Sales_DeleteById(customers.idProperty().get());
-//			new SalesDao(sql);
-//	    	for ( int i = 0; i<fx_table.getItems().size(); i++) {
-//	    	    fx_table.getItems().clear();
-//	    	}
-//			Sales_FindAll sql2 = new Sales_FindAll();
-//			new SalesDao(sql2);
-//			for(Sales record:sql2.recordList){
-//				fx_table.getItems().add(record);
-//			}
-//		};
-//		return consumer;
-//	}
+	private void findAll(){
+    	for ( int i = 0; i<fx_table.getItems().size(); i++) {
+    	    fx_table.getItems().clear();
+    	}
+		Sales_FindAll sql2 = new Sales_FindAll();
+		new SalesDao(sql2);
+		for(Sales record:sql2.recordList){
+			fx_table.getItems().add(record);
+		}
+	}
+	private Consumer<Sales> delete(){
+		Consumer<Sales> consumer = customers -> {
+			Sales_DeleteById sql = new Sales_DeleteById(customers.idProperty().get());
+			new SalesDao(sql);
+			findAll();
+		};
+		return consumer;
+	}
 //	private Consumer<Sales> edit(){
 //		Consumer<Sales> consumer = customers -> {
 //			System.out.println("editbuttonclick");

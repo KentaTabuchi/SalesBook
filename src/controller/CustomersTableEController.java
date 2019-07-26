@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import model.Customers;
-import sql_crud.Customers_Insert;
 import sql_crud.Customers_UpdateById;
 
 public class CustomersTableEController implements Initializable{
