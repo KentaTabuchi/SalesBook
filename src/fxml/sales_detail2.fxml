@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesDetailEditController">
+   <center>
+      <TableView fx:id="fx_table" prefHeight="318.0" prefWidth="727.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="fx_column_id" prefWidth="56.0" text="id" />
+            <TableColumn fx:id="fx_column_price" prefWidth="99.0" text="仕入れ金額" />
+            <TableColumn fx:id="fx_column_vendor_id" prefWidth="64.0" text="仕入先id" />
+            <TableColumn fx:id="fx_column_vendor_name" prefWidth="138.0" text="仕入先" />
+          <TableColumn fx:id="fx_column_detail" prefWidth="286.0" text="仕入れ内容" />
+        </columns>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </TableView>
+   </center>
+   <top>
+    <VBox>
+       <children>
+            <HBox prefHeight="57.0" prefWidth="727.0">
+               <children>
+               <Label text="ID:">
+                  <font>
+                     <Font size="24.0" />
+                  </font>
+               </Label>
+                  <Label fx:id="fx_label_vendor_id" text="0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="顧客名:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="fx_label_customer_name" text="Label">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="32.0" prefWidth="727.0">
+               <children>
+                  <Label text="売上ID:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fx_label_sales_id" text="0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         <HBox prefHeight="66.0" prefWidth="727.0" BorderPane.alignment="CENTER">
+            <children>
+               <Label text="仕入れ合計：">
+                  <font>
+                     <Font size="36.0" />
+                  </font>
+               </Label>
+               <Label fx:id="fx_label_sum" text="0">
+                  <font>
+                     <Font size="36.0" />
+                  </font>
+               </Label>
+            </children>
+         </HBox>
+       </children>
+     </VBox>
+   </top>
+   <bottom>
+      <VBox prefHeight="171.0" prefWidth="727.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="48.0" prefWidth="727.0">
+               <children>
+                  <Label text="   内容" />
+                  <TextField fx:id="fx_text_detail" prefHeight="27.0" prefWidth="378.0">
+                     <HBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="39.0" prefWidth="727.0">
+               <children>
+                  <Label text="   金額" />
+                  <TextField fx:id="fx_text_price">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="46.0" prefWidth="727.0">
+               <children>
+                  <Label text="仕入先" />
+                  <ComboBox fx:id="fx_combo_customers_id" prefHeight="27.0" prefWidth="269.0">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children></HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="53.0" prefWidth="727.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#OnAddButtonClick" text="仕入れ追加">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="fx_button_close" mnemonicParsing="false" onAction="#OnCloseButtonClick" text="閉じる">
+                     <HBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>

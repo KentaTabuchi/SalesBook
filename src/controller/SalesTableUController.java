@@ -153,7 +153,7 @@ public class SalesTableUController  implements Initializable
 		vendor_id = Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(), ':'));
 		vendor_name = new StringSeparator().getBack(fx_combo_customers_id.getValue(), ':');
 		StageGenerator generator =  new StageGenerator();
-		generator.createStage("sales_detail.fxml",new BorderPane());
+		generator.createStage("sales_detail2.fxml",new BorderPane());
 	
 	}
 	@FXML

@@ -52,7 +52,7 @@ public class SalesDetailCRUDController implements Initializable {
 	private Long vendor_id;
 	private String vendor_name;
 	protected StringProperty total_pay;
-	private Long sales_id;
+	protected Long sales_id;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -60,16 +60,16 @@ public class SalesDetailCRUDController implements Initializable {
 		setComboBox();
 		this.vendor_id = SalesTableCController.vendor_id;
 		this.vendor_name = SalesTableCController.vendor_name;
-
-		Sales_Max_Id sql = new Sales_Max_Id();
-		new SalesDao(sql);
-		sales_id = sql.result+1;
-
-
+		setSales_id();
 		setLabels();
 		refreshSumLabel();
 		SalesTableCController.total_expense.textProperty().bind(total_pay);
 		findAll();
+	}
+	public void setSales_id(){
+		Sales_Max_Id sql = new Sales_Max_Id();
+		new SalesDao(sql);
+		sales_id = sql.result+1;
 	}
 	private void setComboBox(){
 		Customers_FindAll sql2 = new Customers_FindAll();
