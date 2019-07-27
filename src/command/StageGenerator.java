@@ -28,13 +28,6 @@ public class StageGenerator {
 			Scene scene = new Scene(pane);
 			stage.setScene(scene);
 			stage.show();
-//			Path path =null;
-//			try {
-//				path = PathGenerator.getParentPath(StageGenerator.class);
-//			} catch (URISyntaxException e1) {
-//				
-//				e1.printStackTrace();
-//			}
 
 			this.fxmlLoader = loader;
 			return stage;

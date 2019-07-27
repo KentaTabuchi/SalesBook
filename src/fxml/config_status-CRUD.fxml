@@ -11,10 +11,10 @@
       <TableView fx:id="fx_table" prefHeight="323.0" prefWidth="508.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="fx_column_id" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="fx_column_name" prefWidth="249.0" text="ステータス名" />
+          <TableColumn fx:id="fx_column_name" prefWidth="249.0" text="従業員名" />
         </columns>
          <BorderPane.margin>
-            <Insets left="5.0" right="5.0" />
+            <Insets left="5.0" right="5.0" top="5.0" />
          </BorderPane.margin>
       </TableView>
    </center>
@@ -23,14 +23,14 @@
          <children>
             <TextField fx:id="fx_text_name" prefHeight="27.0" prefWidth="393.0">
                <HBox.margin>
-                  <Insets left="5.0" />
+                  <Insets left="5.0" top="5.0" />
                </HBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" onAction="#OnAddButtonClick" text="新規登録" />
+            <Button mnemonicParsing="false" onAction="#OnAddButtonClick" text="新規登録">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin></Button>
          </children>
       </HBox>
    </bottom>
-   <top>
-      <Label text="ステータス設定" BorderPane.alignment="CENTER" />
-   </top>
 </BorderPane>

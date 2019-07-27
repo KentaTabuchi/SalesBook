@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ConfigMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ConfigMenuController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -20,7 +20,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#OnMenuButton1Click" prefHeight="100.0" prefWidth="380.0" text="1.ステータス項目編集">
+            <Button mnemonicParsing="false" onAction="#OnMenuButton1Click" prefHeight="100.0" prefWidth="380.0" text="1.従業員リスト項目編集">
                <GridPane.margin>
                   <Insets left="5.0" />
                </GridPane.margin>
