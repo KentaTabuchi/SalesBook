@@ -1,7 +1,10 @@
 package command;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
 
+import application.SalesDao;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -25,8 +28,14 @@ public class StageGenerator {
 			Scene scene = new Scene(pane);
 			stage.setScene(scene);
 			stage.show();
-			//scene.getStylesheets().add(getClass().getResource("../css/styles.css").toExternalForm());
-			scene.getStylesheets().add(getClass().getResource("../application/application.css").toExternalForm());
+//			Path path =null;
+//			try {
+//				path = PathGenerator.getParentPath(StageGenerator.class);
+//			} catch (URISyntaxException e1) {
+//				
+//				e1.printStackTrace();
+//			}
+
 			this.fxmlLoader = loader;
 			return stage;
 
