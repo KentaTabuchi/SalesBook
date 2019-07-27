@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="1.7976931348623157E308" prefHeight="750.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesTableCController">
+<BorderPane maxHeight="1.7976931348623157E308" prefHeight="750.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesTableUController">
    <bottom>
       <HBox fillHeight="false" prefHeight="71.0" prefWidth="658.0" BorderPane.alignment="CENTER">
          <children>
@@ -31,7 +31,8 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label styleClass="h2" text="新規入力" />
+                  <Label styleClass="h2" text="修正 ID：" />
+                  <Label fx:id="fx_id_label" styleClass="h2" text="0" />
                </children>
             </HBox>
             <HBox prefHeight="80.0" prefWidth="200.0" styleClass="h3-back">
@@ -90,7 +91,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox fx:id="fx_invoice_statuses" prefHeight="27.0" prefWidth="163.0">
+                  <ComboBox fx:id="fx_invoice_statuses" prefHeight="27.0" prefWidth="166.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>

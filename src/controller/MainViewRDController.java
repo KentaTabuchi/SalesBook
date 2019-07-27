@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
 import application.SalesDao;
+import command.StageGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +14,8 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Sales;
 import sql_crud.Sales_DeleteById;
@@ -84,7 +87,7 @@ public class MainViewRDController implements Initializable {
 		
 		fx_column_created_at.setCellValueFactory(new PropertyValueFactory<Sales,String>("created_at"));
 		fx_column_update_at.setCellValueFactory(new PropertyValueFactory<Sales,String>("update_at"));
-//		addButtonToTable(edit(),"","編集");
+		addButtonToTable(edit(),"","編集");
 		addButtonToTable(delete(),"","削除");
 	}
 	private void findAll(){
@@ -98,22 +101,22 @@ public class MainViewRDController implements Initializable {
 		}
 	}
 	private Consumer<Sales> delete(){
-		Consumer<Sales> consumer = customers -> {
-			Sales_DeleteById sql = new Sales_DeleteById(customers.idProperty().get());
+		Consumer<Sales> consumer = record -> {
+			Sales_DeleteById sql = new Sales_DeleteById(record.idProperty().get());
 			new SalesDao(sql);
 			findAll();
 		};
 		return consumer;
 	}
-//	private Consumer<Sales> edit(){
-//		Consumer<Sales> consumer = customers -> {
-//			System.out.println("editbuttonclick");
-//			SalesTableEController.customers = customers;
-//			Stage stage = new StageGenerator().createStage("customers_table-E.fxml",new BorderPane());
-//			stage.setTitle("既存顧客編集 ID:"+ customers.idProperty().get());
-//		};
-//		return consumer;
-//	}
+	private Consumer<Sales> edit(){
+		Consumer<Sales> consumer = record -> {
+			System.out.println("editbuttonclick");
+			SalesTableUController.sales = record;
+			Stage stage = new StageGenerator().createStage("sales_table-U.fxml",new BorderPane());
+			stage.setTitle("既存顧客編集 ID:"+ record.idProperty().get());
+		};
+		return consumer;
+	}
 	
 	private void addButtonToTable(Consumer<Sales> consumer,String columnTitle,String btnCaption) {
 		TableColumn<Sales, Void> colBtn = new TableColumn<>(columnTitle);

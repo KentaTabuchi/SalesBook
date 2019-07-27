@@ -66,7 +66,7 @@ public class Sales {
 		this.memo = new SimpleStringProperty(memo);
 		this.income_date = new SimpleStringProperty(income_date);
 		this.billing_date = new SimpleStringProperty(billing_date);
-		this.staff_sale_id = new SimpleLongProperty(staff_director_id);
+		this.staff_director_id = new SimpleLongProperty(staff_director_id);
 		this.staff_sale_id = new SimpleLongProperty(staff_sale_id);
 		this.staff_design_id = new SimpleLongProperty(staff_design_id);
 		this.staff_coding_id = new SimpleLongProperty(staff_coding_id);
@@ -122,16 +122,16 @@ public class Sales {
 	public LongProperty staff_director_idProperty(){
 		return this.staff_director_id;
 	}
-	public LongProperty staff_sale_id_saleProperty(){
+	public LongProperty staff_sale_idProperty(){
 		return this.staff_sale_id;
 	}
 	public LongProperty staff_design_idProperty(){
 		return this.staff_design_id;
 	}
-	public LongProperty distribute_codingProperty(){
+	public LongProperty staff_coding_idProperty(){
 		return this.staff_coding_id;
 	}
-	public LongProperty distribute_systemProperty(){
+	public LongProperty staff_system_idProperty(){
 		return this.staff_system_id;
 	}
 	public LongProperty distribute_director_priceProperty(){
