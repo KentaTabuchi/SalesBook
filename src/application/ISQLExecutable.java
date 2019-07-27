@@ -4,7 +4,6 @@
 package application;
 
 import java.sql.Connection;
-import java.util.List;
 
 /**
  * @author misskabu

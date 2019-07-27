@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
 import application.SalesDao;
-import command.Message;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;

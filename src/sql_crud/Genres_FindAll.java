@@ -4,7 +4,6 @@
 package sql_crud;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +12,6 @@ import java.util.List;
 
 import application.ISQLExecutable;
 import model.Genres;
-import model.Statuses;
 
 /**
  * @author misskabu

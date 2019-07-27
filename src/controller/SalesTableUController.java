@@ -26,7 +26,6 @@ import model.Sales;
 import model.Statuses;
 import sql_crud.Customers_FindAll;
 import sql_crud.Genres_FindAll;
-import sql_crud.Sales_Insert;
 import sql_crud.Sales_UpdateById;
 import sql_crud.Statuses_FindAll;
 
