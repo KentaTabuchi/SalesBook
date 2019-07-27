@@ -41,7 +41,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#OnMenuButton3Click" prefHeight="100.0" prefWidth="380.0" text="3.既存売上編集(開発予定)" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#OnMenuButton3Click" prefHeight="100.0" prefWidth="380.0" GridPane.rowIndex="2">
                <font>
                   <Font size="24.0" />
                </font>

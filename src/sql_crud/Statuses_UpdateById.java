@@ -10,7 +10,7 @@ import application.ISQLExecutable;
 
 /**
  * @author misskabu
- * テキストボックスから集めたデータをtradeLogテーブルに書き込む
+ * 
  */
 public class Statuses_UpdateById implements ISQLExecutable {
 

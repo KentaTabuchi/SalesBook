@@ -16,7 +16,7 @@ import model.Statuses;
 
 /**
  * @author misskabu
- * TRADE_LOG TABLE から　読み出したデータを表に表示するためのSQL
+ * 
  */
 public class Statuses_FindAll implements ISQLExecutable {
 

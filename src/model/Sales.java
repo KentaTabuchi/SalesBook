@@ -83,71 +83,140 @@ public class Sales {
 	public LongProperty idProperty(){
 		return this.id;
 	}
+	public void setId(Long id){
+		this.id = new SimpleLongProperty(id);
+	}
 	public StringProperty nameProperty(){
 		return this.name;
+	}
+	public void setName(String name){
+		this.name = new SimpleStringProperty(name);
 	}
 	public LongProperty total_profitProperty(){
 		return this.total_profit;
 	}
+	public void setTotal_profit(Long total_profit){
+		this.total_profit = new SimpleLongProperty(total_profit);;
+	}
 	public LongProperty total_expenseProperty(){
 		return this.total_expense;
+	}
+	public void setTotal_expense(Long total_expense){
+		this.total_expense = new SimpleLongProperty(total_expense);
 	}
 	public LongProperty total_saleProperty(){
 		return this.total_sale;
 	}
+	public void setTotal_sale(Long total_sale){
+		this.total_sale = new SimpleLongProperty(total_sale);
+	}
 	public StringProperty settleProperty(){
 		return this.settle;
+	}
+	public void setSettle(String settle){
+		this.settle = new SimpleStringProperty(settle);
 	}
 	public LongProperty status_idProperty(){
 		return this.status_id;
 	}
+	public void setStatus_id(Long status_id){
+		this.status_id = new SimpleLongProperty(status_id);
+	}
 	public LongProperty customer_idProperty(){
 		return this.customer_id;
+	}
+	public void setCustomer_id(Long customer_id){
+		this.customer_id = new SimpleLongProperty(customer_id);
 	}
 	public LongProperty genres_idProperty(){
 		return this.genres_id;
 	}
+	public void setGenres_id(Long genres_id){
+		this.genres_id = new SimpleLongProperty(genres_id);
+	}
 	public StringProperty invoice_statusProperty(){
 		return this.invoice_status;
+	}
+	public void setInvoice_status(String invoice_status){
+		this.invoice_status = new SimpleStringProperty(invoice_status);
 	}
 	public StringProperty memoProperty(){
 		return this.memo;
 	}
+	public void setMemo(String memo){
+		this.memo = new SimpleStringProperty(memo);
+	}
 	public StringProperty income_dateProperty(){
 		return this.income_date;
+	}
+	public void setIncome_date(String income_date){
+		this.income_date = new SimpleStringProperty(income_date);
 	}
 	public StringProperty billing_dateProperty(){
 		return this.billing_date;
 	}
+	public void setBilling_date(String billing_date){
+		this.billing_date = new SimpleStringProperty(billing_date);
+	}
 	public LongProperty staff_director_idProperty(){
 		return this.staff_director_id;
+	}
+	public void setStaff_director_id(Long staff_director_id){
+		this.staff_director_id = new SimpleLongProperty(staff_director_id);
 	}
 	public LongProperty staff_sale_idProperty(){
 		return this.staff_sale_id;
 	}
+	public void setStaff_sale_id(Long staff_sale_id){
+		this.staff_sale_id = new SimpleLongProperty(staff_sale_id);
+	}
 	public LongProperty staff_design_idProperty(){
 		return this.staff_design_id;
+	}
+	public void setStaff_design_id(Long staff_design_id){
+		this.staff_design_id = new SimpleLongProperty(staff_design_id);
 	}
 	public LongProperty staff_coding_idProperty(){
 		return this.staff_coding_id;
 	}
+	public void setStaff_coding_id(Long staff_coding_id){
+		this.staff_coding_id = new SimpleLongProperty(staff_coding_id);
+	}
 	public LongProperty staff_system_idProperty(){
 		return this.staff_system_id;
 	}
+	public void setStaff_system_id(Long staff_system_id){
+		this.staff_system_id = new SimpleLongProperty(staff_system_id);
+	}
 	public LongProperty distribute_director_priceProperty(){
 		return this.distribute_director_price;
-	}	
+	}
+	public void setDistribute_director_price(Long distribute_director_price){
+		this.distribute_director_price = new SimpleLongProperty(distribute_director_price);
+	}
 	public LongProperty distribute_sale_priceProperty(){
 		return this.distribute_sale_price;
+	}
+	public void setDistribute_sale_price(Long distribute_sale_price){
+		this.distribute_sale_price = new SimpleLongProperty(distribute_sale_price);
 	}
 	public LongProperty distribute_design_priceProperty(){
 		return this.distribute_design_price;
 	}
+	public void setDistribute_design_price(Long distribute_design_price){
+		this.distribute_design_price = new SimpleLongProperty(distribute_design_price);
+	}
 	public LongProperty distribute_coding_priceProperty(){
 		return this.distribute_coding_price;
 	}
+	public void setDistribute_coding_price(Long distribute_coding_price){
+		this.distribute_coding_price = new SimpleLongProperty(distribute_coding_price);
+	}
 	public LongProperty distribute_system_priceProperty(){
 		return this.distribute_system_price;
+	}
+	public void setDistribute_system_price(Long distribute_system_price){
+		this.distribute_system_price = new SimpleLongProperty(distribute_system_price);
 	}
 	public StringProperty created_atProperty(){
 		return this.created_at;

@@ -1,8 +1,6 @@
 package controller;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import application.SalesDao;
@@ -29,6 +27,7 @@ import model.Statuses;
 import sql_crud.Customers_FindAll;
 import sql_crud.Genres_FindAll;
 import sql_crud.Sales_Insert;
+import sql_crud.Sales_UpdateById;
 import sql_crud.Statuses_FindAll;
 
 public class SalesTableUController  implements Initializable
@@ -161,34 +160,31 @@ public class SalesTableUController  implements Initializable
 	@FXML
 	protected void OnAddButtonClick(){
 		
-		System.out.println("新規売上登録:button click.");
-		System.out.println(Long.valueOf(fx_text_sale_price.getText()));
-		Sales_Insert sql = new Sales_Insert
-		(
-				fx_text_name.getText(), //name
-				Long.valueOf(new StringSeparator().getFoward(fx_text_total_profit.getText(),'.')), 
-				Long.valueOf(fx_text_total_expense.getText()), //OK
-				Long.valueOf(fx_text_total_sale.getText()), //OK
-				fx_combo_settle.getValue(), //  OK
-				Long.valueOf(new StringSeparator().getFoward(fx_combo_charge_person.getValue(),':')),//status_id担当者 OK
-				Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(),':')), //customer_id OK
-				Long.valueOf(new StringSeparator().getFoward(fx_combo_genres_id.getValue(),':')), //genres_id OK
-				fx_invoice_statuses.getValue(), //invoice_status 請求列 OK
-				fx_text_memo.getText(), //memo 覚書 OK
-				fx_picker_billing_date.getValue().toString(), // income_date OK
-				fx_picker_pay_date.getValue().toString(), // billing_date
-				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_director.getValue(),':')), //staff_director_id OK
-				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_sale.getValue(),':')), //staff_sale_id OK
-				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_coding.getValue(),':')), //staff_coding_id OK
-				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_design.getValue(),':')), //staff_design_id OK
-				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_system.getValue(),':')), //staff_system_id OK
-				Long.valueOf(fx_text_director_price.getText()),   //distribute_system OK
-				Long.valueOf(fx_text_sale_price.getText()), //distribute_sale_price OK
-				Long.valueOf(fx_text_design_price.getText()),  //distribute_coding_price OK
-				Long.valueOf(fx_text_coding_price.getText()),  //distribute_design OK
-				Long.valueOf(fx_text_system_price.getText())   //distribute_system OK
-				);
-
+		System.out.println("詳細入力編集:button click.");
+		sales.setName(fx_text_name.getText());
+		Long.valueOf(new StringSeparator().getFoward(fx_text_total_profit.getText(),'.'));
+		sales.setTotal_expense(Long.valueOf(fx_text_total_expense.getText()));
+		sales.setTotal_sale(Long.valueOf(fx_text_total_sale.getText()));
+		sales.setSettle(fx_combo_settle.getValue());
+		sales.setStatus_id(Long.valueOf(new StringSeparator().getFoward(fx_combo_charge_person.getValue(),':')));
+		sales.setCustomer_id(Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(),':')));
+		sales.setGenres_id(Long.valueOf(new StringSeparator().getFoward(fx_combo_genres_id.getValue(),':')));
+		sales.setInvoice_status(fx_invoice_statuses.getValue());
+		sales.setMemo(fx_text_memo.getText());
+		sales.setIncome_date(fx_picker_billing_date.getValue().toString());
+		sales.setBilling_date(fx_picker_pay_date.getValue().toString());
+		sales.setStaff_director_id(Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_director.getValue(),':')));
+		sales.setStaff_sale_id(Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_sale.getValue(),':')));
+		sales.setStaff_coding_id(Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_coding.getValue(),':')));
+		sales.setStaff_design_id(Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_design.getValue(),':')));
+		sales.setStaff_system_id(Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_system.getValue(),':')));
+		sales.setDistribute_director_price(Long.valueOf(fx_text_director_price.getText()));
+		sales.setDistribute_sale_price(Long.valueOf(fx_text_sale_price.getText()));
+		sales.setDistribute_design_price(Long.valueOf(fx_text_design_price.getText()));
+		sales.setDistribute_coding_price(Long.valueOf(fx_text_coding_price.getText()));
+		sales.setDistribute_system_price(Long.valueOf(fx_text_system_price.getText()));
+		
+		Sales_UpdateById sql = new Sales_UpdateById (sales);
 		new SalesDao(sql);
 		
 	}

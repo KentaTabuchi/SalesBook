@@ -18,8 +18,7 @@ public class SalesMenuController {
 	}
 	@FXML
 	protected void OnMenuButton3Click(){
-		Stage stage = new StageGenerator().createStage("sales_table-U.fxml",new BorderPane());	
-		stage.setTitle("既存売上修正");
+	
 	}
 	@FXML
 	protected void OnMenuButton4Click(){
