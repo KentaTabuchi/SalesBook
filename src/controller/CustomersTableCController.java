@@ -1,11 +1,16 @@
 package controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import application.SalesDao;
+import command.TextFieldValidator;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import sql_crud.Customers_Insert;
 
-public class CustomersTableCController {
+public class CustomersTableCController implements Initializable{
 	@FXML private  TextField fx_text_name;
 	@FXML private  TextField fx_text_kana_name;
 	@FXML private  TextField fx_text_tel;
@@ -16,6 +21,15 @@ public class CustomersTableCController {
 	@FXML private  TextField fx_text_email;
 	@FXML private  TextField fx_text_person_in_charge;
 
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		TextFieldValidator.addPhoneValidator(fx_text_tel);
+		TextFieldValidator.addZipValidator(fx_text_zip);
+		TextFieldValidator.addEmailValidator(fx_text_email);
+		
+	}	
+	
 	@FXML
 	public void OnAddButtonClick(){
 		System.out.println("CustomersTableCController: OnAddButtonClick invoke");
@@ -25,7 +39,6 @@ public class CustomersTableCController {
 		 fx_text_email.getText(),fx_text_person_in_charge.getText());
 		new SalesDao(sql);
 		    	
-	}
-	 
+	}	 
 	 
 }

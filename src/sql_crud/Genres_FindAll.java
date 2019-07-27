@@ -19,7 +19,7 @@ import model.Statuses;
  * @author misskabu
  * TRADE_LOG TABLE から　読み出したデータを表に表示するためのSQL
  */
-public class Genres_FindAllById implements ISQLExecutable {
+public class Genres_FindAll implements ISQLExecutable {
 
 	/* (非 Javadoc)
 	 * @see application.ISQLExcutable#excuteQuery()

@@ -18,7 +18,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import model.Genres;
-import sql_crud.Genres_FindAllById;
+import sql_crud.Genres_FindAll;
 import sql_crud.Genres_Insert;
 import sql_crud.Genres_UpdateById;
 import sql_crud.Genres_DeleteById;
@@ -35,7 +35,7 @@ public class ConfigGenresController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		setCellValueFactoryes();
-		Genres_FindAllById sql = new Genres_FindAllById();
+		Genres_FindAll sql = new Genres_FindAll();
 		new SalesDao(sql);
 		for(Genres record:sql.recordList){
 			fx_table.getItems().add(record);
@@ -58,7 +58,7 @@ public class ConfigGenresController implements Initializable {
 	    	    fx_table.getItems().clear();
 	    	}
 	    	
-			Genres_FindAllById sql2 = new Genres_FindAllById();
+			Genres_FindAll sql2 = new Genres_FindAll();
 			new SalesDao(sql2);
 			for(Genres record:sql2.recordList){
 				fx_table.getItems().add(record);
@@ -85,7 +85,7 @@ public class ConfigGenresController implements Initializable {
 	    	    fx_table.getItems().clear();
 	    	}
 	    	
-			Genres_FindAllById sql2 = new Genres_FindAllById();
+			Genres_FindAll sql2 = new Genres_FindAll();
 			new SalesDao(sql2);
 			for(Genres record:sql2.recordList){
 				fx_table.getItems().add(record);
@@ -103,7 +103,7 @@ public class ConfigGenresController implements Initializable {
     	    fx_table.getItems().clear();
     	}
     	
-		Genres_FindAllById sql2 = new Genres_FindAllById();
+		Genres_FindAll sql2 = new Genres_FindAll();
 		new SalesDao(sql2);
 		for(Genres record:sql2.recordList){
 			fx_table.getItems().add(record);
