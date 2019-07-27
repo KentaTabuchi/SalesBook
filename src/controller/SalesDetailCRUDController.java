@@ -49,8 +49,8 @@ public class SalesDetailCRUDController implements Initializable {
 	@FXML private Label fx_label_sum;
 	
 	@FXML private Button fx_button_close;
-	private Long vendor_id;
-	private String vendor_name;
+	protected Long vendor_id;
+	protected String vendor_name;
 	protected StringProperty total_pay;
 	protected Long sales_id;
 	@Override
@@ -58,13 +58,19 @@ public class SalesDetailCRUDController implements Initializable {
 		
 		setCellValueFactoryes();
 		setComboBox();
-		this.vendor_id = SalesTableCController.vendor_id;
-		this.vendor_name = SalesTableCController.vendor_name;
+		setVendor();
 		setSales_id();
 		setLabels();
 		refreshSumLabel();
-		SalesTableCController.total_expense.textProperty().bind(total_pay);
+		setTotal_pay();
 		findAll();
+	}
+	protected void setTotal_pay(){
+		SalesTableCController.total_expense.textProperty().bind(total_pay);
+	}
+	protected void setVendor(){
+		this.vendor_id = SalesTableCController.vendor_id;
+		this.vendor_name = SalesTableCController.vendor_name;
 	}
 	public void setSales_id(){
 		Sales_Max_Id sql = new Sales_Max_Id();
