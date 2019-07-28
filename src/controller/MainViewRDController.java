@@ -23,7 +23,7 @@ import sql_crud.Sales_FindAll;
 
 
 public class MainViewRDController implements Initializable {
-	
+	static public MainViewRDController mainViewRDController;
 	@FXML private TableView<Sales> fx_table = new TableView<>();
 	@FXML private TableColumn<Sales,Long>   fx_column_id;
 	@FXML private TableColumn<Sales,String> fx_column_name;
@@ -56,8 +56,10 @@ public class MainViewRDController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		mainViewRDController = this;
 		setCellValueFactoryes();
 		findAll();
+		
 	}
 	
 	private void setCellValueFactoryes(){
@@ -90,7 +92,7 @@ public class MainViewRDController implements Initializable {
 		addButtonToTable(edit(),"","編集");
 		addButtonToTable(delete(),"","削除");
 	}
-	private void findAll(){
+	public void findAll(){
     	for ( int i = 0; i<fx_table.getItems().size(); i++) {
     	    fx_table.getItems().clear();
     	}

@@ -156,6 +156,7 @@ public class SalesTableUController  implements Initializable
 		vendor_name = new StringSeparator().getBack(fx_combo_customers_id.getValue(), ':');
 		StageGenerator generator =  new StageGenerator();
 		generator.createStage("sales_detail2.fxml",new BorderPane());
+		
 		}catch(NullPointerException e){
 			new Message().showAlert("例外の検出","記述漏れ","この先に進むには顧客情報の入力が必要です。");
 		}
@@ -190,6 +191,7 @@ public class SalesTableUController  implements Initializable
 		
 		Sales_UpdateById sql = new Sales_UpdateById (sales);
 		new SalesDao(sql);
+		MainViewRDController.mainViewRDController.findAll();
 		new Message().showAlert("処理の完了", "書き込み成功", "DBを更新しました。");
 		}catch(Exception e){
 			new Message().showAlert("例外の検出", "未入力項目", "DBを更新できませんでした。\n入力をご確認ください。");
