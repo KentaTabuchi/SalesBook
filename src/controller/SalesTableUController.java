@@ -7,7 +7,6 @@ import application.SalesDao;
 import command.Message;
 import command.StageGenerator;
 import command.StringDateConverter;
-import command.StringDoubleBinding;
 import command.StringLongBinding;
 import command.StringSeparator;
 import command.TextFieldValidator;

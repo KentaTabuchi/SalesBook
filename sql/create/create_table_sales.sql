@@ -12,13 +12,16 @@ create table sales(
   total_sale integer,
   total_expense integer,
   total_profit integer,
-  distribute_sale text,
-  distribute_design text,
-  distribute_coding text,
-  distribute_system text,
+  staff_director_id integer,
+  staff_sale_id integer,
+  staff_design_id integer,
+  staff_coding_id integer,
+  staff_system_id integer,
+  distribute_director_price integer,
   distribute_sale_price integer,
   distribute_design_price integer,
   distribute_coding_price integer,
   distribute_system_price integer,
   created_at text,
-  update_at text);
+  update_at text
+);
