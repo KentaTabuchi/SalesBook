@@ -8,6 +8,7 @@ import command.Message;
 import command.StageGenerator;
 import command.StringDateConverter;
 import command.StringDoubleBinding;
+import command.StringLongBinding;
 import command.StringSeparator;
 import command.TextFieldValidator;
 import enums.InvoiceStatuses;
@@ -76,8 +77,8 @@ public class SalesTableUController  implements Initializable
 		setComboBox();
 		setValuesToViewBySalesID();
 		fx_text_total_profit.textProperty().bind(Bindings.subtract(
-				new StringDoubleBinding(fx_text_total_sale.textProperty()),
-				new StringDoubleBinding(fx_text_total_expense.textProperty())).asString());
+				new StringLongBinding(fx_text_total_sale.textProperty()),
+				new StringLongBinding(fx_text_total_expense.textProperty())).asString());
 		validation();	
 		fx_id_label.setText(sales.idProperty().getValue().toString());
 	}
@@ -166,7 +167,7 @@ public class SalesTableUController  implements Initializable
 		
 		try{
 		sales.setName(fx_text_name.getText());
-		Long.valueOf(new StringSeparator().getFoward(fx_text_total_profit.getText(),'.'));
+		sales.setTotal_profit(Long.valueOf(fx_text_total_profit.getText()));
 		sales.setTotal_expense(Long.valueOf(fx_text_total_expense.getText()));
 		sales.setTotal_sale(Long.valueOf(fx_text_total_sale.getText()));
 		sales.setSettle(fx_combo_settle.getValue());

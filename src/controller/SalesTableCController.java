@@ -7,6 +7,7 @@ import application.SalesDao;
 import command.Message;
 import command.StageGenerator;
 import command.StringDoubleBinding;
+import command.StringLongBinding;
 import command.StringSeparator;
 import command.TextFieldValidator;
 import enums.InvoiceStatuses;
@@ -94,8 +95,8 @@ public class SalesTableCController  implements Initializable
 		}
 
 		fx_text_total_profit.textProperty().bind(Bindings.subtract(
-				new StringDoubleBinding(fx_text_total_sale.textProperty()),
-				new StringDoubleBinding(fx_text_total_expense.textProperty())).asString());
+				new StringLongBinding(fx_text_total_sale.textProperty()),
+				new StringLongBinding(fx_text_total_expense.textProperty())).asString());
 		validation();	
 	}
 
@@ -128,7 +129,8 @@ public class SalesTableCController  implements Initializable
 		Sales_Insert sql = new Sales_Insert
 		(
 				fx_text_name.getText(), //name
-				Long.valueOf(new StringSeparator().getFoward(fx_text_total_profit.getText(),'.')), 
+				Long.valueOf(fx_text_total_profit.getText()), 
+				
 				Long.valueOf(fx_text_total_expense.getText()), //OK
 				Long.valueOf(fx_text_total_sale.getText()), //OK
 				fx_combo_settle.getValue(), //  OK
