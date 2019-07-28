@@ -190,6 +190,7 @@ public class SalesTableUController  implements Initializable
 		
 		Sales_UpdateById sql = new Sales_UpdateById (sales);
 		new SalesDao(sql);
+		new Message().showAlert("処理の完了", "書き込み成功", "DBを更新しました。");
 		}catch(Exception e){
 			new Message().showAlert("例外の検出", "未入力項目", "DBを更新できませんでした。\n入力をご確認ください。");
 		}
