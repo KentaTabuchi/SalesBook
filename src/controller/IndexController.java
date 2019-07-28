@@ -33,7 +33,6 @@ public class IndexController implements Initializable{
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 
 		fx_dirPath.setText(PathGenerator.getCurrentJarPath());
 	

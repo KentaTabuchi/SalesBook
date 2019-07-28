@@ -22,7 +22,6 @@ public class PathGenerator {
 	 * |This class returns current Path.
 	 */
 	public PathGenerator() {
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * 

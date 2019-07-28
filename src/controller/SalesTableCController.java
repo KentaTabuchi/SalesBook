@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.SalesDao;
+import command.Message;
 import command.StageGenerator;
 import command.StringDoubleBinding;
 import command.StringSeparator;
@@ -107,12 +108,16 @@ public class SalesTableCController  implements Initializable
 	}
 	@FXML
 	protected void OnShowDetailButtonClick(){
-		
+		//TODO　　顧客入力できるまで開かないようにアラート
+		try{
 		total_expense = this.fx_text_total_expense;
 		vendor_id = Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(), ':'));
 		vendor_name = new StringSeparator().getBack(fx_combo_customers_id.getValue(), ':');
 		StageGenerator generator =  new StageGenerator();
 		generator.createStage("sales_detail.fxml",new BorderPane());
+		}catch(NullPointerException e){
+			new Message().showAlert("例外の検出","記述漏れ","この先に進むには顧客情報の選択が必要です。");
+		}
 	
 	}
 	@FXML

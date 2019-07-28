@@ -15,7 +15,6 @@ public class SalesDao {
 		try {
 			path = PathGenerator.getParentPath(SalesDao.class);
 		} catch (URISyntaxException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -40,7 +39,6 @@ public class SalesDao {
 				try {
 					con.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}		
