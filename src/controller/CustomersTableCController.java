@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.SalesDao;
+import command.Message;
 import command.TextFieldValidator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,12 +34,16 @@ public class CustomersTableCController implements Initializable{
 	@FXML
 	public void OnAddButtonClick(){
 		System.out.println("CustomersTableCController: OnAddButtonClick invoke");
+		try{
 		Customers_Insert sql = new Customers_Insert
 		(fx_text_name.getText(),fx_text_kana_name.getText(),fx_text_tel.getText(),fx_text_address1.getText(),
 		 fx_text_address2.getText(),fx_text_address3.getText(),fx_text_zip.getText(),
 		 fx_text_email.getText(),fx_text_person_in_charge.getText());
 		new SalesDao(sql);
-		    	
-	}	 
+		new Message().showAlert("処理の完了", "書き込み成功", "DBに登録しました。 ");
+		}catch(Exception e){
+			new Message().showAlert("例外の検出", "入力漏れ", "DBに登録できませんでした。\n 入力内容をご確認ください。 ");
+		}
+	} 
 	 
 }

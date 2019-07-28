@@ -152,6 +152,7 @@ public class SalesTableCController  implements Initializable
 				);
 
 		new SalesDao(sql);
+		new Message().showAlert("処理の完了", "書き込み成功", "DBに登録しました。");
 		}catch(Exception e){
 			new Message().showAlert("例外の検出", "入力漏れ", "未入力項目があるためDBに反映されませんでした。");
 		}
