@@ -108,7 +108,7 @@ public class SalesTableCController  implements Initializable
 	}
 	@FXML
 	protected void OnShowDetailButtonClick(){
-		//TODO　　顧客入力できるまで開かないようにアラート
+		
 		try{
 		total_expense = this.fx_text_total_expense;
 		vendor_id = Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(), ':'));

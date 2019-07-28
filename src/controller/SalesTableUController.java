@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.SalesDao;
+import command.Message;
 import command.StageGenerator;
 import command.StringDateConverter;
 import command.StringDoubleBinding;
@@ -149,11 +150,15 @@ public class SalesTableUController  implements Initializable
 	@FXML
 	protected void OnShowDetailButtonClick(){
 		
+		try{
 		total_expense = this.fx_text_total_expense;
 		vendor_id = Long.valueOf(new StringSeparator().getFoward(fx_combo_customers_id.getValue(), ':'));
 		vendor_name = new StringSeparator().getBack(fx_combo_customers_id.getValue(), ':');
 		StageGenerator generator =  new StageGenerator();
 		generator.createStage("sales_detail2.fxml",new BorderPane());
+		}catch(NullPointerException e){
+			new Message().showAlert("例外の検出","記述漏れ","この先に進むには顧客情報の入力が必要です。");
+		}
 	
 	}
 	@FXML
