@@ -164,7 +164,7 @@ public class SalesTableUController  implements Initializable
 	@FXML
 	protected void OnAddButtonClick(){
 		
-		System.out.println("詳細入力編集:button click.");
+		try{
 		sales.setName(fx_text_name.getText());
 		Long.valueOf(new StringSeparator().getFoward(fx_text_total_profit.getText(),'.'));
 		sales.setTotal_expense(Long.valueOf(fx_text_total_expense.getText()));
@@ -190,7 +190,9 @@ public class SalesTableUController  implements Initializable
 		
 		Sales_UpdateById sql = new Sales_UpdateById (sales);
 		new SalesDao(sql);
-		
+		}catch(Exception e){
+			new Message().showAlert("例外の検出", "未入力項目", "DBを更新できませんでした。\n入力をご確認ください。");
+		}
 	}
 	
 	@FXML

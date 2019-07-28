@@ -14,6 +14,7 @@ import enums.Settle;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -122,9 +123,8 @@ public class SalesTableCController  implements Initializable
 	}
 	@FXML
 	protected void OnAddButtonClick(){
-		
-		System.out.println("新規売上登録:button click.");
-		System.out.println(Long.valueOf(fx_text_sale_price.getText()));
+
+		try{
 		Sales_Insert sql = new Sales_Insert
 		(
 				fx_text_name.getText(), //name
@@ -152,7 +152,9 @@ public class SalesTableCController  implements Initializable
 				);
 
 		new SalesDao(sql);
-		
+		}catch(Exception e){
+			new Message().showAlert("例外の検出", "入力漏れ", "未入力項目があるためDBに反映されませんでした。");
+		}
 	}
 	
 	@FXML
