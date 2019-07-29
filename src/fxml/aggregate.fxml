@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.ScrollPane?>
+
+<BorderPane prefHeight="800.0" prefWidth="1400.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AggregateController">
+   <bottom>
+      <HBox prefHeight="68.0" prefWidth="848.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <Label text="月別集計" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+   </top>
+   <center>
+   <TableView fx:id="fx_table" prefHeight="672.0" prefWidth="2000.0" BorderPane.alignment="CENTER">
+     <columns>
+            <TableColumn prefWidth="109.0" text="年月" />
+       <TableColumn prefWidth="86.0" text="売上高" />
+         <TableColumn prefWidth="107.0" text="総売上高" />
+            <TableColumn prefWidth="86.0" text="仕入" />
+     </columns>
+      <BorderPane.margin>
+         <Insets left="5.0" right="5.0" />
+      </BorderPane.margin>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+   </TableView>
+   </center>
+</BorderPane>

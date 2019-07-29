@@ -1,8 +1,2 @@
-/application/
-/db/
-/model/
 /fxml/
 /controller/
-/command/
-/sql_crud/
-/sql_calc/

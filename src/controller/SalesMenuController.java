@@ -18,7 +18,8 @@ public class SalesMenuController {
 	}
 	@FXML
 	protected void OnMenuButton3Click(){
-	
+		Stage stage = new StageGenerator().createStage("aggregate.fxml",new BorderPane());	
+		stage.setTitle("月別集計");
 	}
 	@FXML
 	protected void OnMenuButton4Click(){
