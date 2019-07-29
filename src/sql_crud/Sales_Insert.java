@@ -16,6 +16,7 @@ import command.TimeStamper;
 public class Sales_Insert implements ISQLExecutable {
 
 	private String name;//1
+	private String sales_month;
 	private Long total_profit;//2
 	private Long total_expense;//3
 	private Long total_sale;//4
@@ -42,17 +43,18 @@ public class Sales_Insert implements ISQLExecutable {
 	//13項目
 	public boolean isError = false;
 	final String SQL = "insert into sales "
-			+ "(name,total_profit,total_expense,total_sale,settle,status_id,customer_id,genres_id,invoice_status,memo,income_date,"
+			+ "(name,sales_month,total_profit,total_expense,total_sale,settle,status_id,customer_id,genres_id,invoice_status,memo,income_date,"
 			+ "billing_date,staff_director_id,staff_sale_id,staff_design_id,staff_coding_id,staff_system_id,"
 			+ "distribute_director_price,distribute_sale_price,distribute_design_price,distribute_coding_price,distribute_system_price,"
-			+ "created_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			+ "created_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	
-	public Sales_Insert(String name,Long total_profit,Long total_expense,Long total_sale,String settle,Long status_id,Long customer_id,Long genres_id,String invoice_status,
+	public Sales_Insert(String name,String sales_month,Long total_profit,Long total_expense,Long total_sale,String settle,Long status_id,Long customer_id,Long genres_id,String invoice_status,
 			String memo,String income_date,String billing_date,Long staff_director_id,Long staff_sale_id,Long staff_design_id,Long staff_coding_id,
 			Long staff_system_id,Long distribute_director_price,Long distribute_sale_price,Long distribute_design_price,
 			Long distribute_coding_price,Long distribute_system_price
 			){		
 		this.name = name;
+		this.sales_month = sales_month;
 		this.total_profit = total_profit;
 		this.total_expense = total_expense;
 		this.total_sale = total_sale;
@@ -80,29 +82,30 @@ public class Sales_Insert implements ISQLExecutable {
 	public void executeQuery(Connection con) {
 			try(PreparedStatement ps = con.prepareStatement(this.SQL)){
 			ps.setString(1,this.name);
-			ps.setLong(2, this.total_profit);
-			ps.setLong(3, this.total_expense);
-			ps.setLong(4, this.total_sale);
-			ps.setString(5, this.settle);
-			ps.setLong(6,this.status_id);
-			ps.setLong(7,this.customer_id);
-			ps.setLong(8,this.genres_id);
-			ps.setString(9,this.invoice_status);
-			ps.setString(10,this.memo);
-			ps.setString(11,this.income_date);
-			ps.setString(12,this.billing_date);
-			ps.setLong(13,this.staff_director_id);
-			ps.setLong(14,this.staff_sale_id);
-			ps.setLong(15, this.staff_design_id);
-			ps.setLong(16, this.staff_coding_id);
-			ps.setLong(17, this.staff_system_id);
-			ps.setLong(18,this.distribute_director_price);
-			ps.setLong(19,this.distribute_sale_price);
-			ps.setLong(20, this.distribute_design_price);
-			ps.setLong(21, this.distribute_coding_price);
-			ps.setLong(22, this.distribute_system_price);
+			ps.setString(2, this.sales_month);
+			ps.setLong(3, this.total_profit);
+			ps.setLong(4, this.total_expense);
+			ps.setLong(5, this.total_sale);
+			ps.setString(6, this.settle);
+			ps.setLong(7,this.status_id);
+			ps.setLong(8,this.customer_id);
+			ps.setLong(9,this.genres_id);
+			ps.setString(10,this.invoice_status);
+			ps.setString(11,this.memo);
+			ps.setString(12,this.income_date);
+			ps.setString(13,this.billing_date);
+			ps.setLong(14,this.staff_director_id);
+			ps.setLong(15,this.staff_sale_id);
+			ps.setLong(16, this.staff_design_id);
+			ps.setLong(17, this.staff_coding_id);
+			ps.setLong(18, this.staff_system_id);
+			ps.setLong(19,this.distribute_director_price);
+			ps.setLong(20,this.distribute_sale_price);
+			ps.setLong(21, this.distribute_design_price);
+			ps.setLong(22, this.distribute_coding_price);
+			ps.setLong(23, this.distribute_system_price);
 			
-			ps.setString(23,this.created_at);
+			ps.setString(24,this.created_at);
 	
 			int result = ps.executeUpdate();
 				if(result!=0){

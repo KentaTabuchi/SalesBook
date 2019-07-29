@@ -85,6 +85,7 @@ public class Sales_FindAll implements ISQLExecutable {
 			try {
 				while(rs.next()){
 					Long id =     rs.getLong("id"); 
+					String sales_month = rs.getString("sales_month");
 					String name = rs.getString("name"); 
 					Long total_profit = rs.getLong("total_profit");
 					Long total_expense = rs.getLong("total_expense");
@@ -142,6 +143,7 @@ public class Sales_FindAll implements ISQLExecutable {
 					record.setStaff_coding_name(staff_coding_name);
 					record.setStaff_system_name(staff_system_name);
 					record.setCharge_person(charge_person);
+					record.setSales_month(sales_month);
 					recordList.add(record);
 					
 				}

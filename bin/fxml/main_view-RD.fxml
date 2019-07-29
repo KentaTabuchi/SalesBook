@@ -22,6 +22,7 @@
    <TableView fx:id="fx_table" prefHeight="672.0" prefWidth="2000.0" BorderPane.alignment="CENTER">
      <columns>
        <TableColumn fx:id="fx_column_id" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="fx_column_sales_month" prefWidth="75.0" text="売上月" />
        <TableColumn fx:id="fx_column_settle" prefWidth="67.0" text="確定状況" />
          <TableColumn fx:id="fx_column_charge_person" prefWidth="83.0" text="担当者" />
          <TableColumn fx:id="fx_column_customers_name" prefWidth="217.0" text="請求先顧客名（正式名称)" />

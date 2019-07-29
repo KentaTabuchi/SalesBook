@@ -46,6 +46,8 @@ public class SalesTableUController  implements Initializable
 	
 	@FXML private ComboBox<String> fx_combo_charge_person;
 	
+	@FXML private ComboBox<String> fx_combo_year;
+	@FXML private ComboBox<String> fx_combo_month;
 	@FXML private DatePicker fx_picker_billing_date;
 	@FXML private DatePicker fx_picker_pay_date;
 	
@@ -138,6 +140,16 @@ public class SalesTableUController  implements Initializable
 			fx_combo_staff_system.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
 			fx_combo_charge_person.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
 		}
+		for(int year = 2015 ; year < 2099 ; year++){
+			fx_combo_year.getItems().add(String.valueOf(year));
+		}
+		for(int month = 1 ; month <= 12 ; month++){
+			if(month <10){
+				fx_combo_month.getItems().add("0" + String.valueOf(month));
+			}else{
+			fx_combo_month.getItems().add(String.valueOf(month));
+			}
+		}
 	}
 	private void validation(){
 		TextFieldValidator.addNumberValidator(fx_text_total_sale);
@@ -188,6 +200,7 @@ public class SalesTableUController  implements Initializable
 		sales.setDistribute_design_price(Long.valueOf(fx_text_design_price.getText()));
 		sales.setDistribute_coding_price(Long.valueOf(fx_text_coding_price.getText()));
 		sales.setDistribute_system_price(Long.valueOf(fx_text_system_price.getText()));
+		sales.setSales_month(fx_combo_year.getValue() + "-" + fx_combo_month.getValue());
 		
 		Sales_UpdateById sql = new Sales_UpdateById (sales);
 		new SalesDao(sql);

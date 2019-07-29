@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="1.7976931348623157E308" prefHeight="750.0" prefWidth="658.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesTableCController">
+<BorderPane maxHeight="1.7976931348623157E308" prefHeight="800.0" prefWidth="658.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesTableCController">
    <bottom>
       <HBox fillHeight="false" prefHeight="71.0" prefWidth="658.0" BorderPane.alignment="CENTER">
          <children>
@@ -42,6 +42,26 @@
                      </HBox.margin>
                   </Label>
                </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="売上月">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="年">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="fx_combo_year" prefHeight="27.0" prefWidth="131.0" />
+                  <Label text="月" />
+                  <ComboBox fx:id="fx_combo_month" prefHeight="27.0" prefWidth="72.0" />
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>

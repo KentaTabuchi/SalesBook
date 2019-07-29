@@ -40,7 +40,8 @@ public class Sales_UpdateById implements ISQLExecutable {
 			+ "distribute_sale_price = ?," //19
 			+ "distribute_design_price = ?," //20
 			+ "distribute_coding_price = ?," //21
-			+ "distribute_system_price = ?," //22
+			+ "distribute_system_price = ?,"
+			+ "sales_month = ?," //22
 			+ "update_at = ? " //23
 			+ "where id = ?"; //24
 
@@ -73,8 +74,9 @@ public class Sales_UpdateById implements ISQLExecutable {
 			ps.setLong(20, this.sales.distribute_design_priceProperty().getValue());
 			ps.setLong(21, this.sales.distribute_coding_priceProperty().getValue());
 			ps.setLong(22, this.sales.distribute_system_priceProperty().getValue());
-			ps.setString(23,new TimeStamper().getNowJapanese());
-			ps.setLong(24, this.sales.idProperty().getValue());
+			ps.setString(23, this.sales.sales_monthProperty().getValue());
+			ps.setString(24,new TimeStamper().getNowJapanese());
+			ps.setLong(25, this.sales.idProperty().getValue());
 			
 			
 			int result = ps.executeUpdate();

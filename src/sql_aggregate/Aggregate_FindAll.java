@@ -25,7 +25,7 @@ public class Aggregate_FindAll implements ISQLExecutable {
 + "sum(total_sale) as sum_sales,"
 + "sum(total_profit) as sum_profit,"
 + "sum(total_expense) as sum_expense,"
-+ "strftime('%Y-%m',income_date) as month "
++ "strftime('%Y-%m',sales_month || '-01') as month "
 + "from sales "
 + "group by month";
 

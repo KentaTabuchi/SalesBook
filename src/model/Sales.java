@@ -10,6 +10,7 @@ public class Sales {
 	//  sales table has these columns itself.
 	//--------------------------------------------
 	private LongProperty id;
+	private StringProperty sales_month;
 	private StringProperty name;
 	private LongProperty total_profit;
 	private LongProperty total_expense;
@@ -272,6 +273,12 @@ public class Sales {
 	}
 	public void setCharge_person(String charge_person){
 		this.charge_person = new SimpleStringProperty(charge_person);
+	}
+	public StringProperty sales_monthProperty(){
+		return this.sales_month;
+	}
+	public void setSales_month(String sales_month){
+		this.sales_month = new SimpleStringProperty(sales_month);
 	}
 	
 }

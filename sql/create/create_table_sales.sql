@@ -22,6 +22,7 @@ create table sales(
   distribute_design_price integer,
   distribute_coding_price integer,
   distribute_system_price integer,
+  sales_month text,
   created_at text,
   update_at text
 );

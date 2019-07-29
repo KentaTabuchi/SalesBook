@@ -23,7 +23,8 @@ public class SalesMenuController {
 	}
 	@FXML
 	protected void OnMenuButton4Click(){
-
+		Stage stage = new StageGenerator().createStage("pl_C.fxml",new BorderPane());	
+		stage.setTitle("月次費用登録");
 	}
 	@FXML
 	protected void OnMenuButton5Click(){

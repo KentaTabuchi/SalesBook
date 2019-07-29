@@ -26,6 +26,7 @@ public class MainViewRDController implements Initializable {
 	static public MainViewRDController mainViewRDController;
 	@FXML private TableView<Sales> fx_table = new TableView<>();
 	@FXML private TableColumn<Sales,Long>   fx_column_id;
+	@FXML private TableColumn<Sales,String> fx_column_sales_month;
 	@FXML private TableColumn<Sales,String> fx_column_name;
 	@FXML private TableColumn<Sales,Long> fx_column_total_profit;
 	@FXML private TableColumn<Sales,Long> fx_column_total_expense;
@@ -64,6 +65,7 @@ public class MainViewRDController implements Initializable {
 	
 	private void setCellValueFactoryes(){
 		fx_column_id.setCellValueFactory(new PropertyValueFactory<Sales,Long>("id"));
+		fx_column_sales_month.setCellValueFactory(new PropertyValueFactory<Sales,String>("sales_month"));
 		fx_column_name.setCellValueFactory(new PropertyValueFactory<Sales,String>("name"));
 		fx_column_total_profit.setCellValueFactory(new PropertyValueFactory<Sales,Long>("total_profit"));
 		fx_column_total_expense.setCellValueFactory(new PropertyValueFactory<Sales,Long>("total_expense"));

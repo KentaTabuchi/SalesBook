@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import application.SalesDao;
 import command.Message;
 import command.StageGenerator;
-import command.StringDoubleBinding;
 import command.StringLongBinding;
 import command.StringSeparator;
 import command.TextFieldValidator;
@@ -15,7 +14,6 @@ import enums.Settle;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -42,6 +40,9 @@ public class SalesTableCController  implements Initializable
 	@FXML private ComboBox<String> fx_combo_staff_design;
 	@FXML private ComboBox<String> fx_combo_staff_coding;
 	@FXML private ComboBox<String> fx_combo_staff_system;
+	
+	@FXML private ComboBox<String> fx_combo_year;
+	@FXML private ComboBox<String> fx_combo_month;
 	
 	@FXML private ComboBox<String> fx_combo_charge_person;
 	
@@ -93,6 +94,16 @@ public class SalesTableCController  implements Initializable
 			fx_combo_staff_system.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
 			fx_combo_charge_person.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
 		}
+		for(int year = 2015 ; year < 2099 ; year++){
+			fx_combo_year.getItems().add(String.valueOf(year));
+		}
+		for(int month = 1 ; month <= 12 ; month++){
+			if(month <10){
+				fx_combo_month.getItems().add("0" + String.valueOf(month));
+			}else{
+			fx_combo_month.getItems().add(String.valueOf(month));
+			}
+		}
 
 		fx_text_total_profit.textProperty().bind(Bindings.subtract(
 				new StringLongBinding(fx_text_total_sale.textProperty()),
@@ -129,6 +140,7 @@ public class SalesTableCController  implements Initializable
 		Sales_Insert sql = new Sales_Insert
 		(
 				fx_text_name.getText(), //name
+				fx_combo_year.getValue() + "-" + fx_combo_month.getValue(),
 				Long.valueOf(fx_text_total_profit.getText()), 
 				
 				Long.valueOf(fx_text_total_expense.getText()), //OK
@@ -152,7 +164,7 @@ public class SalesTableCController  implements Initializable
 				Long.valueOf(fx_text_coding_price.getText()),  //distribute_design OK
 				Long.valueOf(fx_text_system_price.getText())   //distribute_system OK
 				);
-
+		
 		new SalesDao(sql);
 		new Message().showAlert("処理の完了", "書き込み成功", "DBに登録しました。");
 		}catch(Exception e){
