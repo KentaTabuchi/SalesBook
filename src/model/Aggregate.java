@@ -37,7 +37,7 @@ public class Aggregate {
 	public LongProperty sum_expenseProperty(){
 		return sum_expense;
 	}
-	public void setExpenseProperty(Long sum_expense){
+	public void setSum_expenseProperty(Long sum_expense){
 		this.sum_expense = new SimpleLongProperty(sum_expense);
 	}
 	

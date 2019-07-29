@@ -21,7 +21,13 @@ public class Aggregate_FindAll implements ISQLExecutable {
 
 	public List<Aggregate> recordList;
 	final String SQL = 
-"select sum(total_sale) as sum_sales,strftime('%Y-%m',income_date) as month from sales group by month";
+"select "
++ "sum(total_sale) as sum_sales,"
++ "sum(total_profit) as sum_profit,"
++ "sum(total_expense) as sum_expense,"
++ "strftime('%Y-%m',income_date) as month "
++ "from sales "
++ "group by month";
 
 	@Override
 	public void executeQuery(Connection con) {
@@ -43,6 +49,8 @@ public class Aggregate_FindAll implements ISQLExecutable {
 				while(rs.next()){
 					String month =  rs.getString("month"); 
 					Long total_sale = rs.getLong("sum_sales"); 
+					Long total_profit = rs.getLong("sum_profit");
+					Long total_expense = rs.getLong("sum_expense");
 					
 					System.out.println("month:"+ month);
 					System.out.println("total_sale:"+ total_sale);
@@ -51,6 +59,8 @@ public class Aggregate_FindAll implements ISQLExecutable {
 				
 					record.setYear_month(month);
 					record.setSum_salesProperty(total_sale);
+					record.setSum_profitProperty(total_profit);
+					record.setSum_expenseProperty(total_expense);
 
 					recordList.add(record);
 				}
