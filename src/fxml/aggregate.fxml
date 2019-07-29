@@ -21,10 +21,10 @@
    <center>
    <TableView fx:id="fx_table" prefHeight="672.0" prefWidth="2000.0" BorderPane.alignment="CENTER">
      <columns>
-            <TableColumn prefWidth="109.0" text="年月" />
-       <TableColumn prefWidth="86.0" text="売上高" />
-         <TableColumn prefWidth="107.0" text="総売上高" />
-            <TableColumn prefWidth="86.0" text="仕入" />
+            <TableColumn fx:id="fx_column_month" prefWidth="109.0" text="年月" />
+       <TableColumn fx:id="fx_column_profit" prefWidth="86.0" text="売上高" />
+         <TableColumn fx:id="fx_column_sales" prefWidth="107.0" text="総売上高" />
+            <TableColumn fx:id="fx_column_expense" prefWidth="86.0" text="仕入" />
      </columns>
       <BorderPane.margin>
          <Insets left="5.0" right="5.0" />
