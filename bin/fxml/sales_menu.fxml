@@ -28,7 +28,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#OnMenuButton4Click" prefHeight="100.0" prefWidth="380.0" text="4.月次費用登録" GridPane.columnIndex="1">
+            <Button mnemonicParsing="false" onAction="#OnMenuButton4Click" prefHeight="100.0" prefWidth="380.0" text="4.月次費用登録(開発中)" GridPane.columnIndex="1">
                <font>
                   <Font size="24.0" />
                </font></Button>

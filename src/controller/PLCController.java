@@ -11,7 +11,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import model.PL;
 import sql_crud.Customers_Insert;
+import sql_crud.PL_Insert;
 
 public class PLCController implements Initializable{
 	@FXML private  ComboBox<String> fx_combo_year;
@@ -24,6 +26,12 @@ public class PLCController implements Initializable{
 	@FXML private TextField fx_text_lease_fee;
 	@FXML private TextField fx_text_rent_fee;
 	@FXML private TextField fx_text_repair_costs;
+	@FXML private TextField fx_text_maintenance_fee;
+	@FXML private TextField fx_text_insurance_fee;
+	@FXML private TextField fx_text_recruiting_expenses;
+	@FXML private TextField fx_text_fees;
+	@FXML private TextField fx_text_newspaper_book_expenses;
+	@FXML private TextField fx_text_miscellaneous_expenses;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -48,17 +56,32 @@ public class PLCController implements Initializable{
 	
 	@FXML
 	public void OnAddButtonClick(){
-//		System.out.println("CustomersTableCController: OnAddButtonClick invoke");
-//		try{
-//		Customers_Insert sql = new Customers_Insert
-//		(fx_text_name.getText(),fx_text_kana_name.getText(),fx_text_tel.getText(),fx_text_address1.getText(),
-//		 fx_text_address2.getText(),fx_text_address3.getText(),fx_text_zip.getText(),
-//		 fx_text_email.getText(),fx_text_person_in_charge.getText());
-//		new SalesDao(sql);
-//		new Message().showAlert("処理の完了", "書き込み成功", "DBに登録しました。 ");
-//		}catch(Exception e){
-//			new Message().showAlert("例外の検出", "入力漏れ", "DBに登録できませんでした。\n 入力内容をご確認ください。 ");
-//		}
+
+		try{
+		PL pl = new  PL();
+		pl.setMonth(fx_combo_year.getValue() + "-" + fx_combo_month.getValue());
+		pl.setbonus_allowance(Long.valueOf(fx_text_bonus_allowance.getText()));
+		pl.setProvision_of_bonus_allowance(Long.valueOf(fx_text_provision_of_bonus_allowance.getText()));
+		pl.setCommuter_traffic_expenses(Long.valueOf(fx_text_commuter_traffic_expenses.getText()));
+		pl.setCommunication_cost(Long.valueOf(fx_text_communication_cost.getText()));
+		pl.setBack_log(Long.valueOf(fx_text_back_log.getText()));
+		pl.setRent_fee(Long.valueOf(fx_text_rent_fee.getText()));
+		pl.setLease_fee(Long.valueOf(fx_text_lease_fee.getText()));
+		pl.setRepair_costs(Long.valueOf(fx_text_repair_costs.getText()));
+		pl.setMaintenance_fee(Long.valueOf(fx_text_maintenance_fee.getText()));
+		pl.setInsurance_fee(Long.valueOf(fx_text_insurance_fee.getText()));
+		pl.setRecruiting_expenses(Long.valueOf(fx_text_recruiting_expenses.getText()));
+		pl.setFees(Long.valueOf(fx_text_fees.getText()));
+		pl.setNewspaper_book_expenses(Long.valueOf(fx_text_newspaper_book_expenses.getText()));
+		pl.setmiscellaneous_expenses(Long.valueOf(fx_text_miscellaneous_expenses.getText()));
+		//TODO ここにplオブジェクトへビューのフィールドの値を書き込む。
+		PL_Insert sql = new PL_Insert(pl);
+		
+		new SalesDao(sql);
+		new Message().showAlert("処理の完了", "書き込み成功", "DBに登録しました。 ");
+		}catch(Exception e){
+			new Message().showAlert("例外の検出", "入力漏れ", "DBに登録できませんでした。\n 入力内容をご確認ください。 ");
+		}
 	} 
 	 
 }
