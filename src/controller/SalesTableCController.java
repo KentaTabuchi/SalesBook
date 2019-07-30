@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 import application.SalesDao;
@@ -17,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import model.Customers;
@@ -50,8 +52,8 @@ public class SalesTableCController  implements Initializable
 	@FXML private DatePicker fx_picker_pay_date;
 	
 	@FXML private TextField fx_text_total_sale;
-	@FXML private TextField fx_text_total_expense;
-	@FXML private TextField fx_text_total_profit;
+	@FXML private Label fx_text_total_expense;
+	@FXML private Label fx_text_total_profit;
 	@FXML private TextField fx_text_name;
 	@FXML private TextField fx_text_memo;
 	@FXML private TextField fx_text_director_price;
@@ -65,7 +67,7 @@ public class SalesTableCController  implements Initializable
 	//----------------------------------------------------
 	public static Long vendor_id;
 	public static String vendor_name;
-	public static TextField total_expense;
+	public static Label total_expense;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		for(Settle item:Settle.values()){
@@ -104,7 +106,15 @@ public class SalesTableCController  implements Initializable
 			fx_combo_month.getItems().add(String.valueOf(month));
 			}
 		}
-
+		int month2 = LocalDateTime.now().getMonth().getValue();
+		if(month2 < 10){
+			fx_combo_month.setValue("0" + String.valueOf(month2));
+		}else{
+			fx_combo_month.setValue(String.valueOf(month2));
+		}
+		int year2 = LocalDateTime.now().getYear();
+		fx_combo_year.setValue(String.valueOf(year2));
+		
 		fx_text_total_profit.textProperty().bind(Bindings.subtract(
 				new StringLongBinding(fx_text_total_sale.textProperty()),
 				new StringLongBinding(fx_text_total_expense.textProperty())).asString());

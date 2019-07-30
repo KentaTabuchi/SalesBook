@@ -74,7 +74,6 @@ public class PLCController implements Initializable{
 		pl.setFees(Long.valueOf(fx_text_fees.getText()));
 		pl.setNewspaper_book_expenses(Long.valueOf(fx_text_newspaper_book_expenses.getText()));
 		pl.setmiscellaneous_expenses(Long.valueOf(fx_text_miscellaneous_expenses.getText()));
-		//TODO ここにplオブジェクトへビューのフィールドの値を書き込む。
 		PL_Insert sql = new PL_Insert(pl);
 		
 		new SalesDao(sql);

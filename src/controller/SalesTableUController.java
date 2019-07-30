@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 import application.SalesDao;
@@ -52,8 +53,8 @@ public class SalesTableUController  implements Initializable
 	@FXML private DatePicker fx_picker_pay_date;
 	
 	@FXML private TextField fx_text_total_sale;
-	@FXML private TextField fx_text_total_expense;
-	@FXML private TextField fx_text_total_profit;
+	@FXML private Label fx_text_total_expense;
+	@FXML private Label fx_text_total_profit;
 	@FXML private TextField fx_text_name;
 	@FXML private TextField fx_text_memo;
 	@FXML private TextField fx_text_director_price;
@@ -68,7 +69,7 @@ public class SalesTableUController  implements Initializable
 	//----------------------------------------------------
 	public static Long vendor_id;
 	public static String vendor_name;
-	public static TextField total_expense;
+	public static Label total_expense;
 
 	public static Sales sales; //Substitute from edit button of MainView.
 	
@@ -150,6 +151,15 @@ public class SalesTableUController  implements Initializable
 			fx_combo_month.getItems().add(String.valueOf(month));
 			}
 		}
+		int month2 = LocalDateTime.now().getMonth().getValue();
+		if(month2 < 10){
+			fx_combo_month.setValue("0" + String.valueOf(month2));
+		}else{
+			fx_combo_month.setValue(String.valueOf(month2));
+		}
+		int year2 = LocalDateTime.now().getYear();
+		fx_combo_year.setValue(String.valueOf(year2));
+		
 	}
 	private void validation(){
 		TextFieldValidator.addNumberValidator(fx_text_total_sale);

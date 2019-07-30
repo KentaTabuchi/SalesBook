@@ -125,7 +125,7 @@
                   </ComboBox>
                </children>
             </HBox>
-            <HBox prefHeight="80.0" prefWidth="200.0" styleClass="h3-back">
+                        <HBox prefHeight="80.0" prefWidth="200.0" styleClass="h3-back">
                <children>
                   <Label styleClass="h3" text="クライアント">
                      <HBox.margin>
@@ -134,14 +134,14 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="60.0" prefWidth="687.0">
+            <HBox prefHeight="79.0" prefWidth="658.0">
                <children>
                   <Label text="顧客">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox fx:id="fx_combo_customers_id" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="524.0">
+                  <ComboBox fx:id="fx_combo_customers_id" maxWidth="1.7976931348623157E308" prefHeight="52.0" prefWidth="524.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -151,46 +151,6 @@
                   <Insets bottom="5.0" top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="80.0" prefWidth="687.0">
-               <children>
-                  <Label text="仕入">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </Label>
-               </children></HBox>
-            <HBox prefHeight="36.0" prefWidth="687.0">
-               <children>
-                  <Label text="仕入れ金額">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin></Label>
-                  <TextField fx:id="fx_text_total_expense" prefHeight="27.0" prefWidth="193.0">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Button mnemonicParsing="false" onAction="#OnShowDetailButtonClick" prefHeight="27.0" prefWidth="88.0" text="仕入れ入力">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin></Button>
-                  <Label text="支払期日">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <DatePicker fx:id="fx_picker_pay_date">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </DatePicker>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin></HBox>
             <HBox prefHeight="80.0" prefWidth="200.0" styleClass="h3-back">
                <children>
                   <Label styleClass="h3" text="売上">
@@ -224,7 +184,7 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="fx_text_total_sale" prefHeight="27.0" prefWidth="194.0">
+                  <TextField fx:id="fx_text_total_sale" alignment="TOP_RIGHT" prefHeight="27.0" prefWidth="194.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -235,9 +195,55 @@
                      </HBox.margin>
                   </HBox>
                </children>
+               
                <VBox.margin>
                   <Insets bottom="10.0" top="5.0" />
                </VBox.margin>
+            </HBox>
+
+            <HBox prefHeight="80.0" prefWidth="687.0" styleClass="h3-back">
+               <children>
+                  <Label styleClass="h3" text="仕入">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children></HBox>
+            <HBox prefHeight="36.0" prefWidth="687.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#OnShowDetailButtonClick" prefHeight="27.0" prefWidth="88.0" text="仕入れ入力">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></Button>
+                  <Label text="支払期日">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <DatePicker fx:id="fx_picker_pay_date">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </DatePicker>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin></HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="仕入れ金額">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin></Label>
+                  <Label fx:id="fx_text_total_expense" text="未入力">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
             </HBox>
                     <HBox prefHeight="50.0" prefWidth="687.0">
                <children>
@@ -251,7 +257,7 @@
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Label>
-                  <TextField fx:id="fx_text_director_price" />
+                  <TextField fx:id="fx_text_director_price" alignment="CENTER_RIGHT" text="0" />
                </children>
                <VBox.margin>
                   <Insets top="5.0" />
@@ -268,7 +274,7 @@
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Label>
-                  <TextField fx:id="fx_text_sale_price" />
+                  <TextField fx:id="fx_text_sale_price" alignment="CENTER_RIGHT" text="0" />
                </children>
                <VBox.margin>
                   <Insets top="5.0" />
@@ -285,7 +291,7 @@
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Label>
-                  <TextField fx:id="fx_text_design_price" />
+                  <TextField fx:id="fx_text_design_price" alignment="CENTER_RIGHT" text="0" />
                </children>
                <VBox.margin>
                   <Insets top="5.0" />
@@ -303,7 +309,7 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="fx_text_coding_price" />
+                  <TextField fx:id="fx_text_coding_price" alignment="CENTER_RIGHT" text="0" />
                </children>
                <VBox.margin>
                   <Insets top="5.0" />
@@ -321,7 +327,7 @@
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Label>
-                  <TextField fx:id="fx_text_system_price" />
+                  <TextField fx:id="fx_text_system_price" alignment="CENTER_RIGHT" text="0" />
                </children>
                <VBox.margin>
                   <Insets bottom="10.0" top="5.0" />
@@ -341,11 +347,11 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="fx_text_total_profit" editable="false" prefHeight="27.0" prefWidth="194.0">
+                  <Label fx:id="fx_text_total_profit" text="未入力">
                      <HBox.margin>
-                        <Insets left="5.0" />
+                        <Insets left="10.0" />
                      </HBox.margin>
-                  </TextField>
+                  </Label>
                </children>
                <VBox.margin>
                   <Insets top="10.0" />
