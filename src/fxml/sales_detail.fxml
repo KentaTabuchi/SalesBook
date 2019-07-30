@@ -9,13 +9,14 @@
 
 <BorderPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesDetailCRUDController">
    <center>
-      <TableView fx:id="fx_table" prefHeight="318.0" prefWidth="727.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="fx_table" prefHeight="318.0" prefWidth="800.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="fx_column_id" prefWidth="56.0" text="id" />
             <TableColumn fx:id="fx_column_price" prefWidth="99.0" text="仕入れ金額" />
             <TableColumn fx:id="fx_column_vendor_id" prefWidth="64.0" text="仕入先id" />
             <TableColumn fx:id="fx_column_vendor_name" prefWidth="138.0" text="仕入先" />
-          <TableColumn fx:id="fx_column_detail" prefWidth="286.0" text="仕入れ内容" />
+          <TableColumn fx:id="fx_column_detail" prefWidth="256.0" text="仕入れ内容" />
+            <TableColumn fx:id="fx_column_billing_date" prefWidth="105.0" text="支払日" />
         </columns>
          <padding>
             <Insets left="5.0" right="5.0" />
@@ -84,7 +85,7 @@
      </VBox>
    </top>
    <bottom>
-      <VBox prefHeight="171.0" prefWidth="727.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="727.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="48.0" prefWidth="727.0">
                <children>
@@ -118,6 +119,16 @@
                      </HBox.margin>
                   </ComboBox>
                </children></HBox>
+            <HBox prefHeight="43.0" prefWidth="727.0">
+               <children>
+                  <Label text="支払日" />
+                  <DatePicker fx:id="fx_picker_billing_date">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </DatePicker>
+               </children>
+            </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="53.0" prefWidth="727.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#OnAddButtonClick" text="仕入れ追加">

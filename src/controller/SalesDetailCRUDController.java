@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -37,6 +38,7 @@ public class SalesDetailCRUDController implements Initializable {
 	@FXML private TableColumn<SalesDetails,Long> fx_column_price;
 	@FXML private TableColumn<SalesDetails,Long> fx_column_vendor_id; //仕入先id
 	@FXML private TableColumn<SalesDetails,String> fx_column_vendor_name; //仕入先
+	@FXML protected TableColumn<SalesDetails,String> fx_column_billing_date;
 	
 	@FXML private TextField fx_text_detail;
 	@FXML private TextField fx_text_price;
@@ -47,6 +49,7 @@ public class SalesDetailCRUDController implements Initializable {
 	@FXML private Label fx_label_customer_name;
 	@FXML private Label fx_label_sales_id;
 	@FXML private Label fx_label_sum;
+	@FXML protected DatePicker fx_picker_billing_date;
 	
 	@FXML private Button fx_button_close;
 	protected Long vendor_id;
@@ -109,7 +112,8 @@ public class SalesDetailCRUDController implements Initializable {
 		fx_column_price.setCellValueFactory(new PropertyValueFactory<SalesDetails,Long>("price"));
 		fx_column_vendor_id.setCellValueFactory(new PropertyValueFactory<SalesDetails,Long>("vendor_id"));
 		fx_column_vendor_name.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("customer_name"));
-		//addButtonToTable(edit(),"","編集");
+		fx_column_billing_date.setCellValueFactory(new PropertyValueFactory<SalesDetails,String>("billing_date"));
+		
 		addButtonToTable(delete(),"","削除");
 	}
 	@FXML
@@ -122,7 +126,6 @@ public class SalesDetailCRUDController implements Initializable {
 	private void OnAddButtonClick(){
 		
 		System.out.println("addbuttonclick");
-		System.out.println(Long.valueOf(fx_combo_customers_id.getValue().substring(0,fx_combo_customers_id.getValue().indexOf(":"))));
 		insert();
 		findAll();
 		refreshSumLabel();
@@ -133,10 +136,12 @@ public class SalesDetailCRUDController implements Initializable {
 	}
 	private void insert(){
 		SalesDetails_Insert sql = new SalesDetails_Insert(
-				sales_id, //ここに画面遷移前から引っ張ってきた売上IDを移す。
+				sales_id, 
 				Long.valueOf(fx_combo_customers_id.getValue().substring(0,fx_combo_customers_id.getValue().indexOf(":"))),   
 				fx_text_detail.getText(),
-				Long.valueOf(fx_text_price.getText())
+				Long.valueOf(fx_text_price.getText()),
+				fx_picker_billing_date.getValue().toString()
+				
 				);
 		new SalesDao(sql);
 	}
@@ -165,15 +170,7 @@ public class SalesDetailCRUDController implements Initializable {
 		};
 		return consumer;
 	}
-//	private Consumer<SalesDetails> edit(){
-//		Consumer<SalesDetails> consumer = customers -> {
-//			System.out.println("editbuttonclick");
-//			SalesDetailTableEController.customers = customers;
-//			Stage stage = new StageGenerator().createStage("customers_table-E.fxml",new BorderPane());
-//			stage.setTitle("既存顧客編集 ID:"+ customers.idProperty().get());
-//		};
-//		return consumer;
-//	}
+
 	
 	private void addButtonToTable(Consumer<SalesDetails> consumer,String columnTitle,String btnCaption) {
 		TableColumn<SalesDetails, Void> colBtn = new TableColumn<>(columnTitle);

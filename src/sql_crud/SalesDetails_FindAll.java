@@ -21,7 +21,6 @@ public class SalesDetails_FindAll implements ISQLExecutable {
 
 	private Long sales_id;
 	public List<SalesDetails> recordList;
-	//final String SQL = "select * from sales_detail inner join customers on sales_detail.vendor_id = customers.id";
 	final String SQL = "select * from sales_detail left outer join customers on sales_detail.vendor_id = customers.id "
 			+ "where sales_detail.sales_id = ?";
 	@Override
@@ -49,8 +48,9 @@ public class SalesDetails_FindAll implements ISQLExecutable {
 					String description = rs.getString("description");
 					Long price = rs.getLong("price");
 					String customer_name = rs.getString("name");
+					String billing_date = rs.getString("billing_date");
 					
-					SalesDetails record = new SalesDetails(id,sales_id,vendor_id,description,price,customer_name);
+					SalesDetails record = new SalesDetails(id,sales_id,vendor_id,description,price,customer_name,billing_date);
 					recordList.add(record);
 				}
 			} catch (SQLException e) {
