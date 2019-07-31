@@ -66,11 +66,12 @@ public class Sales_Insert implements ISQLExecutable {
 		this.memo = memo;
 		this.income_date = income_date;
 		this.billing_date = billing_date;
-		this.staff_director_id = staff_director_id;
-		this.staff_sale_id = staff_sale_id;
-		this.staff_design_id = staff_design_id;
-		this.staff_coding_id = staff_coding_id;
-		this.staff_system_id = staff_system_id;
+		this.staff_director_id = staff_director_id != 0 ? staff_director_id : 0;
+		this.staff_sale_id = staff_sale_id !=0 ? staff_sale_id : 0;
+		this.staff_design_id = staff_design_id !=0 ? staff_design_id : 0;
+		this.staff_coding_id = staff_coding_id !=0 ? staff_coding_id : 0;
+		this.staff_system_id = staff_system_id !=0 ? staff_system_id : 0;
+	
 		this.distribute_director_price = distribute_director_price;
 		this.distribute_sale_price = distribute_sale_price;
 		this.distribute_design_price = distribute_design_price;
@@ -93,7 +94,7 @@ public class Sales_Insert implements ISQLExecutable {
 			ps.setString(10,this.invoice_status);
 			ps.setString(11,this.memo);
 			ps.setString(12,this.income_date);
-			ps.setString(13,this.billing_date);
+			ps.setString(13,"廃止");
 			ps.setLong(14,this.staff_director_id);
 			ps.setLong(15,this.staff_sale_id);
 			ps.setLong(16, this.staff_design_id);

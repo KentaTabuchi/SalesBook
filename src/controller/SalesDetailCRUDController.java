@@ -68,6 +68,7 @@ public class SalesDetailCRUDController implements Initializable {
 		setTotal_pay();
 		findAll();
 	}
+
 	protected void setTotal_pay(){
 		SalesTableCController.total_expense.textProperty().bind(total_pay);
 	}

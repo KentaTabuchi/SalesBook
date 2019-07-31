@@ -13,6 +13,8 @@ import command.TextFieldValidator;
 import enums.InvoiceStatuses;
 import enums.Settle;
 import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -31,7 +33,7 @@ import sql_crud.Statuses_FindAll;
 
 public class SalesTableCController  implements Initializable
 {
-	
+	protected final String NO_PERSON = "0:該当者なし";
 	@FXML private ComboBox<String> fx_combo_settle;
 	@FXML private ComboBox<String> fx_combo_genres_id;
 	@FXML private ComboBox<String> fx_combo_customers_id;
@@ -70,6 +72,25 @@ public class SalesTableCController  implements Initializable
 	public static Label total_expense;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		setComboBox();
+		bindTextField();
+		validation();
+		setInitialValue();
+	}
+	protected void setInitialValue(){
+		fx_combo_staff_director.setValue(NO_PERSON);
+		fx_combo_staff_sale.setValue(NO_PERSON);
+		fx_combo_staff_design.setValue(NO_PERSON);
+		fx_combo_staff_coding.setValue(NO_PERSON);
+		fx_combo_staff_system.setValue(NO_PERSON);
+		
+	}
+	protected void bindTextField(){
+		fx_text_total_profit.textProperty().bind(Bindings.subtract(
+				new StringLongBinding(fx_text_total_sale.textProperty()),
+				new StringLongBinding(fx_text_total_expense.textProperty())).asString());
+	}
+	protected void setComboBox(){
 		for(Settle item:Settle.values()){
 			fx_combo_settle.getItems().add(item.getValue());
 		}
@@ -86,6 +107,14 @@ public class SalesTableCController  implements Initializable
 		for(Customers item:sql2.recordList){
 			fx_combo_customers_id.getItems().add(item.idProperty().getValue()+":"+item.nameProperty().getValue());
 		}
+		
+		
+		fx_combo_staff_director.getItems().add(NO_PERSON);
+		fx_combo_staff_sale.getItems().add(NO_PERSON);
+		fx_combo_staff_design.getItems().add(NO_PERSON);
+		fx_combo_staff_coding.getItems().add(NO_PERSON);
+		fx_combo_staff_system.getItems().add(NO_PERSON);
+		fx_combo_charge_person.getItems().add(NO_PERSON);
 		Statuses_FindAll sql3 = new Statuses_FindAll();
 		new SalesDao(sql3);
 		for(Statuses item:sql3.recordList){
@@ -114,13 +143,7 @@ public class SalesTableCController  implements Initializable
 		}
 		int year2 = LocalDateTime.now().getYear();
 		fx_combo_year.setValue(String.valueOf(year2));
-		
-		fx_text_total_profit.textProperty().bind(Bindings.subtract(
-				new StringLongBinding(fx_text_total_sale.textProperty()),
-				new StringLongBinding(fx_text_total_expense.textProperty())).asString());
-		validation();	
 	}
-
 	private void validation(){
 		TextFieldValidator.addNumberValidator(fx_text_total_sale);
 		TextFieldValidator.addNumberValidator(fx_text_director_price);
@@ -143,9 +166,44 @@ public class SalesTableCController  implements Initializable
 		}
 	
 	}
+	protected void complementNullText(){
+		
+		if(fx_text_total_sale.getText().isEmpty()){
+			fx_text_total_sale.setText("0");
+		}
+		if(fx_text_director_price.getText().isEmpty()){
+			fx_text_director_price.setText("0");
+		}
+		if(fx_text_sale_price.getText().isEmpty()){
+			fx_text_sale_price.setText("0");
+		}
+		if(fx_text_design_price.getText().isEmpty()){
+			fx_text_design_price.setText("0");
+		}
+		if(fx_text_coding_price.getText().isEmpty()){
+			fx_text_coding_price.setText("0");
+		}
+		if(fx_text_system_price.getText().isEmpty()){
+			fx_text_system_price.setText("0");
+		}
+	}
+	
+	protected String createErrorMessage(){
+		StringBuilder sb = new StringBuilder();
+		sb.append(fx_combo_year.getValue() == null ? "売上月の年が未入力です。" : "");
+		sb.append(fx_combo_month.getValue() == null ? "売上月の月が未入力です。" : "");
+		sb.append(fx_picker_billing_date.getValue() == null ? "請求日が未入力です。\n" : "");
+		sb.append(fx_combo_settle.getValue() == null ? "ステータスが未入力です。\n" : "");
+		sb.append(fx_combo_charge_person.getValue() == null ? "担当者が未入力です。\n" : "");
+		sb.append(fx_invoice_statuses.getValue() == null ? "請求が未入力です。\n" : "");
+		sb.append(fx_combo_genres_id.getValue() == null ? "ジャンルが未入力です。\n" : "");
+		sb.append(fx_combo_customers_id.getValue() == null ? "顧客が未入力です。\n" : "");
+		return sb.toString();
+	}
+	
 	@FXML
 	protected void OnAddButtonClick(){
-
+		complementNullText();
 		try{
 		Sales_Insert sql = new Sales_Insert
 		(
@@ -162,7 +220,7 @@ public class SalesTableCController  implements Initializable
 				fx_invoice_statuses.getValue(), //invoice_status 請求列 OK
 				fx_text_memo.getText(), //memo 覚書 OK
 				fx_picker_billing_date.getValue().toString(), // income_date OK
-				fx_picker_pay_date.getValue().toString(), // billing_date
+				"ダミー", // billing_date
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_director.getValue(),':')), //staff_director_id OK
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_sale.getValue(),':')), //staff_sale_id OK
 				Long.valueOf(new StringSeparator().getFoward(fx_combo_staff_coding.getValue(),':')), //staff_coding_id OK
@@ -178,7 +236,9 @@ public class SalesTableCController  implements Initializable
 		new SalesDao(sql);
 		new Message().showAlert("処理の完了", "書き込み成功", "DBに登録しました。");
 		}catch(Exception e){
-			new Message().showAlert("例外の検出", "入力漏れ", "未入力項目があるためDBに反映されませんでした。");
+			e.printStackTrace();
+			new Message().showAlert("未入力項目があります", "下記の項目の選択が必要です。",createErrorMessage() );
+			
 		}
 	}
 	

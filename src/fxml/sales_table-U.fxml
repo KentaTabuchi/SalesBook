@@ -214,26 +214,10 @@
                </children></HBox>
             <HBox prefHeight="36.0" prefWidth="687.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#OnShowDetailButtonClick" prefHeight="27.0" prefWidth="88.0" text="仕入れ入力">
+                  <Button mnemonicParsing="false" onAction="#OnShowDetailButtonClick" prefHeight="27.0" prefWidth="140.0" text="仕入れ入力">
                      <HBox.margin>
-                        <Insets left="5.0" />
+                        <Insets left="10.0" />
                      </HBox.margin></Button>
-                  <Label text="支払期日">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <DatePicker fx:id="fx_picker_pay_date">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </DatePicker>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin></HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
                   <Label text="仕入れ金額">
                      <HBox.margin>
                         <Insets left="20.0" />
@@ -242,6 +226,22 @@
                      <padding>
                         <Insets left="10.0" />
                      </padding>
+                  </Label>
+                  <DatePicker fx:id="fx_picker_pay_date" visible="false">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </DatePicker>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin></HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="h3-back">
+               <children>
+                  <Label styleClass="h3" text="配分">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </Label>
                </children>
             </HBox>
